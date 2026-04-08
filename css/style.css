@@ -1,0 +1,286 @@
+/* Alpha Intel Labs — Shared Styles */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0C0C0E;
+  --bg-card: #161619;
+  --bg-card-hover: #1e1e22;
+  --text: #E8E6E3;
+  --text-muted: #9B9A97;
+  --text-dim: #6B6A68;
+  --accent: #D4637A;
+  --accent-gold: #C9A96E;
+  --accent-lavender: #8B7EC8;
+  --border: #2a2a2e;
+  --radius: 12px;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Layout */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.container-wide {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* Header / Nav */
+.site-header {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.logo .labs {
+  font-weight: 300;
+  font-size: 0.85em;
+  color: var(--text-muted);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+  text-decoration: none;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 0 3rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.hero h1 .labs {
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* App Cards Grid */
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+.app-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.app-card:hover {
+  background: var(--bg-card-hover);
+  border-color: #3a3a3e;
+}
+
+.app-card h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.app-card p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.app-card .badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.badge-live {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+}
+
+.badge-soon {
+  background: rgba(201, 169, 110, 0.15);
+  color: var(--accent-gold);
+}
+
+.app-card .links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+/* Legal Pages */
+.legal-page {
+  padding-bottom: 4rem;
+}
+
+.legal-page h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.legal-page .app-name {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.legal-page .effective-date {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-bottom: 2.5rem;
+}
+
+.legal-page h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.legal-page h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.legal-page p {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+.legal-page ul, .legal-page ol {
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.legal-page li {
+  margin-bottom: 0.4rem;
+}
+
+.legal-page strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.site-footer a {
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .container, .container-wide {
+    padding: 1.5rem 1rem;
+  }
+
+  .site-header .container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .app-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-page h1 {
+    font-size: 1.5rem;
+  }
+}
