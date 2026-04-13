@@ -184,6 +184,14 @@ a:hover {
   font-size: 0.85rem;
 }
 
+.app-card .links a {
+  color: var(--text-muted);
+}
+
+.app-card .links a:hover {
+  color: var(--text);
+}
+
 /* Legal Pages */
 .legal-page {
   padding-bottom: 4rem;
