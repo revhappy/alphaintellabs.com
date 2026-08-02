@@ -4,13 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahara — Know what's really in it</title>
-  <meta name="description" content="Scan any food, supplement, or skincare label with your phone. Ahara reads the ingredients and explains what each one is, what it does, and whether it fits your health goals.">
-  <meta name="theme-color" content="#5B8A72" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0E0E0F" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="Scan any label — food, supplements, skincare, toothpaste, medicine. Ahara explains every ingredient and scores each product against the health goals you actually have.">
+  <meta name="theme-color" content="#5B8A72">
   <link rel="canonical" href="https://alphaintellabs.com/ahara/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ahara — Know what's really in it">
-  <meta property="og:description" content="Scan any ingredient label. Get a clear, honest breakdown of what's actually inside.">
+  <meta property="og:description" content="Scan any label. Every ingredient explained, and every product scored against your own health goals.">
   <meta property="og:url" content="https://alphaintellabs.com/ahara/">
   <link rel="stylesheet" href="/css/ahara.css">
 </head>
@@ -50,6 +49,13 @@
     <circle cx="50" cy="50" r="6" fill="currentColor" opacity=".5"/>
     <circle cx="50" cy="50" r="2.5" fill="currentColor" opacity=".8"/>
   </symbol>
+
+  <!-- Target icon, as used by GoalFitBar -->
+  <symbol id="ic-target" viewBox="0 0 24 24">
+    <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+      <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/>
+    </g>
+  </symbol>
 </svg>
 
 <header class="site-header">
@@ -62,6 +68,7 @@
     <nav aria-label="Primary">
       <ul class="nav-links">
         <li class="nav-anchor"><a href="#how">How it works</a></li>
+        <li class="nav-anchor"><a href="#goals">Goal Fit</a></li>
         <li class="nav-anchor"><a href="#features">Features</a></li>
         <li><a href="/ahara/privacy">Privacy</a></li>
         <li><a href="/ahara/terms">Terms</a></li>
@@ -76,21 +83,18 @@
   <section class="hero mesh">
     <div class="container-wide hero-grid">
       <div>
-        <p class="eyebrow">
-          <svg width="13" height="13" aria-hidden="true"><use href="#ahara-mark"/></svg>
-          Ingredient analyzer
-        </p>
+        <p class="eyebrow">Food · Supplements · Skincare · Medicine</p>
         <h1>Know what's <em>really</em> in it.</h1>
         <p class="hero-lede">
-          Point your camera at any ingredient label — food, supplements, skincare,
-          toothpaste, medicine. Ahara reads it and tells you what each ingredient
-          is, what it does, and whether it fits the way you want to eat and live.
+          Point your camera at any label. Ahara reads it, explains every ingredient
+          in plain language, and — this is the part nothing else does — scores the
+          product against the health goals <em>you</em> actually have.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.ahara.app">
             Get Ahara on Google Play
           </a>
-          <a class="btn btn-secondary" href="#how">See how it works</a>
+          <a class="btn btn-secondary" href="#goals">See Goal Fit</a>
         </div>
         <p class="hero-note">Your first scan is free — no account needed.</p>
       </div>
@@ -154,28 +158,38 @@
                 </div>
               </div>
 
-              <div class="ph-pills">
-                <span class="ph-pill ok">Vegetarian</span>
-                <span class="ph-pill warn">Added sugar ×3</span>
-                <span class="ph-pill bad">Contains nuts</span>
-                <span class="ph-pill info">NOVA 4</span>
-              </div>
-
+              <!-- Goal Fit — the card that makes the scan about you, not the product -->
               <div class="ph-goal">
-                <div class="top"><b>Goal fit</b><span class="score">Good</span></div>
-                <div class="ph-track"><i style="width:72%"></i></div>
-                <div class="cap">Fits low-dairy. Watch the sugar for PCOS.</div>
+                <div class="head">
+                  <span class="who">
+                    <span class="tgt"><svg width="11" height="11" aria-hidden="true"><use href="#ic-target"/></svg></span>
+                    <span>
+                      <b>Goal Fit</b>
+                      <span class="sub">Matched to your goals</span>
+                    </span>
+                  </span>
+                  <span class="val">
+                    <span class="num" style="color:var(--avoid)">48</span>
+                    <span class="vd" style="color:var(--avoid)">Conflicts</span>
+                  </span>
+                </div>
+                <div class="ph-track"><i style="width:48%;background:var(--avoid)"></i></div>
+                <div class="ph-scale"><span>Conflicts</span><span>Partial</span><span>Aligns</span></div>
+                <p class="assess">Fine as an occasional snack, but two of your goals are hit: glucose syrup is a fast-releasing added sugar, and soy lecithin is on your avoid list.</p>
+                <p class="chips-label">Conflicts with</p>
+                <div class="ph-chips">
+                  <span style="color:var(--avoid);border-color:var(--avoid)">Blood-sugar control</span>
+                  <span style="color:var(--avoid);border-color:var(--avoid)">Soy</span>
+                </div>
               </div>
 
               <div class="ph-section-title">Ingredients · 14</div>
               <div class="ph-list">
                 <div class="ph-item ok"><span class="dot"></span><span class="txt"><b>Rolled oats</b><span>Whole grain · fiber</span></span></div>
                 <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Glucose syrup</b><span>Hidden sugar · spikes insulin</span></span></div>
-                <div class="ph-item bad"><span class="dot"></span><span class="txt"><b>Soy lecithin</b><span>Emulsifier · common allergen</span></span></div>
+                <div class="ph-item bad"><span class="dot"></span><span class="txt"><b>Soy lecithin</b><span>Emulsifier · on your avoid list</span></span></div>
                 <div class="ph-item ok"><span class="dot"></span><span class="txt"><b>Almonds</b><span>Whole food · protein, vitamin E</span></span></div>
-                <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Sunflower oil</b><span>Omega-6 · holistic caution</span></span></div>
-                <div class="ph-item ok"><span class="dot"></span><span class="txt"><b>Sea salt</b><span>Mineral · within daily range</span></span></div>
-                <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Natural flavour</b><span>Undisclosed blend</span></span></div>
+                <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Sunflower oil</b><span>Omega-6 · you avoid seed oils</span></span></div>
               </div>
             </div>
           </div>
@@ -184,8 +198,61 @@
     </div>
   </section>
 
+  <!-- ── What you can scan ────────────────────────────── -->
+  <section class="section section-alt">
+    <div class="container-wide">
+      <div class="section-head center">
+        <p class="section-label">More than a food app</p>
+        <h2>If it has a label, Ahara reads it.</h2>
+        <p>The same analysis works across everything you put in or on your body — and adapts what it measures to the category.</p>
+      </div>
+
+      <div class="surfaces">
+        <div class="surface-tile">
+          <span class="icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h1a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>
+          </span>
+          <b>Food &amp; drink</b>
+          <span>Processing level, hidden sugars, glycemic impact</span>
+        </div>
+        <div class="surface-tile">
+          <span class="icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5 3.5 13.5a5 5 0 0 1 7-7l7 7a5 5 0 0 1-7 7Z"/><path d="m8.5 8.5 7 7"/></svg>
+          </span>
+          <b>Supplements</b>
+          <span>Bioavailability, dose sanity, filler load</span>
+        </div>
+        <div class="surface-tile">
+          <span class="icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg>
+          </span>
+          <b>Skincare &amp; makeup</b>
+          <span>Comedogenic ratings, endocrine disruptors</span>
+        </div>
+        <div class="surface-tile">
+          <span class="icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6v3H9z"/><path d="M8 5h8l1 15a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z"/><path d="M10 12h4"/></svg>
+          </span>
+          <b>Toothpaste</b>
+          <span>Fluoride, abrasives, sweeteners</span>
+        </div>
+        <div class="surface-tile">
+          <span class="icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8v4H8z"/><path d="M6 6h12v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2z"/><path d="M12 11v6M9 14h6"/></svg>
+          </span>
+          <b>Medicine</b>
+          <span>Actives, excipients, interaction flags</span>
+        </div>
+      </div>
+
+      <p class="surfaces-note">
+        Results are available in 11 languages, including Spanish, Vietnamese, Chinese, Arabic, Hindi and Japanese.
+      </p>
+    </div>
+  </section>
+
   <!-- ── How it works ─────────────────────────────────── -->
-  <section class="section section-alt" id="how">
+  <section class="section" id="how">
     <div class="container-wide">
       <div class="section-head center">
         <p class="section-label">How it works</p>
@@ -202,9 +269,168 @@
           <p>Results stream in as they're written — scores first, then each ingredient, one at a time. No blank loading screen.</p>
         </div>
         <div class="step">
-          <h3>Decide with context</h3>
-          <p>Tell Ahara what you're working toward once, and every scan afterwards is judged against it, not against a generic average.</p>
+          <h3>See how it fits you</h3>
+          <p>Tell Ahara what you're working toward once, and every scan afterwards carries a Goal Fit verdict written for your situation.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Goal Fit spotlight ───────────────────────────── -->
+  <section class="section section-alt" id="goals">
+    <div class="container-wide spotlight">
+
+      <div class="spotlight-copy">
+        <p class="section-label">The part that's about you</p>
+        <h2>Every scan, measured against your goals.</h2>
+        <p>
+          A product that's fine for most people can be exactly wrong for you.
+          Tell Ahara what you're managing — once — and every analysis from then on
+          opens with a <strong>Goal Fit</strong> verdict: a 0&ndash;100 score, a
+          plain-language explanation, and named chips for whatever conflicts.
+        </p>
+
+        <ul class="spotlight-list">
+          <li>
+            <span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 6 6L20 6"/></svg></span>
+            <span><b>74 goals to pick from, across five kinds</b><span>How you eat · what you're working toward · ingredients to avoid · allergies &amp; intolerances · skincare and personal care.</span></span>
+          </li>
+          <li>
+            <span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 6 6L20 6"/></svg></span>
+            <span><b>Real conditions, not just diets</b><span>PCOS, type&nbsp;2 diabetes, thyroid, gout, kidney, migraine triggers, coeliac, pregnancy and nursing, fertility. Plus 300 characters in your own words.</span></span>
+          </li>
+          <li>
+            <span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 6 6L20 6"/></svg></span>
+            <span><b>It tells you <em>why</em>, not just yes or no</b><span>Conflicts are named and explained against the specific ingredient that caused them, so you can judge the trade-off yourself.</span></span>
+          </li>
+          <li>
+            <span class="tick" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 12 6 6L20 6"/></svg></span>
+            <span><b>Yours, and only yours</b><span>Goals stay on your device unless you sign in to sync them, and they are stripped from anything you share. Clear them all in one tap.</span></span>
+          </li>
+        </ul>
+
+        <p class="spotlight-caveat">
+          Goal Fit is informational, not clinical. A product shown as fitting your
+          goals has not been reviewed by a healthcare professional, and selecting an
+          allergen goal does not make allergen detection reliable — always read the
+          physical label.
+        </p>
+      </div>
+
+      <div class="spotlight-phones">
+
+        <!-- Goals picker -->
+        <figure>
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="ph-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="ph-bar"><span class="t">Your Goals</span><span class="ph-count">9 / 25</span></div>
+              <div class="ph-body">
+
+                <div class="ph-goalcat">
+                  <div class="ttl">
+                    <span class="ic" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 21c-4.97 0-9-3.5-9-8 0-3 2-5 4-5 1.5 0 2.5 1 3 2 .5-4 2.5-8 2-9 4 2 9 7 9 12 0 4.5-4.03 8-9 8z"/></svg></span>
+                    <span><b>How you eat</b><span class="sb">The pattern you follow</span></span>
+                  </div>
+                  <div class="ph-goalchips">
+                    <span class="on">Whole-food</span><span class="on">Mediterranean</span>
+                    <span>Keto</span><span>Vegan</span><span>Halal</span><span>Low-FODMAP</span>
+                  </div>
+                </div>
+
+                <div class="ph-goalcat">
+                  <div class="ttl">
+                    <span class="ic" aria-hidden="true"><svg width="10" height="10" aria-hidden="true"><use href="#ic-target"/></svg></span>
+                    <span><b>What you're working toward</b><span class="sb">Your health focus</span></span>
+                  </div>
+                  <div class="ph-goalchips">
+                    <span class="on">PCOS</span><span class="on">Blood-sugar control</span>
+                    <span class="on">Gut health</span><span>Anti-inflammatory</span><span>Thyroid</span>
+                  </div>
+                </div>
+
+                <div class="ph-goalcat">
+                  <div class="ttl">
+                    <span class="ic" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></span>
+                    <span><b>Ingredients to avoid</b><span class="sb">Things you'd rather not eat</span></span>
+                  </div>
+                  <div class="ph-goalchips">
+                    <span class="on">Seed oils</span><span class="on">Added sugar</span>
+                    <span>Emulsifiers</span><span>Artificial colors</span><span>MSG</span>
+                  </div>
+                </div>
+
+                <div class="ph-goalcat">
+                  <div class="ttl">
+                    <span class="ic" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                    <span><b>Allergies &amp; intolerances</b><span class="sb">Flagged with extra care</span></span>
+                  </div>
+                  <div class="ph-goalchips">
+                    <span class="on">Soy</span><span class="on">Dairy / lactose</span>
+                    <span>Gluten</span><span>Tree nuts</span><span>Sesame</span>
+                  </div>
+                </div>
+
+                <div class="ph-note">
+                  <b>In my own words</b>
+                  <em>“6 months postpartum and trying to lower my fasting insulin.”</em>
+                  <span class="count">61 / 300</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <figcaption>Set them once</figcaption>
+        </figure>
+
+        <!-- Goal Fit verdict -->
+        <figure>
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="ph-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="ph-bar"><span class="t">Analysis</span><span class="ph-count">Goal Fit</span></div>
+              <div class="ph-body">
+
+                <div class="ph-goal">
+                  <div class="head">
+                    <span class="who">
+                      <span class="tgt"><svg width="11" height="11" aria-hidden="true"><use href="#ic-target"/></svg></span>
+                      <span><b>Goal Fit</b><span class="sub">Matched to your goals</span></span>
+                    </span>
+                    <span class="val">
+                      <span class="num" style="color:var(--safe)">86</span>
+                      <span class="vd" style="color:var(--safe)">Aligns</span>
+                    </span>
+                  </div>
+                  <div class="ph-track"><i style="width:86%;background:var(--safe)"></i></div>
+                  <div class="ph-scale"><span>Conflicts</span><span>Partial</span><span>Aligns</span></div>
+                  <p class="assess">Almond butter and dates only — no added sugar, so it won't spike fasting insulin, and nothing here works against PCOS. Fibre and fat together slow the glucose curve further.</p>
+                  <p class="chips-label">Works with</p>
+                  <div class="ph-chips">
+                    <span style="color:var(--safe);border-color:var(--safe)">PCOS</span>
+                    <span style="color:var(--safe);border-color:var(--safe)">Blood-sugar control</span>
+                    <span style="color:var(--safe);border-color:var(--safe)">Whole-food</span>
+                    <span style="color:var(--safe);border-color:var(--safe)">Mediterranean</span>
+                  </div>
+                </div>
+
+                <div class="ph-verdict">
+                  <b>Why this beat the other bar</b>
+                  Same shelf, same price. This one swaps glucose syrup for dates and drops the soy lecithin you avoid.
+                </div>
+
+                <div class="ph-section-title">Flagged for you</div>
+                <div class="ph-list">
+                  <div class="ph-item ok"><span class="dot"></span><span class="txt"><b>Dates</b><span>Whole-food sweetener · fibre intact</span></span></div>
+                  <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Sea salt</b><span>210mg · watch if stacking salty snacks</span></span></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <figcaption>Get a verdict on every scan</figcaption>
+        </figure>
+
       </div>
     </div>
   </section>
@@ -219,6 +445,18 @@
       </div>
 
       <div class="features">
+
+        <div class="feature feature-key">
+          <div class="feature-head">
+            <span class="icon" aria-hidden="true">
+              <svg width="20" height="20" aria-hidden="true"><use href="#ic-target"/></svg>
+            </span>
+            <span class="tag">Signature</span>
+          </div>
+          <h3>Goal Fit</h3>
+          <p>The verdict that's about you, not the product. Pick from 74 goals — diets, conditions, allergies, ingredients to avoid — and every scan is scored and explained against them. <a href="#goals">See how it works</a>.</p>
+        </div>
+
         <div class="feature">
           <span class="icon" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9"/></svg>
@@ -240,15 +478,15 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 9v4M12 16h.01"/></svg>
           </span>
           <h3>Hidden things, surfaced</h3>
-          <p>Sugars under twelve different names, hidden salts, trans fats, and allergens in forms the front of the box never mentions.</p>
+          <p>Sugars under a dozen different names, hidden salts, trans fats, and allergens in forms the front of the box never mentions.</p>
         </div>
 
         <div class="feature">
           <span class="icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4.97 0-9-3.5-9-8 0-3 2-5 4-5 1.5 0 2.5 1 3 2 .5-4 2.5-8 2-9 4 2 9 7 9 12 0 4.5-4.03 8-9 8z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h7v14H4zM13 5h7v14h-7z"/></svg>
           </span>
-          <h3>Built around your goals</h3>
-          <p>Pick from dietary patterns, allergies, ingredients to avoid, and health circumstances. Each scan is then rated on how well it fits <em>you</em>.</p>
+          <h3>Three perspectives, side by side</h3>
+          <p>Mainstream evidence-based, functional/holistic, and traditional views on the same ingredient — labelled, so you can weigh them yourself.</p>
         </div>
 
         <div class="feature">
@@ -259,14 +497,14 @@
           <p>Two shelf options that look identical? Scan them side by side and see exactly where they diverge, ingredient by ingredient.</p>
         </div>
 
-        <div class="feature">
-          <span class="icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-9A8.4 8.4 0 1 1 21 11.5z"/></svg>
-          </span>
-          <h3>Ask follow-up questions</h3>
-          <p>"Is this okay while pregnant?" "What's a cleaner alternative?" Chat about any scan and get answers grounded in that specific label.</p>
-        </div>
       </div>
+
+      <p class="surfaces-note">
+        Also in the box: follow-up chat on any scan · marketing-claim fact checks
+        (&ldquo;natural&rdquo;, &ldquo;clean&rdquo;, &ldquo;organic&rdquo;) ·
+        reproductive-health and fertility callouts · local scan history · favorites
+        that sync · shareable analysis links.
+      </p>
     </div>
   </section>
 
@@ -276,7 +514,7 @@
       <div class="section-head center">
         <p class="section-label">Inside the app</p>
         <h2>Calm by design.</h2>
-        <p>No red alarm bells, no engagement bait. Just the label, read carefully — in light or dark.</p>
+        <p>No red alarm bells, no engagement bait. Just the label, read carefully.</p>
       </div>
 
       <div class="shots">
@@ -313,15 +551,15 @@
               <div class="ph-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
               <div class="ph-bar"><span class="t">Compare</span><span class="ic">4</span></div>
               <div class="ph-body">
-                <div class="ph-section-title">Best overall</div>
+                <div class="ph-section-title">Best for your goals</div>
                 <div class="ph-compare">
                   <div class="ph-card win">
                     <span class="badge">Winner</span>
-                    <div class="big" style="color:var(--safe)">78</div>
+                    <div class="big" style="color:var(--safe)">86</div>
                     <div class="cn">Stone Mill Oats</div>
                   </div>
                   <div class="ph-card">
-                    <div class="big" style="color:var(--caution)">62</div>
+                    <div class="big" style="color:var(--avoid)">48</div>
                     <div class="cn">Harvest Grove Bar</div>
                   </div>
                   <div class="ph-card">
@@ -329,7 +567,7 @@
                     <div class="cn">Trailhead Crunch</div>
                   </div>
                   <div class="ph-card">
-                    <div class="big" style="color:var(--avoid)">34</div>
+                    <div class="big" style="color:var(--avoid)">31</div>
                     <div class="cn">Sunburst Chewy</div>
                   </div>
                 </div>
@@ -337,19 +575,17 @@
                 <div class="ph-list">
                   <div class="ph-item ok"><span class="dot"></span><span class="txt"><b>Added sugars</b><span>1 vs 3 vs 4 vs 5 sources</span></span></div>
                   <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Seed oils</b><span>Absent in 1 of 4</span></span></div>
-                  <div class="ph-item bad"><span class="dot"></span><span class="txt"><b>Artificial colour</b><span>Present in Sunburst only</span></span></div>
+                  <div class="ph-item bad"><span class="dot"></span><span class="txt"><b>Soy lecithin</b><span>In 3 of 4 · you avoid soy</span></span></div>
                   <div class="ph-item ok"><span class="dot"></span><span class="txt"><b>Fibre per serving</b><span>6g vs 4g vs 3g vs 1g</span></span></div>
-                  <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Processing level</b><span>NOVA 3 vs 4 vs 4 vs 4</span></span></div>
                 </div>
                 <div class="ph-verdict">
                   <b>Verdict</b>
-                  Stone Mill Oats wins on every axis that moved the score — fewer
-                  sugar sources, no seed oil, and the least processing.
+                  Stone Mill Oats is the only one that clears every goal you've set.
                 </div>
               </div>
             </div>
           </div>
-          <figcaption><strong>Compare</strong>Four products, one honest verdict.</figcaption>
+          <figcaption><strong>Compare</strong>Four products, ranked for you.</figcaption>
         </figure>
 
         <!-- Screen 3 · Ask -->
@@ -363,11 +599,9 @@
                   <div class="ph-msg me">Is this okay if I'm avoiding seed oils?</div>
                   <div class="ph-msg ai">No — sunflower oil is the fourth ingredient, so it's a meaningful share of the bar rather than a trace.</div>
                   <div class="ph-msg me">What should I look for instead?</div>
-                  <div class="ph-msg ai">Bars binding with nut butter or coconut oil. On this shelf, Stone Mill Oats uses almond butter and scores 78.</div>
-                </div>
-                <div class="ph-chat">
+                  <div class="ph-msg ai">Bars binding with nut butter or coconut oil. On this shelf, Stone Mill Oats uses almond butter and fits all nine of your goals.</div>
                   <div class="ph-msg me">And the sugar? I'm managing PCOS.</div>
-                  <div class="ph-msg ai">Three added-sugar sources totalling 14g. For insulin management that's worth watching — the almond-butter bar has 5g.</div>
+                  <div class="ph-msg ai">Three added-sugar sources totalling 14g. For insulin management that's worth watching — the almond-butter bar has 5g, all from dates.</div>
                 </div>
                 <div class="ph-section-title">Suggested</div>
                 <div class="ph-pills">
@@ -396,14 +630,14 @@
     <div class="container-wide">
       <div class="section-head center">
         <p class="section-label">Privacy</p>
-        <h2>Your scans stay on your phone.</h2>
+        <h2>Your health goals never leave with the share link.</h2>
         <p>
-          Scan history, photos, and chats are stored on your device by default. Label
-          images are analyzed in real time and discarded — they are never kept on our
-          servers. Health goals are optional, never appear in anything you share, and
-          can be cleared in one tap. We don't sell your data, don't run ads, and don't
-          use your data to train AI models. Read the full
-          <a href="/ahara/privacy">privacy policy</a>.
+          Scan history, photos, and chats stay on your device by default. Label
+          images are analyzed in real time and discarded — never kept on our
+          servers. Your goals are optional, stay on-device unless you sign in to
+          sync them, are stripped from anything you share, and clear in one tap.
+          We don't sell your data, don't run ads, and don't use your data to train
+          AI models. Read the full <a href="/ahara/privacy">privacy policy</a>.
         </p>
       </div>
     </div>
@@ -415,25 +649,29 @@
       <div class="disclaimer-inner">
         <h2>Important — please read</h2>
         <p>
-          <strong>Every analysis in Ahara is generated by AI and can be wrong.</strong>
-          Labels may be misread, ingredients misidentified, and scores, warnings, and
-          commentary may be incomplete, outdated, or simply incorrect.
+          <strong>Every analysis in Ahara, including Goal Fit, is generated by AI
+          and can be wrong.</strong> Labels may be misread, ingredients
+          misidentified, and scores, warnings, and commentary may be incomplete,
+          outdated, or simply incorrect.
         </p>
         <p>
           Ahara is an informational and educational tool. <strong>It is not medical
           advice, nutritional counselling, or a diagnosis</strong>, and it is not
-          intended to diagnose, treat, cure, or prevent any disease. Always consult a
-          qualified healthcare professional, registered dietitian, or allergist before
-          making decisions about your health, diet, medication, or the products you use.
+          intended to diagnose, treat, cure, or prevent any disease. A product shown
+          as fitting your goals has not been assessed by a clinician. Always consult
+          a qualified healthcare professional, registered dietitian, or allergist
+          before making decisions about your health, diet, medication, or the
+          products you use.
         </p>
         <p>
-          <strong>If you have a food allergy, do not rely on this app.</strong> Allergen
-          detection is not reliable and can miss hidden forms of common allergens.
-          Always read the physical label and check with the manufacturer.
+          <strong>If you have a food allergy, do not rely on this app.</strong>
+          Allergen detection is not reliable and can miss hidden forms of common
+          allergens — and setting an allergen goal does not change that. Always read
+          the physical label and check with the manufacturer.
         </p>
         <p>
-          Ahara is not affiliated with or endorsed by any regulatory body, and does not
-          endorse or reject any product or brand. Full terms are in our
+          Ahara is not affiliated with or endorsed by any regulatory body, and does
+          not endorse or reject any product or brand. Full terms are in our
           <a href="/ahara/terms">Terms of Service</a>.
         </p>
       </div>
