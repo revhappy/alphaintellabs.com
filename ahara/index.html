@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahara — Know what's really in it</title>
+  <meta name="description" content="Scan any food, supplement, or skincare label with your phone. Ahara reads the ingredients and explains what each one is, what it does, and whether it fits your health goals.">
+  <meta name="theme-color" content="#5B8A72" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E0E0F" media="(prefers-color-scheme: dark)">
+  <link rel="canonical" href="https://alphaintellabs.com/ahara/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ahara — Know what's really in it">
+  <meta property="og:description" content="Scan any ingredient label. Get a clear, honest breakdown of what's actually inside.">
+  <meta property="og:url" content="https://alphaintellabs.com/ahara/">
+  <link rel="stylesheet" href="/css/ahara.css">
+</head>
+<body>
+
+<!-- Shared logo mark, mirrors src/components/AharaLogo.tsx -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="ahara-mark" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.5" fill="none" opacity=".2"/>
+    <g>
+      <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" fill="currentColor" opacity=".15" transform="rotate(0 50 50)"/>
+      <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" fill="currentColor" opacity=".25" transform="rotate(45 50 50)"/>
+      <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" fill="currentColor" opacity=".15" transform="rotate(90 50 50)"/>
+      <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" fill="currentColor" opacity=".25" transform="rotate(135 50 50)"/>
+      <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" fill="currentColor" opacity=".15" transform="rotate(180 50 50)"/>
+      <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" fill="currentColor" opacity=".25" transform="rotate(225 50 50)"/>
+      <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" fill="currentColor" opacity=".15" transform="rotate(270 50 50)"/>
+      <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" fill="currentColor" opacity=".25" transform="rotate(315 50 50)"/>
+      <g stroke="currentColor" stroke-width="1" fill="none" opacity=".4">
+        <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" transform="rotate(0 50 50)"/>
+        <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" transform="rotate(45 50 50)"/>
+        <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" transform="rotate(90 50 50)"/>
+        <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" transform="rotate(135 50 50)"/>
+        <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" transform="rotate(180 50 50)"/>
+        <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" transform="rotate(225 50 50)"/>
+        <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" transform="rotate(270 50 50)"/>
+        <path d="M50 28 Q58 20 50 12 Q42 20 50 28 Z" transform="rotate(315 50 50)"/>
+      </g>
+    </g>
+    <g fill="currentColor" opacity=".35">
+      <circle cx="56.888" cy="33.370" r="2.5"/><circle cx="66.630" cy="43.112" r="2.5"/>
+      <circle cx="66.630" cy="56.888" r="2.5"/><circle cx="56.888" cy="66.630" r="2.5"/>
+      <circle cx="43.112" cy="66.630" r="2.5"/><circle cx="33.370" cy="56.888" r="2.5"/>
+      <circle cx="33.370" cy="43.112" r="2.5"/><circle cx="43.112" cy="33.370" r="2.5"/>
+    </g>
+    <circle cx="50" cy="50" r="10" fill="currentColor" opacity=".25"/>
+    <circle cx="50" cy="50" r="6" fill="currentColor" opacity=".5"/>
+    <circle cx="50" cy="50" r="2.5" fill="currentColor" opacity=".8"/>
+  </symbol>
+</svg>
+
+<header class="site-header">
+  <div class="container-wide">
+    <a href="/ahara/" class="brand">
+      <svg class="mark" width="26" height="26" aria-hidden="true"><use href="#ahara-mark"/></svg>
+      Ahara
+      <span class="brand-sub">Alpha Intel Labs</span>
+    </a>
+    <nav aria-label="Primary">
+      <ul class="nav-links">
+        <li class="nav-anchor"><a href="#how">How it works</a></li>
+        <li class="nav-anchor"><a href="#features">Features</a></li>
+        <li><a href="/ahara/privacy">Privacy</a></li>
+        <li><a href="/ahara/terms">Terms</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── Hero ─────────────────────────────────────────── -->
+  <section class="hero mesh">
+    <div class="container-wide hero-grid">
+      <div>
+        <p class="eyebrow">
+          <svg width="13" height="13" aria-hidden="true"><use href="#ahara-mark"/></svg>
+          Ingredient analyzer
+        </p>
+        <h1>Know what's <em>really</em> in it.</h1>
+        <p class="hero-lede">
+          Point your camera at any ingredient label — food, supplements, skincare,
+          toothpaste, medicine. Ahara reads it and tells you what each ingredient
+          is, what it does, and whether it fits the way you want to eat and live.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.ahara.app">
+            Get Ahara on Google Play
+          </a>
+          <a class="btn btn-secondary" href="#how">See how it works</a>
+        </div>
+        <p class="hero-note">Your first scan is free — no account needed.</p>
+      </div>
+
+      <div class="hero-visual">
+        <!-- Recreation of the analysis screen -->
+        <div class="phone phone-hero">
+          <div class="phone-screen">
+            <div class="ph-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="ph-bar">
+              <span class="t">Analysis</span>
+              <span class="ic" aria-hidden="true">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              </span>
+            </div>
+            <div class="ph-body">
+              <div class="ph-product">
+                <div class="name">Oat &amp; Honey Bar</div>
+                <div class="brand">Harvest Grove · Food</div>
+              </div>
+
+              <div class="ph-rings">
+                <div class="ph-ring">
+                  <div class="ph-ring-wrap">
+                    <svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true">
+                      <circle cx="27" cy="27" r="22.5" fill="none" stroke="var(--border)" stroke-width="5"/>
+                      <circle cx="27" cy="27" r="22.5" fill="none" stroke="var(--caution)" stroke-width="5"
+                              stroke-linecap="round" stroke-dasharray="141.37" stroke-dashoffset="53.72"
+                              transform="rotate(-90 27 27)"/>
+                    </svg>
+                    <span class="val"><span class="n" style="color:var(--caution)">62</span></span>
+                  </div>
+                  <div class="l">Overall</div>
+                  <div class="q" style="color:var(--caution)">Fair</div>
+                </div>
+                <div class="ph-ring">
+                  <div class="ph-ring-wrap">
+                    <svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true">
+                      <circle cx="27" cy="27" r="22.5" fill="none" stroke="var(--border)" stroke-width="5"/>
+                      <circle cx="27" cy="27" r="22.5" fill="none" stroke="var(--safe)" stroke-width="5"
+                              stroke-linecap="round" stroke-dasharray="141.37" stroke-dashoffset="26.86"
+                              transform="rotate(-90 27 27)"/>
+                    </svg>
+                    <span class="val"><span class="n" style="color:var(--safe)">81</span></span>
+                  </div>
+                  <div class="l">Safety</div>
+                  <div class="q" style="color:var(--safe)">Excellent</div>
+                </div>
+                <div class="ph-ring">
+                  <div class="ph-ring-wrap">
+                    <svg width="54" height="54" viewBox="0 0 54 54" aria-hidden="true">
+                      <circle cx="27" cy="27" r="22.5" fill="none" stroke="var(--border)" stroke-width="5"/>
+                      <circle cx="27" cy="27" r="22.5" fill="none" stroke="var(--caution)" stroke-width="5"
+                              stroke-linecap="round" stroke-dasharray="141.37" stroke-dashoffset="74.93"
+                              transform="rotate(-90 27 27)"/>
+                    </svg>
+                    <span class="val"><span class="n" style="color:var(--caution)">47</span></span>
+                  </div>
+                  <div class="l">Health</div>
+                  <div class="q" style="color:var(--caution)">Fair</div>
+                </div>
+              </div>
+
+              <div class="ph-pills">
+                <span class="ph-pill ok">Vegetarian</span>
+                <span class="ph-pill warn">Added sugar ×3</span>
+                <span class="ph-pill bad">Contains nuts</span>
+                <span class="ph-pill info">NOVA 4</span>
+              </div>
+
+              <div class="ph-goal">
+                <div class="top"><b>Goal fit</b><span class="score">Good</span></div>
+                <div class="ph-track"><i style="width:72%"></i></div>
+                <div class="cap">Fits low-dairy. Watch the sugar for PCOS.</div>
+              </div>
+
+              <div class="ph-section-title">Ingredients · 14</div>
+              <div class="ph-list">
+                <div class="ph-item ok"><span class="dot"></span><span class="txt"><b>Rolled oats</b><span>Whole grain · fiber</span></span></div>
+                <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Glucose syrup</b><span>Hidden sugar · spikes insulin</span></span></div>
+                <div class="ph-item bad"><span class="dot"></span><span class="txt"><b>Soy lecithin</b><span>Emulsifier · common allergen</span></span></div>
+                <div class="ph-item ok"><span class="dot"></span><span class="txt"><b>Almonds</b><span>Whole food · protein, vitamin E</span></span></div>
+                <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Sunflower oil</b><span>Omega-6 · holistic caution</span></span></div>
+                <div class="ph-item ok"><span class="dot"></span><span class="txt"><b>Sea salt</b><span>Mineral · within daily range</span></span></div>
+                <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Natural flavour</b><span>Undisclosed blend</span></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How it works ─────────────────────────────────── -->
+  <section class="section section-alt" id="how">
+    <div class="container-wide">
+      <div class="section-head center">
+        <p class="section-label">How it works</p>
+        <h2>Three taps, standing in the aisle.</h2>
+        <p>No barcode database to miss your product, no typing. Ahara reads the label in front of you.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>Point and shoot</h3>
+          <p>Open the camera, frame the ingredient panel, tap the shutter. Long labels can be captured across up to four pages.</p>
+        </div>
+        <div class="step">
+          <h3>Watch it come together</h3>
+          <p>Results stream in as they're written — scores first, then each ingredient, one at a time. No blank loading screen.</p>
+        </div>
+        <div class="step">
+          <h3>Decide with context</h3>
+          <p>Tell Ahara what you're working toward once, and every scan afterwards is judged against it, not against a generic average.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ─────────────────────────────────────── -->
+  <section class="section" id="features">
+    <div class="container-wide">
+      <div class="section-head">
+        <p class="section-label">What you get</p>
+        <h2>The label, translated.</h2>
+        <p>Everything the packaging is technically telling you, in language you can act on.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9"/></svg>
+          </span>
+          <h3>Scores you can act on</h3>
+          <p>An overall quality score, a safety score, and a health-impact score — each one traced back to the ingredients that moved it.</p>
+        </div>
+
+        <div class="feature">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          </span>
+          <h3>Every ingredient, explained</h3>
+          <p>What it is, why it's in there, and how it's regarded — plus processing classification, glycemic impact, and comedogenic ratings where they apply.</p>
+        </div>
+
+        <div class="feature">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 9v4M12 16h.01"/></svg>
+          </span>
+          <h3>Hidden things, surfaced</h3>
+          <p>Sugars under twelve different names, hidden salts, trans fats, and allergens in forms the front of the box never mentions.</p>
+        </div>
+
+        <div class="feature">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4.97 0-9-3.5-9-8 0-3 2-5 4-5 1.5 0 2.5 1 3 2 .5-4 2.5-8 2-9 4 2 9 7 9 12 0 4.5-4.03 8-9 8z"/></svg>
+          </span>
+          <h3>Built around your goals</h3>
+          <p>Pick from dietary patterns, allergies, ingredients to avoid, and health circumstances. Each scan is then rated on how well it fits <em>you</em>.</p>
+        </div>
+
+        <div class="feature">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="16" rx="1.5"/><rect x="14" y="4" width="7" height="16" rx="1.5"/></svg>
+          </span>
+          <h3>Compare up to four</h3>
+          <p>Two shelf options that look identical? Scan them side by side and see exactly where they diverge, ingredient by ingredient.</p>
+        </div>
+
+        <div class="feature">
+          <span class="icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4L3 21l1.1-9A8.4 8.4 0 1 1 21 11.5z"/></svg>
+          </span>
+          <h3>Ask follow-up questions</h3>
+          <p>"Is this okay while pregnant?" "What's a cleaner alternative?" Chat about any scan and get answers grounded in that specific label.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Screens ──────────────────────────────────────── -->
+  <section class="section section-alt">
+    <div class="container-wide">
+      <div class="section-head center">
+        <p class="section-label">Inside the app</p>
+        <h2>Calm by design.</h2>
+        <p>No red alarm bells, no engagement bait. Just the label, read carefully — in light or dark.</p>
+      </div>
+
+      <div class="shots">
+
+        <!-- Screen 1 · Scan -->
+        <figure class="shot">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="ph-cam">
+                <span class="hint">Frame the ingredient panel</span>
+                <div class="ph-label">
+                  <b>Ingredients</b>
+                  <u style="width:100%"></u><u style="width:94%"></u><u style="width:99%"></u>
+                  <u style="width:72%"></u><u style="width:88%"></u><u style="width:45%"></u>
+                </div>
+                <div class="ph-frame"><i></i><i></i><i></i><i></i></div>
+                <div class="ph-cam-controls">
+                  <span class="ph-cam-btn" aria-hidden="true">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+                  </span>
+                  <span class="ph-shutter"></span>
+                  <span class="ph-cam-btn">1/4</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><strong>Scan</strong>Full-quality capture, framed in-app.</figcaption>
+        </figure>
+
+        <!-- Screen 2 · Compare -->
+        <figure class="shot">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="ph-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="ph-bar"><span class="t">Compare</span><span class="ic">4</span></div>
+              <div class="ph-body">
+                <div class="ph-section-title">Best overall</div>
+                <div class="ph-compare">
+                  <div class="ph-card win">
+                    <span class="badge">Winner</span>
+                    <div class="big" style="color:var(--safe)">78</div>
+                    <div class="cn">Stone Mill Oats</div>
+                  </div>
+                  <div class="ph-card">
+                    <div class="big" style="color:var(--caution)">62</div>
+                    <div class="cn">Harvest Grove Bar</div>
+                  </div>
+                  <div class="ph-card">
+                    <div class="big" style="color:var(--caution)">55</div>
+                    <div class="cn">Trailhead Crunch</div>
+                  </div>
+                  <div class="ph-card">
+                    <div class="big" style="color:var(--avoid)">34</div>
+                    <div class="cn">Sunburst Chewy</div>
+                  </div>
+                </div>
+                <div class="ph-section-title">Where they differ</div>
+                <div class="ph-list">
+                  <div class="ph-item ok"><span class="dot"></span><span class="txt"><b>Added sugars</b><span>1 vs 3 vs 4 vs 5 sources</span></span></div>
+                  <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Seed oils</b><span>Absent in 1 of 4</span></span></div>
+                  <div class="ph-item bad"><span class="dot"></span><span class="txt"><b>Artificial colour</b><span>Present in Sunburst only</span></span></div>
+                  <div class="ph-item ok"><span class="dot"></span><span class="txt"><b>Fibre per serving</b><span>6g vs 4g vs 3g vs 1g</span></span></div>
+                  <div class="ph-item warn"><span class="dot"></span><span class="txt"><b>Processing level</b><span>NOVA 3 vs 4 vs 4 vs 4</span></span></div>
+                </div>
+                <div class="ph-verdict">
+                  <b>Verdict</b>
+                  Stone Mill Oats wins on every axis that moved the score — fewer
+                  sugar sources, no seed oil, and the least processing.
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><strong>Compare</strong>Four products, one honest verdict.</figcaption>
+        </figure>
+
+        <!-- Screen 3 · Ask -->
+        <figure class="shot">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="ph-status"><span>9:41</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="ph-bar"><span class="t">Ask</span><span class="ic">?</span></div>
+              <div class="ph-body">
+                <div class="ph-chat">
+                  <div class="ph-msg me">Is this okay if I'm avoiding seed oils?</div>
+                  <div class="ph-msg ai">No — sunflower oil is the fourth ingredient, so it's a meaningful share of the bar rather than a trace.</div>
+                  <div class="ph-msg me">What should I look for instead?</div>
+                  <div class="ph-msg ai">Bars binding with nut butter or coconut oil. On this shelf, Stone Mill Oats uses almond butter and scores 78.</div>
+                </div>
+                <div class="ph-chat">
+                  <div class="ph-msg me">And the sugar? I'm managing PCOS.</div>
+                  <div class="ph-msg ai">Three added-sugar sources totalling 14g. For insulin management that's worth watching — the almond-butter bar has 5g.</div>
+                </div>
+                <div class="ph-section-title">Suggested</div>
+                <div class="ph-pills">
+                  <span class="ph-pill">Explain the ingredients</span>
+                  <span class="ph-pill">Healthier swap?</span>
+                  <span class="ph-pill">Safe in pregnancy?</span>
+                </div>
+                <div class="ph-input">
+                  <span>Ask about this product…</span>
+                  <i aria-hidden="true">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+                  </i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption><strong>Ask</strong>Follow-up questions on any scan.</figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Privacy ──────────────────────────────────────── -->
+  <section class="section">
+    <div class="container-wide">
+      <div class="section-head center">
+        <p class="section-label">Privacy</p>
+        <h2>Your scans stay on your phone.</h2>
+        <p>
+          Scan history, photos, and chats are stored on your device by default. Label
+          images are analyzed in real time and discarded — they are never kept on our
+          servers. Health goals are optional, never appear in anything you share, and
+          can be cleared in one tap. We don't sell your data, don't run ads, and don't
+          use your data to train AI models. Read the full
+          <a href="/ahara/privacy">privacy policy</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Disclaimer ───────────────────────────────────── -->
+  <section class="disclaimer">
+    <div class="container-wide">
+      <div class="disclaimer-inner">
+        <h2>Important — please read</h2>
+        <p>
+          <strong>Every analysis in Ahara is generated by AI and can be wrong.</strong>
+          Labels may be misread, ingredients misidentified, and scores, warnings, and
+          commentary may be incomplete, outdated, or simply incorrect.
+        </p>
+        <p>
+          Ahara is an informational and educational tool. <strong>It is not medical
+          advice, nutritional counselling, or a diagnosis</strong>, and it is not
+          intended to diagnose, treat, cure, or prevent any disease. Always consult a
+          qualified healthcare professional, registered dietitian, or allergist before
+          making decisions about your health, diet, medication, or the products you use.
+        </p>
+        <p>
+          <strong>If you have a food allergy, do not rely on this app.</strong> Allergen
+          detection is not reliable and can miss hidden forms of common allergens.
+          Always read the physical label and check with the manufacturer.
+        </p>
+        <p>
+          Ahara is not affiliated with or endorsed by any regulatory body, and does not
+          endorse or reject any product or brand. Full terms are in our
+          <a href="/ahara/terms">Terms of Service</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ──────────────────────────────────────────── -->
+  <section class="cta mesh">
+    <div class="container">
+      <h2>Start with the thing in your hand.</h2>
+      <p>One free scan, no account. Sign up and get five more.</p>
+      <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.ahara.app">
+        Get Ahara on Google Play
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container-wide">
+    <p>&copy; 2026 Alpha Intel Labs</p>
+    <ul class="footer-links">
+      <li><a href="/ahara/privacy">Privacy Policy</a></li>
+      <li><a href="/ahara/terms">Terms of Service</a></li>
+      <li><a href="mailto:alphaintellabs@gmail.com">Contact</a></li>
+      <li><a href="/">All apps</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
