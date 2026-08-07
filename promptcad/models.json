@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "updated": "2026-08-06",
+  "note": "Served at https://alphaintellabs.com/promptcad/models.json and shipped inside PromptCAD. Sizes and filenames were read off the Hugging Face repositories, not guessed - the Nemotron file is 'Nemotron3' with no hyphen even though its repo is 'Nemotron-3'.",
+
+  "local": [
+    {
+      "id": "nemotron-3-nano-4b-q4km",
+      "name": "NVIDIA Nemotron 3 Nano 4B",
+      "publisher": "NVIDIA",
+      "quant": "Q4_K_M",
+      "file": "NVIDIA-Nemotron3-Nano-4B-Q4_K_M.gguf",
+      "size_label": "2.84 GB",
+      "size_bytes": 3050000000,
+      "min_ram_gb": 8,
+      "license": "NVIDIA Open Model License",
+      "recommended": true,
+      "summary": "The default. Small enough to run on a laptop CPU, trained for reasoning and agentic use, and the one PromptCAD tunes its prompts against.",
+      "repo": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-4B-GGUF",
+      "url": "https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-4B-GGUF/resolve/main/NVIDIA-Nemotron3-Nano-4B-Q4_K_M.gguf?download=true",
+      "match": ["nemotron3-nano-4b", "nemotron-3-nano-4b"]
+    },
+    {
+      "id": "gemma-4-12b-q4km",
+      "name": "Google Gemma 4 12B",
+      "publisher": "Google DeepMind",
+      "quant": "Q4_K_M",
+      "file": "gemma-4-12B-it-Q4_K_M.gguf",
+      "size_label": "7.66 GB",
+      "size_bytes": 8220000000,
+      "min_ram_gb": 16,
+      "license": "Gemma Terms of Use",
+      "recommended": false,
+      "summary": "Noticeably stronger on multi-step geometry, at roughly three times the download and a real GPU or 16 GB of RAM to be pleasant.",
+      "repo": "https://huggingface.co/bartowski/gemma-4-12B-it-GGUF",
+      "url": "https://huggingface.co/bartowski/gemma-4-12B-it-GGUF/resolve/main/gemma-4-12B-it-Q4_K_M.gguf?download=true",
+      "match": ["gemma-4-12b"]
+    }
+  ],
+
+  "cloud": [
+    {
+      "id": "glm-5-2",
+      "name": "GLM-5.2",
+      "publisher": "Z.ai / Zhipu AI",
+      "params": "744B MoE",
+      "license": "MIT",
+      "summary": "Open weights under MIT, but Z.ai puts the floor at eight H100s. Reach it through an API provider rather than downloading 744B parameters.",
+      "repo": "https://huggingface.co/zai-org/GLM-5.2"
+    },
+    {
+      "id": "inkling",
+      "name": "Inkling",
+      "publisher": "Thinking Machines Lab",
+      "params": "975B total / 41B active",
+      "license": "see model card",
+      "summary": "Open weights, multimodal, and far past what a workstation will hold. API only in practice.",
+      "repo": "https://thinkingmachines.ai/model-card/inkling/"
+    },
+    {
+      "id": "inkling-small",
+      "name": "Inkling-Small",
+      "publisher": "Thinking Machines Lab",
+      "params": "276B total / 12B active",
+      "license": "see model card",
+      "summary": "The efficient Inkling variant. Still around 140 GB quantized, so it is a server model, not a desktop one.",
+      "repo": "https://thinkingmachines.ai/news/inkling-small/"
+    }
+  ]
+}

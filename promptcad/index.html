@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PromptCAD — Natural-language parametric CAD</title>
+  <meta name="description" content="Describe a part in plain English and get editable parametric CAD geometry — not a mesh. Runs offline on your own machine with an open-weights model.">
+  <link rel="icon" href="/promptcad/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/promptcad.css">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PromptCAD — Natural-language parametric CAD">
+  <meta property="og:description" content="Describe a part in plain English and get editable parametric CAD geometry. Runs offline on your own machine.">
+  <meta property="og:url" content="https://alphaintellabs.com/promptcad/">
+  <meta property="og:image" content="https://alphaintellabs.com/promptcad/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://alphaintellabs.com/promptcad/og.png">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container-wide">
+      <a href="/" class="logo">Alpha Intel <span class="labs">Labs</span></a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="/#apps">Apps</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#models">Models</a></li>
+          <li><a href="mailto:alphaintellabs@gmail.com">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================= Hero ================= -->
+    <section class="pc-hero">
+      <svg viewBox="0 0 256 256" role="img" aria-label="PromptCAD">
+        <defs>
+          <linearGradient id="plate" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="256">
+            <stop offset="0" stop-color="#16223B"/>
+            <stop offset="1" stop-color="#0A0F1C"/>
+          </linearGradient>
+        </defs>
+        <rect width="256" height="256" rx="56" fill="url(#plate)"/>
+        <path d="M128 36 L211 84 L211 180 L128 228 L45 180 L45 84 Z" fill="#075985"/>
+        <path d="M128 36 L211 84 L128 132 L45 84 Z" fill="#38BDF8"/>
+        <path d="M45 84 L128 132 L128 228 L45 180 Z" fill="#0284C7"/>
+        <path d="M211 84 L211 180 L128 228 L128 132 Z" fill="#075985"/>
+        <g fill="none" stroke="#062338" stroke-opacity="0.35"
+           stroke-linecap="round" stroke-linejoin="round">
+          <path d="M87 96 L133 138 L87 180" stroke-width="26"/>
+          <path d="M162 173 L198 173" stroke-width="18"/>
+        </g>
+        <path d="M82 90 L128 132 L82 174" fill="none" stroke="#F8FAFC"
+              stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M158 168 L194 168" fill="none" stroke="#F59E0B"
+              stroke-width="18" stroke-linecap="round"/>
+      </svg>
+
+      <div class="pc-hero-text">
+        <h1>Prompt<span class="cad">CAD</span></h1>
+        <p>Describe the part. Get editable parametric geometry — a real feature
+          tree you can select, measure and change. Not a mesh, not a picture.
+          Runs entirely on your own machine.</p>
+        <div class="pc-actions">
+          <a class="pc-btn" href="https://github.com/revhappy/GPT4FreeCAD/releases">Get PromptCAD</a>
+          <a class="pc-btn pc-btn-ghost" href="#how">How it works</a>
+        </div>
+        <p style="margin-top:0.85rem;font-size:0.85rem;color:var(--text-dim)">
+          Windows 10/11 · 64-bit · no account, no telemetry
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= How it works ================= -->
+    <section id="how" class="pc-section">
+      <p class="pc-eyebrow">How it works</p>
+      <h2>Five stages, and none of them are &ldquo;generate a mesh&rdquo;</h2>
+      <p class="pc-lede">
+        The hard part of language-driven CAD is not producing a shape — it is
+        producing a shape you can still edit afterwards, with the dimensions you
+        actually asked for. PromptCAD is built around that.
+      </p>
+
+      <ol class="pc-pipeline">
+        <li>
+          <div>
+            <h3>You describe the part</h3>
+            <p>Plain English, in the panel. Three ways to work:
+              <strong>Structured</strong> for a whole part at once,
+              <strong>Engineering</strong> to add one operation at a time and
+              watch each step land, and <strong>Python</strong> when you would
+              rather write the script yourself.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>The model returns a plan, not code</h3>
+            <p>The answer has to be a list of CAD operations drawn from a fixed
+              vocabulary of 19, each with typed and validated parameters. That
+              constraint is what makes the result editable instead of a
+              one-shot blob.</p>
+            <p>Local models are held to it by a GBNF grammar, so malformed
+              output is not merely rejected — it cannot be produced. Cloud
+              models use their structured-output modes.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>PromptCAD builds a parametric feature tree</h3>
+            <p>Each operation becomes a real FreeCAD object. A plate with a
+              bored hole and filleted edges is a box, a cylinder, a cut and a
+              fillet — four nodes in the tree, each with editable properties.
+              Change the box's width and everything downstream rebuilds.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>It measures what it built</h3>
+            <p>After building, PromptCAD inspects the actual solid: bounding
+              box, volume, and a measurement table per feature. Then it reads
+              the dimensions back out of your prompt and compares them with the
+              geometry. Ask for 60&nbsp;mm and get 6&nbsp;mm, and it says so
+              rather than handing you a confident wrong part.</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <h3>It repairs its own mistakes, within limits</h3>
+            <p>When an operation fails or a check does not pass, the error goes
+              back to the model and it tries again — under a fixed repair budget
+              with a loop guard. It gives up and tells you, rather than
+              spinning.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="pc-flow">
+        <p class="prompt">&ldquo;A 60 × 40 × 10&nbsp;mm mounting plate with a
+          12&nbsp;mm hole through the centre and 3&nbsp;mm fillets on the
+          vertical edges.&rdquo;</p>
+        <ol>
+          <li><span class="op">box</span><span>60 × 40 × 10</span></li>
+          <li><span class="op">cylinder</span><span>⌀12, height 10, centred</span></li>
+          <li><span class="op">cut</span><span>box − cylinder</span></li>
+          <li><span class="op">fillet</span><span>radius 3 on the vertical edges</span></li>
+        </ol>
+        <p class="out">→ four editable nodes in the tree, then measured against
+          the numbers in the sentence.</p>
+      </div>
+
+      <p class="pc-lede" style="margin-top:1.5rem">
+        The full vocabulary — solids, booleans, patterns and edge treatments:
+      </p>
+      <ul class="pc-chips">
+        <li>box</li><li>cylinder</li><li>sphere</li><li>cone</li><li>torus</li>
+        <li>extrude</li><li>revolve</li><li>cut</li><li>fuse</li><li>common</li>
+        <li>linear_pattern</li><li>polar_pattern</li><li>mirror</li>
+        <li>shell</li><li>hole</li><li>fillet</li><li>chamfer</li>
+        <li>translate</li><li>rotate</li>
+      </ul>
+    </section>
+
+    <!-- ================= The window ================= -->
+    <section class="pc-section">
+      <p class="pc-eyebrow">The window</p>
+      <h2>Minimal by default, complete when you want it</h2>
+      <p class="pc-lede">
+        PromptCAD is built on FreeCAD, which opens with nine toolbars and
+        roughly eighty icons. That is the right default for a CAD program you
+        drive with a mouse and the wrong one for a CAD program you drive by
+        describing things — the prompt ends up a narrow strip beside a wall of
+        buttons it does not need.
+      </p>
+      <p class="pc-lede">
+        So PromptCAD starts with one short toolbar row and gives the prompt real
+        width. Nothing has been removed: one button — or
+        <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> — brings the entire
+        FreeCAD toolset back, and it remembers which way you like it.
+      </p>
+
+      <ul class="pc-req">
+        <li><b>Default</b>One toolbar row, six icons: new, open, save, the
+          prompt panel, settings, and the toggle. Nine toolbars hidden.</li>
+        <li><b>All tools</b>Every FreeCAD toolbar and workbench back, one click
+          or <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>T</kbd> away.</li>
+      </ul>
+    </section>
+
+    <!-- ================= Models ================= -->
+    <section class="pc-section">
+      <p class="pc-eyebrow">Models</p>
+      <h2>Bring your own model. It finds it by itself.</h2>
+      <p class="pc-lede">
+        PromptCAD ships without weights, so the download stays small and you are
+        never locked to one vendor's model. Download a model and PromptCAD picks
+        it up — there is no settings dialog to hunt through and no path to
+        paste.
+      </p>
+
+      <ol class="pc-steps">
+        <li>
+          <h3>Install PromptCAD</h3>
+          <p>One installer, including the inference engine. Nothing downloads
+            behind your back later.</p>
+        </li>
+        <li>
+          <h3>Download a model</h3>
+          <p>Click a button below. Your browser saves it to Downloads — that is
+            fine, leave it exactly there.</p>
+        </li>
+        <li>
+          <h3>Start PromptCAD</h3>
+          <p>It finds the file, selects it, and lists it in the dropdown at the
+            top of the panel.</p>
+        </li>
+      </ol>
+
+      <figure class="pc-shot" style="max-width:520px;margin-top:1.75rem">
+        <img src="/promptcad/shots/models.png" alt="The model dropdown listing several local GGUF models with their sizes" loading="lazy">
+        <figcaption>Every local model in the panel's own dropdown, with sizes,
+          recommended first. This machine already had LM Studio — those models
+          are listed too, with no second copy downloaded.</figcaption>
+      </figure>
+
+      <div class="pc-note">
+        <strong>Already have models?</strong> If you use LM Studio, PromptCAD
+        lists those as well. A part-finished download is skipped on purpose —
+        PromptCAD checks the size, because a truncated <code>.gguf</code> fails
+        deep inside the inference engine with an error that explains nothing.
+      </div>
+    </section>
+
+    <section id="models" class="pc-section">
+      <h2>Runs on your machine</h2>
+      <p class="pc-lede">
+        Quantised GGUF builds. As a rule of thumb the download size is roughly
+        the memory the model needs while running.
+      </p>
+
+      <div class="pc-models">
+
+        <div class="pc-model is-recommended">
+          <div class="pc-model-head">
+            <h3>NVIDIA Nemotron 3 Nano 4B</h3>
+            <span class="pub">NVIDIA</span>
+            <span class="badge badge-rec">Recommended</span>
+          </div>
+          <p>The default, and the model PromptCAD's prompts are tuned against.
+            It is a reasoning model — it works through the problem before it
+            answers — which is what makes it good at multi-step geometry and
+            also what makes it slow without a GPU. See the note below.</p>
+          <div class="pc-spec">
+            <span><b>2.84 GB</b> download</span>
+            <span><b>8 GB</b> RAM minimum</span>
+            <span>Q4_K_M</span>
+            <span>NVIDIA Open Model License</span>
+          </div>
+          <div class="pc-actions" style="margin-top:0">
+            <a class="pc-btn" href="https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-4B-GGUF/resolve/main/NVIDIA-Nemotron3-Nano-4B-Q4_K_M.gguf?download=true">Download 2.84 GB</a>
+            <a class="pc-btn pc-btn-ghost" href="https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Nano-4B-GGUF">Model card</a>
+          </div>
+        </div>
+
+        <div class="pc-model">
+          <div class="pc-model-head">
+            <h3>Gemma 4 12B</h3>
+            <span class="pub">Google DeepMind</span>
+          </div>
+          <p>Noticeably stronger on multi-step geometry — assemblies, chained
+            booleans, a whole part described in one long paragraph. Wants a real
+            GPU or 16 GB of RAM to feel responsive.</p>
+          <div class="pc-spec">
+            <span><b>7.66 GB</b> download</span>
+            <span><b>16 GB</b> RAM recommended</span>
+            <span>Q4_K_M</span>
+            <span>Gemma Terms of Use</span>
+          </div>
+          <div class="pc-actions" style="margin-top:0">
+            <a class="pc-btn" href="https://huggingface.co/bartowski/gemma-4-12B-it-GGUF/resolve/main/gemma-4-12B-it-Q4_K_M.gguf?download=true">Download 7.66 GB</a>
+            <a class="pc-btn pc-btn-ghost" href="https://huggingface.co/bartowski/gemma-4-12B-it-GGUF">Model card</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+      <div class="pc-note">
+        <strong>Speed, honestly.</strong> Measured with the recommended 4B model
+        and the bundled CPU build of llama.cpp on an 8-core desktop CPU: the
+        model loads in about 9 seconds, then generates roughly
+        <strong>1.5 tokens per second</strong>. Because it reasons before it
+        answers, one part is several hundred tokens — so expect
+        <strong>minutes per part on CPU alone</strong>, not seconds.
+        <br><br>
+        A GPU changes that by an order of magnitude, and so does pointing
+        PromptCAD at an API provider. Choose local for privacy and offline work;
+        choose a GPU or an API if you want it to feel interactive.
+      </div>
+    </section>
+
+    <section class="pc-section">
+      <h2>Too big for a workstation</h2>
+      <p class="pc-lede">
+        These are genuinely open-weights models and also far larger than any
+        desktop will hold. They are listed because PromptCAD can use them —
+        through an API provider such as OpenRouter — not because you should
+        download the weights.
+      </p>
+
+      <div class="pc-models">
+        <div class="pc-model">
+          <div class="pc-model-head">
+            <h3>GLM-5.2</h3><span class="pub">Z.ai / Zhipu AI</span>
+            <span class="badge badge-api">API</span>
+          </div>
+          <p>744B mixture-of-experts, MIT licensed, one-million-token context.
+            Z.ai puts the hardware floor at eight H100s.</p>
+          <div class="pc-spec"><span><b>744B</b> MoE</span><span><b>8×H100</b> minimum</span><span>MIT</span></div>
+          <a class="pc-btn pc-btn-ghost" href="https://huggingface.co/zai-org/GLM-5.2">Weights</a>
+        </div>
+
+        <div class="pc-model">
+          <div class="pc-model-head">
+            <h3>Inkling</h3><span class="pub">Thinking Machines Lab</span>
+            <span class="badge badge-api">API</span>
+          </div>
+          <p>975B total parameters, 41B active, multimodal — the leading
+            open-weights release from a US lab.</p>
+          <div class="pc-spec"><span><b>975B</b> total</span><span><b>41B</b> active</span><span>See model card</span></div>
+          <a class="pc-btn pc-btn-ghost" href="https://thinkingmachines.ai/model-card/inkling/">Model card</a>
+        </div>
+
+        <div class="pc-model">
+          <div class="pc-model-head">
+            <h3>Inkling-Small</h3><span class="pub">Thinking Machines Lab</span>
+            <span class="badge badge-api">API</span>
+          </div>
+          <p>The efficient variant — comparable quality at about a quarter the
+            size. Still roughly 140 GB quantised, so still a server.</p>
+          <div class="pc-spec"><span><b>276B</b> total</span><span><b>12B</b> active</span><span>See model card</span></div>
+          <a class="pc-btn pc-btn-ghost" href="https://thinkingmachines.ai/news/inkling-small/">Model card</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Providers + export ================= -->
+    <section class="pc-section">
+      <h2>Or use an API, if you would rather</h2>
+      <p class="pc-lede">
+        Local is the default because your geometry stays yours. But PromptCAD
+        speaks to seven providers, and model lists are fetched live from each
+        one rather than hardcoded — so a model released this morning is
+        selectable this afternoon.
+      </p>
+      <ul class="pc-chips">
+        <li>Local (GGUF, offline)</li>
+        <li>Ollama / LM Studio</li>
+        <li>Anthropic (Claude)</li>
+        <li>OpenAI</li>
+        <li>Google Gemini</li>
+        <li>xAI (Grok)</li>
+        <li>OpenRouter</li>
+      </ul>
+    </section>
+
+    <section class="pc-section">
+      <h2>Getting the part out</h2>
+      <p class="pc-lede">
+        Because the result is real B-rep geometry rather than a mesh, it exports
+        as real geometry.
+      </p>
+      <ul class="pc-req">
+        <li><b>STEP</b>Exact B-rep for CAD and CAM interchange. Curves stay
+          curves — nothing is faceted on the way out.</li>
+        <li><b>STL</b>For printing and preview, with the mesh tolerance under
+          your control.</li>
+        <li><b>3D print mode</b>Give it your build volume and PromptCAD checks
+          the part against it, and can scale to fit.</li>
+        <li><b>Templates</b>Save a part you like as a template and start the
+          next one from it.</li>
+      </ul>
+    </section>
+
+    <!-- ================= Where it looks ================= -->
+    <section class="pc-section">
+      <h2>Where PromptCAD looks for models</h2>
+      <p class="pc-lede">
+        Any of these. Drop a file in one and it is found on the next start.
+      </p>
+      <p class="pc-paths">
+        %USERPROFILE%\Downloads<br>
+        &lt;install folder&gt;\models<br>
+        %APPDATA%\PromptCAD\&lt;version&gt;\models<br>
+        %USERPROFILE%\.lmstudio\models<br>
+        %USERPROFILE%\.machine\models
+      </p>
+    </section>
+
+    <section class="pc-section">
+      <h2>Requirements</h2>
+      <ul class="pc-req">
+        <li><b>System</b>Windows 10 or 11, 64-bit.</li>
+        <li><b>Disk</b>About 2.5 GB installed, plus whatever your model needs.</li>
+        <li><b>Memory</b>8 GB for the recommended 4B model; 16 GB for 12B.</li>
+        <li><b>GPU</b>Strongly recommended for local models. They will run on
+          the CPU alone, but at minutes per part rather than seconds.</li>
+        <li><b>Network</b>Only to download PromptCAD and a model. After that it
+          works offline.</li>
+      </ul>
+    </section>
+
+    <!-- ================= Licensing ================= -->
+    <section class="pc-section" style="padding-bottom:3rem">
+      <h2>Licensing</h2>
+      <p class="pc-lede">
+        PromptCAD is built on <a href="https://www.freecad.org/">FreeCAD</a>,
+        redistributed unmodified under the LGPL-2.1-or-later, and includes
+        <a href="https://github.com/ggml-org/llama.cpp">llama.cpp</a> under the
+        MIT License. PromptCAD's own code is MIT. The full notices and a written
+        offer for source ship in the application's <code>legal</code> folder.
+      </p>
+      <p class="pc-lede">
+        FreeCAD is a trademark of the FreeCAD Project Association. PromptCAD is
+        an independent project, not affiliated with or endorsed by them — please
+        report PromptCAD problems to PromptCAD.
+      </p>
+      <p class="pc-lede">
+        No model weights are distributed with PromptCAD. Each model above is
+        published by its own authors under its own licence, and that licence
+        governs your use of it.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container-wide">
+      <p>&copy; 2026 Alpha Intel Labs. <a href="mailto:alphaintellabs@gmail.com">alphaintellabs@gmail.com</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
