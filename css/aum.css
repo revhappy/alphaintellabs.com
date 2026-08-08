@@ -155,17 +155,27 @@ section[id] { scroll-margin-top: 78px; }
 
 .brand {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.6rem;
   color: var(--text);
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 300;
   letter-spacing: 0.32em;
-  text-indent: 0.32em; /* balance the trailing letter-spacing */
   text-transform: uppercase;
 }
 .brand:hover { text-decoration: none; }
+
+/* The app icon. It carries its own colour, so it stays violet-and-gold against
+   the sage page rather than being tinted to match it — same as on the phone. */
+.brand .mark {
+  flex: none;
+  filter: drop-shadow(0 0 9px rgba(169, 140, 240, 0.34));
+}
+
+/* The wordmark keeps the trailing letter-space that the tracking adds; nudging
+   it back would pull the word off the mark. */
+.brand .word { text-indent: 0.32em; }
 
 /* The wordmark's gradient is the app's h1 gradient, angle and stops included. */
 .brand .word {
