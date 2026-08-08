@@ -1,0 +1,979 @@
+/* Aum — dark, quiet theme for alphaintellabs.com/aum/
+ *
+ * Standalone: these pages do NOT load /css/style.css. The palette is lifted
+ * straight from the app's "Peaceful Dark" theme in www/css/app.css, so the site
+ * and the product read as one thing.
+ *
+ * DARK ONLY — deliberately. The app ships four themes and the session screen
+ * stays dark in every one of them, because the orb needs a dark ground to glow
+ * against. A light recolour of this page would misrepresent what the app looks
+ * like while you are actually using it. The four themes are shown as artwork in
+ * the Themes section instead. Do not add a prefers-color-scheme block without
+ * changing that intent.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* --- Surfaces. Straight from [data-theme="dark"] in the app. ------------ */
+  --bg: #0b0d0c;
+  --bg-2: #121614;
+  --sheet: #141816;
+
+  /* The app lifts every surface with white ink at very low alpha. Same here,
+     so a card on the page and a card in the app are the same grey. */
+  --panel: rgba(255, 255, 255, 0.045);
+  --panel-2: rgba(255, 255, 255, 0.025);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-2: rgba(255, 255, 255, 0.055);
+  --well: rgba(0, 0, 0, 0.28);
+
+  /* --- Ink --------------------------------------------------------------- */
+  --text: #dde4e0;
+  --muted: #7e8a85;
+  --dim: #5d6561;
+
+  /* --- Accents. Deliberately desaturated; see the app's own note on why. --- */
+  --accent: #7fa396;
+  --accent-rgb: 127, 163, 150;
+  --accent-2: #8aa3b8;
+  --accent-2-rgb: 138, 163, 184;
+  --gold: #c9a96e;
+  --gold-rgb: 201, 169, 110;
+
+  /* --- Evidence tiers. These carry meaning, so they keep their hues. ------ */
+  --tier-ok: #6fbf90;
+  --tier-ok-rgb: 111, 191, 144;
+  --tier-mid: #c9a96e;
+  --tier-mid-rgb: 201, 169, 110;
+  --tier-trad: #9d86d8;
+  --tier-trad-rgb: 157, 134, 216;
+
+  --font-display: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --radius-sm: 9px;
+  --radius-md: 13px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.68;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+img { max-width: 100%; height: auto; display: block; }
+
+::selection { background: rgba(var(--accent-rgb), 0.3); color: #fff; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Layout ─────────────────────────────────────────────── */
+
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container-wide {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+section { position: relative; }
+
+/* The header is sticky, so an in-page anchor would otherwise land its target
+   underneath it. */
+section[id] { scroll-margin-top: 78px; }
+
+/* The app's body wash: accent from the top-left, the cooler accent from the
+   bottom-right, over a vertical bg → bg-2 ramp. Same recipe, larger canvas. */
+.mesh {
+  background:
+    radial-gradient(ellipse 70% 50% at 10% -5%, rgba(var(--accent-rgb), 0.13), transparent 62%),
+    radial-gradient(ellipse 60% 50% at 90% 105%, rgba(var(--accent-2-rgb), 0.09), transparent 62%),
+    linear-gradient(175deg, var(--bg) 0%, var(--bg-2) 100%);
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(11, 13, 12, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-2);
+}
+
+.site-header .container-wide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 62px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 300;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em; /* balance the trailing letter-spacing */
+  text-transform: uppercase;
+}
+.brand:hover { text-decoration: none; }
+
+/* The wordmark's gradient is the app's h1 gradient, angle and stops included. */
+.brand .word {
+  background: linear-gradient(96deg, var(--gold), var(--accent) 60%, var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-sub {
+  color: var(--dim);
+  font-family: var(--font-body);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-indent: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+
+/* ── Buttons ────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 0.18s var(--ease), background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.btn:hover { text-decoration: none; }
+.btn:active { transform: scale(0.985); }
+
+.btn-primary {
+  background: linear-gradient(140deg, rgba(var(--accent-rgb), 0.26), rgba(var(--accent-2-rgb), 0.14));
+  border-color: rgba(var(--accent-rgb), 0.42);
+  color: var(--text);
+}
+.btn-primary:hover {
+  border-color: rgba(var(--accent-rgb), 0.7);
+  box-shadow: 0 0 26px rgba(var(--accent-rgb), 0.16);
+}
+
+.btn-secondary {
+  background: var(--panel);
+  border-color: var(--border);
+  color: var(--muted);
+}
+.btn-secondary:hover { color: var(--text); border-color: rgba(255, 255, 255, 0.18); }
+
+/* Not a link. The store isn't live, and a button that goes nowhere is worse
+   than a label that says so. */
+.btn-soon {
+  background: rgba(var(--gold-rgb), 0.07);
+  border: 1px solid rgba(var(--gold-rgb), 0.28);
+  color: var(--gold);
+  cursor: default;
+}
+.btn-soon:active { transform: none; }
+
+.btn-soon .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(var(--gold-rgb), 0.9);
+  animation: soon-pulse 3.4s var(--ease) infinite;
+}
+@keyframes soon-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.82); }
+  50%      { opacity: 1;   transform: scale(1); }
+}
+
+/* ── Hero ───────────────────────────────────────────────── */
+
+.hero { padding: 4.5rem 0 4rem; overflow: hidden; }
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 400px);
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.eyebrow {
+  color: var(--dim);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6.4vw, 4rem);
+  font-weight: 200;
+  line-height: 1.06;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.4rem;
+}
+
+/* The app's wordmark gradient, lifted a couple of steps. The token values are
+   tuned to be unobtrusive at 38px on a phone; at hero size on a wide screen the
+   same three hues read as grey, so the display type gets brighter siblings of
+   them rather than a different palette. */
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(100deg, #e6c184, #8fc0ad 52%, #9cc0dc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-lede {
+  color: var(--muted);
+  font-size: 1.06rem;
+  font-weight: 300;
+  line-height: 1.72;
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.hero-note {
+  color: var(--dim);
+  font-size: 0.8rem;
+  margin-top: 1.1rem;
+}
+
+.hero-visual { display: flex; justify-content: center; }
+
+/* ── Sections ───────────────────────────────────────────── */
+
+.section { padding: 5rem 0; }
+
+.section-alt {
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.016) 18%, rgba(255, 255, 255, 0.016) 82%, transparent);
+  border-top: 1px solid var(--border-2);
+  border-bottom: 1px solid var(--border-2);
+}
+
+.section-head { max-width: 40rem; margin-bottom: 3rem; }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+
+.section-label {
+  color: var(--accent);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.6vw, 2.4rem);
+  font-weight: 250;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.9rem;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.note {
+  color: var(--dim);
+  font-size: 0.86rem;
+  font-weight: 300;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 46rem;
+  margin: 2.5rem auto 0;
+}
+
+/* ── Phone frame ────────────────────────────────────────── */
+
+/* Unlike the Ahara page, what goes inside is a real screenshot rather than a
+   recreation — the orb is a live canvas and nothing static would be honest. */
+.phone {
+  width: 100%;
+  max-width: 268px;
+  background: #050706;
+  border-radius: 36px;
+  padding: 7px;
+  box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255, 255, 255, 0.07), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.phone img {
+  width: 100%;
+  border-radius: 29px;
+  display: block;
+}
+
+.phone-hero { max-width: 300px; }
+
+/* The hero phone sits in its own pool of light, the way the orb does. */
+.hero-visual .phone {
+  position: relative;
+}
+.hero-visual .phone::before {
+  content: '';
+  position: absolute;
+  inset: -18% -22%;
+  background: radial-gradient(ellipse at 50% 45%, rgba(var(--accent-rgb), 0.2), transparent 68%);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ── Layers (Frequency · Vibration · Breath) ────────────── */
+
+.layers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+.layer {
+  background: var(--panel-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  padding: 1.7rem 1.5rem;
+  transition: border-color 0.25s, background 0.25s;
+}
+.layer:hover { border-color: rgba(var(--accent-rgb), 0.3); background: rgba(var(--accent-rgb), 0.045); }
+
+.layer .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(var(--accent-rgb), 0.11);
+  border: 1px solid rgba(var(--accent-rgb), 0.24);
+  color: var(--accent);
+  margin-bottom: 1.1rem;
+}
+
+.layer h3 {
+  font-family: var(--font-display);
+  font-size: 1.18rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.layer p { color: var(--muted); font-size: 0.9rem; font-weight: 300; }
+
+.layer .tier { margin-top: 0.9rem; }
+
+/* ── Evidence tier pills. Same shape as the app's. ──────── */
+
+.tier {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.24rem 0.6rem;
+  border-radius: 20px;
+  border: 1px solid;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.tier.researched  { color: var(--tier-ok);   border-color: rgba(var(--tier-ok-rgb), 0.38);   background: rgba(var(--tier-ok-rgb), 0.09); }
+.tier.emerging    { color: var(--tier-mid);  border-color: rgba(var(--tier-mid-rgb), 0.36);  background: rgba(var(--tier-mid-rgb), 0.09); }
+.tier.traditional { color: var(--tier-trad); border-color: rgba(var(--tier-trad-rgb), 0.36); background: rgba(var(--tier-trad-rgb), 0.09); }
+
+/* ── Stat row ───────────────────────────────────────────── */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+
+.stat {
+  background: var(--panel-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-md);
+  padding: 1.3rem 0.7rem;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 200;
+  line-height: 1;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-lbl {
+  color: var(--dim);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+}
+
+/* ── Screenshot grids ───────────────────────────────────── */
+
+.shots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.2rem;
+  justify-items: center;
+  align-items: start;
+}
+
+.shot { text-align: center; max-width: 300px; }
+
+.shot figcaption {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-top: 1.2rem;
+}
+
+.shot figcaption strong {
+  display: block;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.2rem;
+}
+
+/* Two-up: copy beside a single phone. */
+.split {
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 340px);
+  gap: 3.5rem;
+  align-items: center;
+}
+.split.reverse .split-visual { order: -1; }
+.split-visual { display: flex; justify-content: center; }
+
+.split-list { list-style: none; margin-top: 1.8rem; }
+
+.split-list li {
+  display: flex;
+  gap: 0.85rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--border-2);
+}
+.split-list li:first-child { border-top: 0; padding-top: 0; }
+
+.split-list .tick {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 3px;
+  border-radius: 50%;
+  background: rgba(var(--accent-rgb), 0.13);
+  color: var(--accent);
+}
+
+.split-list b {
+  display: block;
+  font-weight: 500;
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+}
+.split-list span { color: var(--muted); font-size: 0.88rem; font-weight: 300; }
+
+/* ── Tone table ─────────────────────────────────────────── */
+
+/* 140px lands seven across at full width, so the fourteen tones fill two rows
+   exactly rather than leaving two orphans on a third. */
+.tone-table {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.7rem;
+}
+
+.tone-cell {
+  background: var(--panel-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-md);
+  padding: 1rem 0.9rem;
+  text-align: center;
+  transition: border-color 0.25s, background 0.25s;
+}
+.tone-cell:hover { border-color: rgba(var(--gold-rgb), 0.32); background: rgba(var(--gold-rgb), 0.045); }
+
+.tone-cell .hz {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.tone-cell .nm { font-size: 0.88rem; margin-top: 0.3rem; }
+.tone-cell .tr { color: var(--dim); font-size: 0.72rem; line-height: 1.4; margin-top: 0.1rem; }
+
+/* ── Band row ───────────────────────────────────────────── */
+
+.bands {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+  gap: 0.6rem;
+  margin-top: 1.6rem;
+}
+
+.band {
+  background: var(--well);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 0.6rem;
+  text-align: center;
+}
+.band b { display: block; font-size: 0.85rem; font-weight: 500; }
+.band span {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--accent-2);
+  margin-top: 0.15rem;
+  font-variant-numeric: tabular-nums;
+}
+.band small { display: block; color: var(--dim); font-size: 0.68rem; margin-top: 0.15rem; }
+
+/* ── Orb strip ──────────────────────────────────────────── */
+
+.orbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 620px;
+  margin: 2.5rem auto 0;
+  justify-items: center;
+}
+
+.orbs figure { text-align: center; }
+.orbs img { width: 100%; max-width: 180px; border-radius: 50%; }
+.orbs figcaption {
+  color: var(--dim);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  margin-top: 0.7rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Theme strip ────────────────────────────────────────── */
+
+.themes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+  justify-items: center;
+}
+
+.themes figure { text-align: center; width: 100%; }
+.themes .phone { max-width: 200px; }
+
+.themes figcaption {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 0.9rem;
+}
+.themes figcaption b {
+  display: block;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 0.94rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+}
+.themes figcaption span { color: var(--dim); font-size: 0.74rem; font-weight: 300; }
+
+/* ── Honesty / evidence list ────────────────────────────── */
+
+.ev-list { display: flex; flex-direction: column; }
+
+.ev {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--border-2);
+}
+.ev:first-child { border-top: 0; }
+
+.ev-head {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.55rem;
+}
+
+.ev-head h3 {
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.ev p { color: var(--muted); font-size: 0.93rem; font-weight: 300; }
+
+/* ── Pricing ────────────────────────────────────────────── */
+
+.price-card {
+  max-width: 30rem;
+  margin: 0 auto;
+  background: linear-gradient(150deg, rgba(var(--accent-rgb), 0.09), rgba(var(--accent-2-rgb), 0.05)), var(--sheet);
+  border: 1px solid rgba(var(--accent-rgb), 0.26);
+  border-radius: var(--radius-xl);
+  padding: 2.2rem 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.price-card .headline {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 250;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+.price-card .headline em {
+  font-style: normal;
+  color: var(--gold);
+}
+
+.price-card > p { color: var(--muted); font-size: 0.93rem; font-weight: 300; }
+
+.compare {
+  list-style: none;
+  margin: 1.8rem 0 0;
+  text-align: left;
+}
+
+.compare li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--border-2);
+  font-size: 0.92rem;
+}
+
+.compare .cost {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.compare li.is-aum b { color: var(--text); font-weight: 500; }
+.compare li.is-aum .cost { color: var(--gold); }
+
+.includes {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem 1.6rem;
+  max-width: 46rem;
+  margin: 2.5rem auto 0;
+}
+
+.includes li { font-size: 0.9rem; }
+.includes b { display: block; font-weight: 500; margin-bottom: 0.1rem; }
+.includes span { color: var(--muted); font-size: 0.85rem; font-weight: 300; }
+
+/* ── Disclaimer ─────────────────────────────────────────── */
+
+.disclaimer {
+  padding: 4rem 0;
+  border-top: 1px solid var(--border-2);
+}
+
+.disclaimer-inner {
+  max-width: 46rem;
+  margin: 0 auto;
+  background: var(--panel-2);
+  border: 1px solid var(--border-2);
+  border-left: 3px solid rgba(var(--gold-rgb), 0.5);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem 2rem;
+}
+
+.disclaimer h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.9rem;
+}
+
+.disclaimer p {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 300;
+  margin-bottom: 0.85rem;
+}
+.disclaimer p:last-child { margin-bottom: 0; }
+.disclaimer strong { color: var(--text); font-weight: 500; }
+
+/* ── CTA ────────────────────────────────────────────────── */
+
+.cta { padding: 5rem 0; text-align: center; }
+
+.cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 200;
+  line-height: 1.2;
+  margin-bottom: 1.6rem;
+}
+
+.cta p { color: var(--muted); font-size: 0.95rem; font-weight: 300; margin-bottom: 1.8rem; }
+
+.cta-actions { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+
+/* ── Footer ─────────────────────────────────────────────── */
+
+.site-footer {
+  border-top: 1px solid var(--border-2);
+  padding: 2.2rem 0;
+}
+
+.site-footer .container-wide {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.site-footer p { color: var(--dim); font-size: 0.84rem; }
+
+.footer-links {
+  display: flex;
+  gap: 1.4rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+.footer-links a { color: var(--muted); font-size: 0.84rem; }
+.footer-links a:hover { color: var(--text); text-decoration: none; }
+
+/* ── Legal pages ────────────────────────────────────────── */
+
+.legal-page { padding: 3.5rem 0 4.5rem; max-width: 46rem; }
+
+.legal-page .app-name {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+
+.legal-page h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4.2vw, 2.5rem);
+  font-weight: 250;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.legal-page .effective-date {
+  color: var(--dim);
+  font-size: 0.84rem;
+  padding-bottom: 1.75rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-2);
+}
+
+.legal-page h2 {
+  font-family: var(--font-display);
+  font-size: 1.32rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  margin-top: 2.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+}
+
+.legal-page h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.legal-page p,
+.legal-page ul,
+.legal-page ol {
+  color: var(--muted);
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.legal-page ul, .legal-page ol { padding-left: 1.35rem; }
+.legal-page li { margin-bottom: 0.45rem; }
+.legal-page strong { color: var(--text); font-weight: 500; }
+.legal-page a { text-decoration: underline; text-underline-offset: 2px; }
+
+.legal-page code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--gold);
+  background: rgba(var(--gold-rgb), 0.08);
+  border: 1px solid rgba(var(--gold-rgb), 0.18);
+  border-radius: 5px;
+  padding: 0.08em 0.36em;
+}
+
+.callout {
+  background: var(--panel-2);
+  border: 1px solid var(--border-2);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 1.4rem 1.6rem;
+  margin: 1.75rem 0 2rem;
+}
+.callout h2 { margin-top: 0; font-size: 1.1rem; }
+.callout ul { margin-bottom: 0; }
+.callout p:last-child, .callout li:last-child { margin-bottom: 0; }
+
+.callout-warn { border-left-color: var(--gold); }
+
+/* ── Responsive ─────────────────────────────────────────── */
+
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-visual { order: -1; }
+  .layers { grid-template-columns: 1fr; }
+  .shots { grid-template-columns: 1fr; gap: 2.8rem; }
+  .split, .split.reverse { grid-template-columns: 1fr; gap: 2.8rem; }
+  .split.reverse .split-visual, .split-visual { order: -1; }
+  .themes { grid-template-columns: repeat(2, 1fr); gap: 1.8rem; }
+}
+
+@media (max-width: 620px) {
+  .hero { padding: 3rem 0 2.5rem; }
+  .section { padding: 3.25rem 0; }
+  .container, .container-wide { padding-left: 1.15rem; padding-right: 1.15rem; }
+  .brand-sub { display: none; }
+  /* In-page anchors are reachable by scrolling; dropping them keeps the bar to
+     one line instead of wrapping. */
+  .nav-links .nav-anchor { display: none; }
+  .nav-links { gap: 1.1rem; }
+  .nav-links a { font-size: 0.82rem; }
+  .btn { width: 100%; }
+  .hero-actions, .cta-actions { flex-direction: column; align-items: stretch; }
+  /* The hero image is itself a phone. At full size on a phone it fills the
+     first screen and pushes the headline below the fold. */
+  .phone-hero { max-width: 218px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .includes { grid-template-columns: 1fr; }
+  .orbs { gap: 0.8rem; }
+  .site-footer .container-wide { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .disclaimer-inner { padding: 1.4rem 1.3rem; }
+  .price-card { padding: 1.8rem 1.3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
