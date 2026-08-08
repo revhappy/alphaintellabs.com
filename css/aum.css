@@ -439,6 +439,24 @@ section[id] { scroll-margin-top: 78px; }
   pointer-events: none;
 }
 
+/* ── Summary ────────────────────────────────────────────── */
+
+/* Set larger and looser than body copy. This is the paragraph someone reads to
+   find out what the thing actually is, so it gets room. */
+.summary-section { padding-top: 4rem; padding-bottom: 4rem; }
+
+/* Lifted off --muted: this is the primary explanation of the product, and the
+   muted grey is meant for supporting copy sitting under a heading. */
+.summary {
+  font-size: clamp(1.02rem, 1.5vw, 1.16rem);
+  font-weight: 300;
+  line-height: 1.78;
+  color: #aab4b0;
+  margin-bottom: 1.3rem;
+}
+.summary:last-child { margin-bottom: 0; }
+.summary strong { color: var(--text); font-weight: 400; }
+
 /* Lede paragraph inside a split column, where .section-head doesn't apply. */
 .lede-sm {
   color: var(--muted);
