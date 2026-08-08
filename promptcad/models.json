@@ -45,7 +45,7 @@
       "publisher": "Z.ai / Zhipu AI",
       "params": "744B MoE",
       "license": "MIT",
-      "summary": "Open weights under MIT, but Z.ai puts the floor at eight H100s. Reach it through an API provider rather than downloading 744B parameters.",
+      "summary": "Open weights under MIT with a one-million-token context. Run it locally if you have the memory, or reach it through any API provider.",
       "repo": "https://huggingface.co/zai-org/GLM-5.2"
     },
     {
@@ -54,7 +54,7 @@
       "publisher": "Thinking Machines Lab",
       "params": "975B total / 41B active",
       "license": "see model card",
-      "summary": "Open weights, multimodal, and far past what a workstation will hold. API only in practice.",
+      "summary": "Open weights and multimodal, with 41B active of 975B total. A higher-memory model, local or through an API provider.",
       "repo": "https://thinkingmachines.ai/model-card/inkling/"
     },
     {
@@ -63,7 +63,7 @@
       "publisher": "Thinking Machines Lab",
       "params": "276B total / 12B active",
       "license": "see model card",
-      "summary": "The efficient Inkling variant. Still around 140 GB quantized, so it is a server model, not a desktop one.",
+      "summary": "The efficient Inkling variant - comparable quality at about a quarter the size, roughly 140 GB quantized.",
       "repo": "https://thinkingmachines.ai/news/inkling-small/"
     }
   ]
