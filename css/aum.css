@@ -280,6 +280,24 @@ section[id] { scroll-margin-top: 78px; }
   align-items: center;
 }
 
+/* The header wordmark again, scaled up. Together with the eyebrow beneath it
+   this is the app's own masthead — same gradient, same tracking, same pairing
+   you see when you open Aum. */
+.wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.6vw, 2.7rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.32em;
+  text-indent: 0.32em; /* balance the trailing letter-space */
+  text-transform: uppercase;
+  background: linear-gradient(96deg, var(--gold), var(--accent) 60%, var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.85rem;
+}
+
 .eyebrow {
   color: var(--dim);
   font-size: 0.68rem;
