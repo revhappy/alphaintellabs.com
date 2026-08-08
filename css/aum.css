@@ -280,22 +280,28 @@ section[id] { scroll-margin-top: 78px; }
   align-items: center;
 }
 
-/* The header wordmark again, scaled up. Together with the eyebrow beneath it
-   this is the app's own masthead — same gradient, same tracking, same pairing
-   you see when you open Aum. */
+/* The app's masthead, at the size it deserves.
+ *
+ * The gradient does NOT use the page's accent tokens. Those are deliberately
+ * desaturated so the app can disappear while you use it, and three muted stops
+ * across five letters read as one flat gold. These are the icon's own colours —
+ * the gold core and the violet edge of the orb sitting right above it — with a
+ * cool stop at the end so the ramp is actually visible. */
 .wordmark {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4.6vw, 2.7rem);
-  font-weight: 300;
+  font-size: clamp(3.4rem, 10vw, 6rem);
+  font-weight: 300; /* same weight as the header wordmark */
   line-height: 1;
-  letter-spacing: 0.32em;
-  text-indent: 0.32em; /* balance the trailing letter-space */
+  letter-spacing: 0.3em;
+  text-indent: 0.3em; /* balance the trailing letter-space */
   text-transform: uppercase;
-  background: linear-gradient(96deg, var(--gold), var(--accent) 60%, var(--accent-2));
+  /* Stops finish at 84%, not 100%: the tracking leaves a letter-space of empty
+     box after the M, and a ramp ending at 100% spends its last colour there. */
+  background: linear-gradient(100deg, #ffd487 0%, #f2aec6 26%, #b294f2 56%, #86c9ee 84%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin-bottom: 0.85rem;
+  margin-bottom: 1.1rem;
 }
 
 .eyebrow {
@@ -433,6 +439,53 @@ section[id] { scroll-margin-top: 78px; }
   pointer-events: none;
 }
 
+/* Lede paragraph inside a split column, where .section-head doesn't apply. */
+.lede-sm {
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* A heading inside a section that already has an h2 — used to label the blocks
+   in "What's inside" without competing with it. */
+.sub-head {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin: 3rem 0 1.1rem;
+}
+
+/* ── What it's for ──────────────────────────────────────── */
+
+.uses {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+.use {
+  background: var(--panel-2);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius-lg);
+  padding: 1.6rem 1.5rem;
+  transition: border-color 0.25s, background 0.25s;
+}
+.use:hover { border-color: rgba(var(--accent-rgb), 0.3); background: rgba(var(--accent-rgb), 0.045); }
+
+.use h3 {
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.45rem;
+}
+
+.use p { color: var(--muted); font-size: 0.92rem; font-weight: 300; }
+
 /* ── Layers (Frequency · Vibration · Breath) ────────────── */
 
 .layers {
@@ -500,7 +553,6 @@ section[id] { scroll-margin-top: 78px; }
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.8rem;
-  margin-bottom: 3rem;
 }
 
 .stat {
@@ -969,6 +1021,7 @@ section[id] { scroll-margin-top: 78px; }
   .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
   .hero-visual { order: -1; }
   .layers { grid-template-columns: 1fr; }
+  .uses { grid-template-columns: repeat(2, 1fr); }
   .shots { grid-template-columns: 1fr; gap: 2.8rem; }
   .split, .split.reverse { grid-template-columns: 1fr; gap: 2.8rem; }
   .split.reverse .split-visual, .split-visual { order: -1; }
@@ -991,6 +1044,8 @@ section[id] { scroll-margin-top: 78px; }
      first screen and pushes the headline below the fold. */
   .phone-hero { max-width: 218px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
+  .uses { grid-template-columns: 1fr; }
+  .wordmark { letter-spacing: 0.24em; text-indent: 0.24em; }
   .includes { grid-template-columns: 1fr; }
   .orbs { gap: 0.8rem; }
   .site-footer .container-wide { flex-direction: column; align-items: flex-start; gap: 1rem; }
