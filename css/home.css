@@ -111,13 +111,15 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
+/* Three words, so the type carries the whole hero. Held to 15ch it breaks
+   after "useful" on a wide screen and stays two lines all the way down. */
 .lede {
   position: relative;
-  max-width: 30ch;
-  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  max-width: 15ch;
+  font-size: clamp(2.25rem, 7vw, 4.5rem);
   font-weight: 300;
-  line-height: 1.35;
-  letter-spacing: -.005em;
+  line-height: 1.12;
+  letter-spacing: -.015em;
   color: var(--type);
   text-wrap: pretty;
 }
@@ -268,7 +270,7 @@ a { color: inherit; text-decoration: none; }
   .top-nav { gap: .85rem; }
   .top-nav a { font-size: .58rem; letter-spacing: .1em; }
   .row-state { letter-spacing: .14em; }
-  .lede { font-size: 1.1875rem; }
+  .lede { font-size: 2.125rem; }
 }
 
 /* ── Motion off ──────────────────────────────────────────── */
