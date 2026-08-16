@@ -1,97 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alpha Intel Labs</title>
-  <meta name="description" content="Alpha Intel Labs builds AI-powered mobile apps.">
-  <link rel="stylesheet" href="/css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alpha Intel Labs — AI software for phones and desktops</title>
+<meta name="description" content="Alpha Intel Labs builds AI software for phones and desktops. Four apps on iOS and Android, two tools on Windows, with as much of the work kept on your own device as each one allows.">
+<meta name="theme-color" content="#0A0B0D">
+<link rel="canonical" href="https://alphaintellabs.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alpha Intel Labs">
+<meta property="og:description" content="AI software for phones and desktops. Four apps on iOS and Android, two tools on Windows.">
+<meta property="og:url" content="https://alphaintellabs.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..112,300..800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container-wide">
-      <a href="/" class="logo">Alpha Intel <span class="labs">Labs</span></a>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="/#apps">Apps</a></li>
-          <li><a href="mailto:alphaintellabs@gmail.com">Contact</a></li>
-        </ul>
-      </nav>
+<!--
+  The Alpha Intel Labs wordmark is drawn here as ten glyphs on a 100-unit cap
+  grid. There is not a single curve in the set: every corner that would round
+  is cut at 45 degrees instead, the way a part comes off a machine. Stems are
+  14 units throughout.
+-->
+<svg class="glyph-defs" aria-hidden="true" focusable="false"><defs>
+  <g id="ail-A"><path fill-rule="evenodd" d="M0 100 L21 0 L41 0 L62 100 Z M31 20.5 L39.72 62 L22.28 62 Z M19.34 76 L42.66 76 L47.7 100 L14.3 100 Z"/></g>
+  <g id="ail-L"><path d="M0 0 L14 0 L14 86 L56 86 L56 100 L0 100 Z"/></g>
+  <g id="ail-P"><path fill-rule="evenodd" d="M0 0 L44 0 L58 14 L58 38 L44 52 L14 52 L14 100 L0 100 Z M14 14 L38 14 L44 20 L44 32 L38 38 L14 38 Z"/></g>
+  <g id="ail-H"><path d="M0 0 L14 0 L14 43 L48 43 L48 0 L62 0 L62 100 L48 100 L48 57 L14 57 L14 100 L0 100 Z"/></g>
+  <g id="ail-I"><path d="M0 0 L14 0 L14 100 L0 100 Z"/></g>
+  <g id="ail-N"><path d="M0 0 L14 0 L48 83 L48 0 L62 0 L62 100 L48 100 L14 17 L14 100 L0 100 Z"/></g>
+  <g id="ail-T"><path d="M0 0 L62 0 L62 14 L38 14 L38 100 L24 100 L24 14 L0 14 Z"/></g>
+  <g id="ail-E"><path d="M0 0 L54 0 L54 14 L14 14 L14 43 L46 43 L46 57 L14 57 L14 86 L54 86 L54 100 L0 100 Z"/></g>
+  <g id="ail-B"><path fill-rule="evenodd" d="M0 0 L44 0 L58 14 L58 32 L46 44 L58 56 L58 86 L44 100 L0 100 Z M14 14 L38 14 L44 20 L44 31 L38 37 L14 37 Z M14 51 L38 51 L44 57 L44 80 L38 86 L14 86 Z"/></g>
+  <g id="ail-S"><path d="M14 0 L56 0 L56 14 L14 14 L14 43 L56 43 L56 86 L42 100 L0 100 L0 86 L42 86 L42 57 L0 57 L0 14 Z"/></g>
+
+  <!-- One-line lockup, used in the header and the footer. -->
+  <g id="ail-lockup">
+    <use href="#ail-A" x="0"/><use href="#ail-L" x="88"/><use href="#ail-P" x="170"/><use href="#ail-H" x="254"/><use href="#ail-A" x="342"/>
+    <use href="#ail-I" x="472"/><use href="#ail-N" x="512"/><use href="#ail-T" x="600"/><use href="#ail-E" x="688"/><use href="#ail-L" x="768"/>
+    <use href="#ail-L" x="892"/><use href="#ail-A" x="974"/><use href="#ail-B" x="1062"/><use href="#ail-S" x="1146"/>
+  </g>
+</defs></svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="hdr-mark" href="/" aria-label="Alpha Intel Labs, home">
+      <svg viewBox="0 0 1202 100" role="img" aria-label="Alpha Intel Labs"><use href="#ail-lockup"/></svg>
+    </a>
+    <nav class="hdr-nav" aria-label="Primary">
+      <a href="#mobile">Mobile</a>
+      <a href="#desktop">Desktop</a>
+      <a href="mailto:alphaintellabs@gmail.com">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ─── Hero ──────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="wrap hero-in">
+
+      <div class="hero-mark">
+        <div class="stage">
+          <svg class="wordmark" viewBox="0 0 404 376" role="img" aria-label="Alpha Intel Labs">
+            <g class="line" style="--i:0">
+              <use href="#ail-A" x="0"/><use href="#ail-L" x="88"/><use href="#ail-P" x="170"/><use href="#ail-H" x="254"/><use href="#ail-A" x="342"/>
+            </g>
+            <g class="line" style="--i:1">
+              <use href="#ail-I" x="0" y="138"/><use href="#ail-N" x="40" y="138"/><use href="#ail-T" x="128" y="138"/><use href="#ail-E" x="216" y="138"/><use href="#ail-L" x="296" y="138"/>
+            </g>
+            <g class="line" style="--i:2">
+              <use href="#ail-L" x="0" y="276"/><use href="#ail-A" x="82" y="276"/><use href="#ail-B" x="170" y="276"/><use href="#ail-S" x="254" y="276"/>
+            </g>
+          </svg>
+          <span class="cut" aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <div class="hero-say">
+        <p class="lede">We build AI software for phones and desktops. Four apps in your pocket, two on your machine, and as much of the work kept on-device as each one allows.</p>
+
+        <div class="rail">
+          <a class="dest" href="#mobile">
+            <span class="dest-in">
+              <span class="dest-k">Mobile</span>
+              <span class="dest-v">Four apps · iOS &amp; Android</span>
+              <svg class="dest-arw" viewBox="0 0 24 12" aria-hidden="true"><path d="M0 5.5h19.2L14.6.9 15.5 0 21.6 6l-6.1 6-.9-.9 4.6-4.6H0Z"/></svg>
+            </span>
+          </a>
+          <a class="dest" href="#desktop">
+            <span class="dest-in">
+              <span class="dest-k">Desktop</span>
+              <span class="dest-v">Two tools · Windows</span>
+              <svg class="dest-arw" viewBox="0 0 24 12" aria-hidden="true"><path d="M0 5.5h19.2L14.6.9 15.5 0 21.6 6l-6.1 6-.9-.9 4.6-4.6H0Z"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <h1>Alpha Intel <span class="labs">Labs</span></h1>
-      <p>We build AI-powered apps that solve everyday problems.</p>
-    </section>
+  <!-- ─── Mobile ────────────────────────────────────────────────────── -->
+  <section class="deck" id="mobile">
+    <div class="wrap">
 
-    <section id="apps" class="container-wide">
-      <div class="app-grid">
+      <div class="deck-rail reveal">
+        <span class="deck-tag">Mobile</span>
+        <span class="deck-line" aria-hidden="true"></span>
+        <span class="deck-os">iOS · Android</span>
+      </div>
 
-        <div class="app-card">
-          <h3>Aura Check</h3>
-          <p>AI-powered outfit analysis, color coordination critique, and virtual try-on.</p>
-          <span class="badge badge-live">Live</span>
-          <div class="links">
-            <a href="/auracheck/privacy">Privacy</a>
-            <a href="/auracheck/terms">Terms</a>
+      <div class="deck-head reveal">
+        <h2>On the phone</h2>
+        <p>Four apps, each built around one thing you do with a phone in your hand.</p>
+      </div>
+
+      <div class="grid grid-mobile">
+
+        <article class="card reveal"><div class="card-in">
+          <div class="card-top">
+            <h3>Ahara</h3>
+            <span class="chip chip-ship">Shipping</span>
           </div>
-        </div>
-
-        <div class="app-card">
-          <h3>Tara</h3>
-          <p>AI astrology advisor — personalized birth chart analysis, daily horoscopes, and cosmic guidance.</p>
-          <span class="badge badge-live">Live</span>
-          <div class="links">
-            <a href="/tara/privacy">Privacy</a>
-            <a href="/tara/terms">Terms</a>
-          </div>
-        </div>
-
-        <div class="app-card">
-          <h3>Ahara</h3>
-          <p>Scan any label — food, supplements, skincare, medicine. Every ingredient explained, and every product scored against your own health goals.</p>
-          <span class="badge badge-live">Live</span>
-          <div class="links">
+          <p class="card-copy">Point the camera at any label — food, supplements, skincare, medicine. Ahara explains every ingredient and scores the product against the health goals you set.</p>
+          <div class="card-foot">
             <a href="/ahara/">Overview</a>
             <a href="/ahara/privacy">Privacy</a>
             <a href="/ahara/terms">Terms</a>
           </div>
-        </div>
+        </div></article>
 
-        <div class="app-card">
-          <h3>Aum</h3>
-          <p>Healing frequency sessions for phones. Tone, pulse, breath and vibration, all synthesised on device — no server, no streaming, works in airplane mode.</p>
-          <span class="badge badge-soon">Coming soon</span>
-          <div class="links">
+        <article class="card reveal"><div class="card-in">
+          <div class="card-top">
+            <h3>Magic Try On</h3>
+            <span class="chip chip-ship">Shipping</span>
+          </div>
+          <p class="card-copy">Put a garment on yourself before you buy it. Photograph what you already own for a read on fit, colour and proportion, then try the rest on in the app.</p>
+          <div class="card-foot">
+            <a href="/auracheck/privacy">Privacy</a>
+            <a href="/auracheck/terms">Terms</a>
+          </div>
+        </div></article>
+
+        <article class="card reveal"><div class="card-in">
+          <div class="card-top">
+            <h3>Tara</h3>
+            <span class="chip chip-ship">Shipping</span>
+          </div>
+          <p class="card-copy">Your birth chart read back to you in plain language, with a daily reading drawn from the same chart rather than a generic one.</p>
+          <div class="card-foot">
+            <a href="/tara/privacy">Privacy</a>
+            <a href="/tara/terms">Terms</a>
+          </div>
+        </div></article>
+
+        <article class="card reveal"><div class="card-in">
+          <div class="card-top">
+            <h3>Aum</h3>
+            <span class="chip chip-review">In review</span>
+          </div>
+          <p class="card-copy">Tone, pulse, breath and haptics, all synthesised on the phone. Nothing streams and nothing is stored on a server, so a session runs the same in airplane mode.</p>
+          <div class="card-foot">
             <a href="/aum/">Overview</a>
             <a href="/aum/privacy">Privacy</a>
             <a href="/aum/terms">Terms</a>
           </div>
-        </div>
+        </div></article>
 
-        <div class="app-card">
-          <h3>PromptCAD</h3>
-          <p>Describe a part in plain English and get editable parametric CAD — not a mesh. Runs offline on your own machine with an open-weights model.</p>
-          <span class="badge badge-live">Live</span>
-          <div class="links">
-            <a href="/promptcad/">Overview</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Desktop ───────────────────────────────────────────────────── -->
+  <section class="deck deck-alt" id="desktop">
+    <div class="wrap">
+
+      <div class="deck-rail reveal">
+        <span class="deck-tag">Desktop</span>
+        <span class="deck-line" aria-hidden="true"></span>
+        <span class="deck-os">Windows 10+</span>
+      </div>
+
+      <div class="deck-head reveal">
+        <h2>On the machine</h2>
+        <p>Two Windows tools that do their work on your own hardware.</p>
+      </div>
+
+      <div class="grid grid-desktop">
+
+        <article class="card card-lg reveal"><div class="card-in">
+          <div class="card-top">
+            <h3>PromptCAD</h3>
+            <span class="chip chip-ship">Shipping</span>
+          </div>
+          <p class="card-copy">Describe a part in plain English and get an editable parametric feature tree back, not a mesh. PromptCAD measures what it built, tells you where it missed, and exports STEP for the rest of your toolchain. The model runs locally, so your geometry never leaves the machine.</p>
+          <dl class="spec">
+            <div><dt>Platform</dt><dd>Windows 10+</dd></div>
+            <div><dt>Model</dt><dd>Open weights, local</dd></div>
+            <div><dt>Output</dt><dd>Feature tree · STEP</dd></div>
+            <div><dt>Version</dt><dd>1.2.0</dd></div>
+          </dl>
+          <div class="card-foot">
+            <a class="link-strong" href="/promptcad/">Overview</a>
             <a href="https://github.com/revhappy/promptcad/releases/download/v1.2.0/PromptCAD-1.2.0-setup.exe">Download</a>
             <a href="https://github.com/revhappy/promptcad">GitHub</a>
           </div>
-        </div>
+        </div></article>
+
+        <article class="card card-lg reveal"><div class="card-in">
+          <div class="card-top">
+            <h3>Agent on Deck</h3>
+            <span class="chip chip-dev">In development</span>
+          </div>
+          <p class="card-copy">A small orb sits on your screen, watches the window you are working in, and files what it sees into a timeline and a knowledge graph on disk. Ask what you were reading on Tuesday and it answers. Capture is held in a 60-second buffer in memory, and a blocklist you write stops it entirely for the apps you name.</p>
+          <dl class="spec">
+            <div><dt>Platform</dt><dd>Windows</dd></div>
+            <div><dt>Memory</dt><dd>Local graph · SQLite</dd></div>
+            <div><dt>Capture</dt><dd>60s RAM buffer</dd></div>
+            <div><dt>Status</dt><dd>Not yet released</dd></div>
+          </dl>
+        </div></article>
 
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container-wide">
-      <p>&copy; 2026 Alpha Intel Labs. <a href="mailto:alphaintellabs@gmail.com">alphaintellabs@gmail.com</a></p>
     </div>
-  </footer>
+  </section>
+
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr-in">
+    <div class="ftr-mark">
+      <svg viewBox="0 0 1202 100" role="img" aria-label="Alpha Intel Labs"><use href="#ail-lockup"/></svg>
+      <p class="ftr-note">Independent software lab. Six products, on phones and on desktops.</p>
+    </div>
+    <div class="ftr-cols">
+      <div class="ftr-col">
+        <h4>Contact</h4>
+        <a href="mailto:alphaintellabs@gmail.com">alphaintellabs@gmail.com</a>
+      </div>
+      <div class="ftr-col">
+        <h4>Legal</h4>
+        <a href="/ahara/privacy">Ahara</a>
+        <a href="/auracheck/privacy">Magic Try On</a>
+        <a href="/tara/privacy">Tara</a>
+        <a href="/aum/privacy">Aum</a>
+      </div>
+    </div>
+    <p class="ftr-copy">© 2026 Alpha Intel Labs</p>
+  </div>
+</footer>
+
+<script>
+// Cards and rails arrive as you reach them. Everything is already visible if
+// the browser reports a motion preference, so this only ever adds motion.
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var items = document.querySelectorAll('.reveal');
+  if (reduce.matches || !('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-in');
+      io.unobserve(entry.target);
+    });
+  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
+  items.forEach(function (el, i) {
+    el.style.setProperty('--d', (i % 4) * 70 + 'ms');
+    io.observe(el);
+  });
+})();
+</script>
 
 </body>
 </html>
