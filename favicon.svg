@@ -1,7 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
   <rect width="128" height="128" fill="#05070A"/>
-  <g transform="translate(17.5 33) scale(0.62)"
-     fill="none" stroke="#F3F5F7" stroke-width="13.5"
+  <!--
+    The A from the wordmark, cut heavier. The logo stroke is 13.5 on a
+    100 cap; at 16px that renders around one pixel and disappears, so
+    the icon is drawn at 20 instead.
+  -->
+  <g transform="translate(7 28) scale(0.76)"
+     fill="none" stroke="#F3F5F7" stroke-width="20"
      stroke-linecap="butt" stroke-linejoin="round">
     <path d="M6.75 93.25 L59.25 13.93 A16 16 0 0 1 72.61 6.75 H77.39 A16 16 0 0 1 90.75 13.93 L143.25 93.25 M27.44 62 H122.56"/>
   </g>

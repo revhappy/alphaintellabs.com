@@ -86,7 +86,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .top-mark { display: block; line-height: 0; color: var(--type); }
-.top-mark svg { width: clamp(190px, 26vw, 296px); height: auto; display: block; }
+.top-mark svg { width: clamp(200px, 28vw, 330px); height: auto; display: block; }
 
 .top-nav { display: flex; gap: clamp(1.4rem, 3.5vw, 3rem); }
 .top-nav a { color: var(--type-2); transition: color .25s ease; }
@@ -96,7 +96,7 @@ a { color: inherit; text-decoration: none; }
 
 .hero {
   position: relative;
-  padding-block: clamp(5rem, 14vw, 12rem) clamp(6rem, 15vw, 13rem);
+  padding-block: clamp(4rem, 11vw, 9rem) clamp(5rem, 13vw, 11rem);
 }
 
 /* A low horizon of light, well below the type. */
@@ -111,35 +111,17 @@ a { color: inherit; text-decoration: none; }
   pointer-events: none;
 }
 
-.mark { position: relative; font-weight: inherit; }
-
-.mark svg {
-  display: block;
-  width: min(100%, 780px);
-  height: auto;
-  color: var(--type);
-}
-
-/* The mark draws itself in, one line after the next. */
-.draw .ln path {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  animation: draw 1500ms var(--ease) forwards;
-  animation-delay: calc(180ms + var(--i) * 240ms);
-}
-@keyframes draw { to { stroke-dashoffset: 0; } }
-
 .lede {
-  margin-top: clamp(2.5rem, 5vw, 3.75rem);
-  max-width: 56ch;
-  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
-  font-weight: 300;
-  line-height: 1.45;
-  color: var(--type-2);
-  text-wrap: balance;
   position: relative;
+  max-width: 30ch;
+  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: -.005em;
+  color: var(--type);
+  text-wrap: pretty;
 }
-.draw .lede { opacity: 0; animation: rise 1000ms var(--ease) 900ms forwards; }
+.draw .lede { opacity: 0; animation: rise 1100ms var(--ease) 120ms forwards; }
 @keyframes rise {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: none; }
@@ -253,12 +235,20 @@ a { color: inherit; text-decoration: none; }
   border-top: 1px solid var(--line);
 }
 
-.foot-mail {
-  font-size: 1.0625rem;
+.foot-say {
+  max-width: 70ch;
   color: var(--type-2);
-  transition: color .25s ease;
+  font-size: 1.0625rem;
+  line-height: 1.7;
 }
-.foot-mail:hover { color: var(--type); }
+
+.foot-mail {
+  color: var(--type);
+  border-bottom: 1px solid var(--line-hi);
+  padding-bottom: .2rem;
+  transition: border-color .25s ease;
+}
+.foot-mail:hover { border-bottom-color: var(--type); }
 
 .foot-copy { color: var(--type-3); }
 
@@ -285,7 +275,6 @@ a { color: inherit; text-decoration: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .ln path { stroke-dasharray: none; stroke-dashoffset: 0; animation: none; }
   .lede { opacity: 1; animation: none; }
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
