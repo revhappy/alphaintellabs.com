@@ -49,7 +49,7 @@
 
   <p class="app-name">Aum</p>
   <h1>Privacy Policy</h1>
-  <p class="effective-date">Effective Date: August 7, 2026 &nbsp;·&nbsp; Last updated: August 7, 2026</p>
+  <p class="effective-date">Effective Date: August 7, 2026 &nbsp;·&nbsp; Last updated: August 15, 2026</p>
 
   <p>
     This policy explains what Aum (&ldquo;the app&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) does
@@ -59,11 +59,12 @@
   <div class="callout">
     <h2>Summary</h2>
     <ul>
-      <li><strong>We collect nothing.</strong> Aum has no server, no account, no sign-in and no analytics.</li>
+      <li><strong>We have no server and no account.</strong> There is nothing to sign into, and we hold no record of you.</li>
       <li><strong>Nothing you do in the app is transmitted anywhere.</strong> Your sessions, settings and history are written to your own device and stay there.</li>
+      <li><strong>One third party, and only for purchases.</strong> RevenueCat checks whether you have bought the full version. It receives an anonymous, randomly generated installation identifier and your store receipt — never your name, your email, or anything about how you use the app.</li>
       <li>All audio is <strong>synthesised on your phone</strong>. There is no streaming, so there is no listening record to keep — yours or ours.</li>
-      <li>The app works fully <strong>in airplane mode</strong>, apart from making a purchase.</li>
-      <li>There are <strong>no ads, no trackers, no third-party SDKs</strong> for advertising or analytics, and nothing is ever sold or shared.</li>
+      <li>The app works fully <strong>in airplane mode</strong>, apart from buying or restoring the full version.</li>
+      <li>There are <strong>no ads, no trackers, and no analytics, attribution or advertising SDKs</strong>, and nothing is ever sold or shared.</li>
       <li>Deleting the app deletes everything it stored.</li>
     </ul>
   </div>
@@ -78,9 +79,16 @@
   </p>
 
   <p>
-    We do not operate a server that the app talks to. We do not run analytics,
-    crash reporting, attribution, advertising or A/B testing SDKs of any kind. We
-    therefore hold no record that you have ever installed or opened Aum.
+    We do not operate a server, and the app never sends anything to us. We do not
+    run analytics, crash reporting, attribution, advertising or A/B testing SDKs
+    of any kind. We hold no record that you have ever installed or opened Aum.
+  </p>
+
+  <p>
+    The one exception to &ldquo;nothing leaves the device&rdquo; is the purchase
+    check described in section 4, which is handled for us by RevenueCat. It knows
+    an anonymous installation identifier and whether a purchase exists. It does
+    not know who you are, and neither do we.
   </p>
 
   <h2>2. What Is Stored on Your Device</h2>
@@ -114,6 +122,16 @@
     identifier.
   </p>
 
+  <h3>Trial state</h3>
+  <p>
+    A count of how many of your five trial sessions have been used, and the date
+    the trial's thirty days run from. To date the trial, the app reads the
+    installation date your operating system already records for it — the same
+    date your device settings show on Aum's own app info screen. It is read on
+    your device, used only to work out whether the thirty days have passed, and
+    is never transmitted, to us or to anyone else.
+  </p>
+
   <h2>3. Network Access</h2>
 
   <p>
@@ -124,11 +142,12 @@
 
   <p>
     The Android build declares the standard <code>INTERNET</code> permission,
-    which is part of the app framework Aum is built on and is required for the
-    app store's purchase flow to complete. <strong>The app makes no network
-    requests of its own</strong>, sends us nothing, and functions fully with your
-    device offline — the only thing that needs a connection is buying or
-    restoring the full version.
+    which the purchase flow requires. The app's only network requests are that
+    purchase check: it asks RevenueCat whether this installation holds the full
+    version when it starts, and again when you buy or restore. Nothing else in
+    Aum uses the network, <strong>nothing is ever sent to us</strong>, and the
+    app functions fully with your device offline — the only things that need a
+    connection are buying and restoring.
   </p>
 
   <h2>4. Purchases</h2>
@@ -143,12 +162,21 @@
 
   <p>
     Your purchase is subject to that store's own privacy policy and terms, which
-    we do not control. If a third-party purchase-management provider is used to
-    verify entitlements, it may receive an anonymous, randomly generated
-    installation identifier and the purchase receipt in order to do so; it does
-    not receive your name, your email address or anything about how you use the
-    app. We will update this policy before introducing any such provider that
-    changes what is described here.
+    we do not control.
+  </p>
+
+  <p>
+    Aum uses <strong>RevenueCat</strong> to verify entitlements — that is, to
+    establish whether this installation has paid, including when you restore a
+    purchase on a new device. To do that, RevenueCat receives an
+    <strong>anonymous, randomly generated installation identifier</strong> that it
+    creates itself, together with the receipt the app store issues. It does not
+    receive your name, your email address, your device's advertising identifier,
+    or anything about which sessions you play or when. We do not send it anything
+    else, and we cannot use it to identify you. Its handling of that data is
+    covered by
+    <a href="https://www.revenuecat.com/privacy" rel="noopener">RevenueCat's own
+    privacy policy</a>.
   </p>
 
   <h2>5. Permissions</h2>
@@ -188,7 +216,13 @@
 
   <ul>
     <li>Clear your practice history from the app at any time.</li>
-    <li>Clearing the app's storage in your device settings resets it completely.</li>
+    <li>Clearing the app's storage in your device settings erases everything Aum
+      has written — your history, your settings, your trial count and its record
+      of your purchase. The one thing it cannot change is the installation date
+      your operating system keeps for the app, which the trial's thirty days are
+      dated from: that record belongs to the system, not to us. If you have
+      bought the full version, &ldquo;Restore&rdquo; on the unlock screen brings
+      it back.</li>
     <li>Uninstalling the app removes everything it has stored.</li>
   </ul>
 
