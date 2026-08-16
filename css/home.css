@@ -63,7 +63,7 @@ a { color: inherit; text-decoration: none; }
 .skip:focus { top: 0; }
 
 /* Small tracked labels, used for every piece of chrome on the page. */
-.top-nav a, .rail-k, .rail-v, .row-state, .row-links a, .foot-copy {
+.top-nav a, .rail-k, .rail-v, .app-state, .app-links a, .foot-copy {
   font-size: .68rem;
   font-weight: 400;
   text-transform: uppercase;
@@ -145,79 +145,84 @@ a { color: inherit; text-decoration: none; }
 .rail-k { color: var(--type); }
 .rail-v { color: var(--type-3); }
 
-.row {
-  display: grid;
-  gap: .4rem 3rem;
-  align-items: start;
-  padding-block: clamp(1.75rem, 3.5vw, 2.5rem);
+/* Each app is a band, not a card. Where a screenshot exists the band
+   splits in two and the shot alternates sides; where none exists the
+   text runs the full width. The uneven rhythm is the point — an empty
+   column held open for the three apps with no page would read as a
+   gap, and a placeholder would read as an apology. */
+
+.app {
+  padding-block: clamp(2.75rem, 6vw, 5rem);
   border-bottom: 1px solid var(--line);
-  position: relative;
 }
 
-/* Hover lifts the row without drawing a box around it: the wash
-   fades out before it reaches either edge. */
-.row::before {
-  content: '';
-  position: absolute;
-  inset: 0 -2rem;
-  background: linear-gradient(90deg, transparent, var(--bg-lift) 8%, var(--bg-lift) 92%, transparent);
-  opacity: 0;
-  transition: opacity .3s ease;
-  pointer-events: none;
-}
-.row:hover::before { opacity: 1; }
+.app-state { color: var(--type-3); margin-bottom: 1rem; }
+.app-state span { margin-left: 1rem; opacity: .65; }
+.app-state.is-live { color: var(--type-2); }
+.app-state.is-wait { color: #C9A063; }
 
-.row > * { position: relative; }
-
-@media (min-width: 860px) {
-  .row { grid-template-columns: minmax(200px, 1.1fr) minmax(0, 2.4fr) minmax(140px, .8fr); }
-}
-
-.row-name {
-  font-size: clamp(1.6rem, 3vw, 2.35rem);
+.app-name {
+  font-size: clamp(1.9rem, 4vw, 3rem);
   font-weight: 300;
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: .01em;
-  transition: color .3s ease;
 }
 
-.row-body p {
+.app-copy {
+  margin-top: 1.15rem;
   color: var(--type-2);
   font-size: 1.0625rem;
-  line-height: 1.6;
-  max-width: 54ch;
+  line-height: 1.65;
+  max-width: 52ch;
   text-wrap: pretty;
 }
 
-.row-links {
+.app-links {
   display: flex;
   flex-wrap: wrap;
   gap: .4rem 1.75rem;
-  margin-top: 1.35rem;
+  margin-top: 1.6rem;
 }
-.row-links a {
+.app-links a {
   color: var(--type-3);
   padding-bottom: .35rem;
   border-bottom: 1px solid transparent;
   transition: color .25s ease, border-color .25s ease;
 }
-.row-links a:hover { color: var(--type); border-bottom-color: var(--line-hi); }
+.app-links a:hover { color: var(--type); border-bottom-color: var(--line-hi); }
 
-.row-state {
-  color: var(--type-3);
-  padding-top: .55rem;
+/* The shot carries no frame. A hairline stops a dark screenshot
+   dissolving into the page, and the shadow lifts it without
+   drawing a box around it. */
+.app-shot { line-height: 0; }
+.app-shot img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, .09);
+  box-shadow: 0 34px 80px -34px rgba(0, 0, 0, .95);
 }
-.row-state span {
-  display: block;
-  margin-top: .5rem;
-  color: var(--type-3);
-  opacity: .7;
-}
-.row-state.is-live { color: var(--type-2); }
-.row-state.is-wait { color: #C9A063; }
+.app-shot.is-tall img { max-height: 640px; width: auto; }
+.app-shot.is-wide img { width: 100%; }
 
-@media (min-width: 860px) {
-  .row-state { text-align: right; }
+@media (max-width: 899px) {
+  .app-shot { margin-top: 2.25rem; }
+  .app-shot.is-tall { display: flex; justify-content: center; }
+  .app-shot.is-tall img { max-height: 460px; }
+}
+
+@media (min-width: 900px) {
+  .app.has-shot {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: center;
+  }
+  .app.has-shot .app-copy { max-width: 40ch; }
+  .app.has-shot--wide { grid-template-columns: minmax(0, .85fr) minmax(0, 1.45fr); }
+  .app-shot { display: flex; justify-content: center; }
+  /* Alternate which side the shot lands on. */
+  .app.flip .app-shot { order: -1; }
 }
 
 /* ── Footer ──────────────────────────────────────────────── */
@@ -256,20 +261,12 @@ a { color: inherit; text-decoration: none; }
 
 /* ── Narrow ──────────────────────────────────────────────── */
 
-@media (max-width: 859px) {
-  .row { grid-template-columns: 1fr auto; }
-  .row-name { grid-column: 1; }
-  .row-state { grid-column: 2; grid-row: 1; text-align: right; padding-top: .5rem; }
-  .row-body { grid-column: 1 / -1; margin-top: .5rem; }
-  .row::before { inset: 0 calc(var(--gut) * -1); }
-}
-
 @media (max-width: 560px) {
   .top-in { gap: 1rem; }
   .top-mark svg { width: 146px; }
   .top-nav { gap: .85rem; }
   .top-nav a { font-size: .58rem; letter-spacing: .1em; }
-  .row-state { letter-spacing: .14em; }
+  .app-state { letter-spacing: .14em; }
   .lede { font-size: 2.125rem; }
 }
 
