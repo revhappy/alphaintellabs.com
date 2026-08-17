@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tara — Your whole chart, not your sun sign</title>
+<meta name="description" content="Tara computes your Western, Vedic and Chinese charts from the exact minute and place of your birth — 10 bodies, 45 aspect pairs, 27 nakshatras, four pillars — and reads all three together, every day.">
+<meta name="theme-color" content="#0d0d0f">
+<link rel="canonical" href="https://alphaintellabs.com/tara/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tara — Your whole chart, not your sun sign">
+<meta property="og:description" content="Western, Vedic and Chinese charts computed from the exact minute and place of your birth, then read together.">
+<meta property="og:url" content="https://alphaintellabs.com/tara/">
+<link rel="icon" href="/tara/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/tara.css">
+</head>
+<body>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/tara/">
+      <span class="star" aria-hidden="true">&#10025;</span>
+      Tara
+      <span class="sub">Alpha Intel Labs</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li class="hide-sm"><a href="#engine">The engine</a></li>
+        <li class="hide-sm"><a href="#readings">Readings</a></li>
+        <li class="hide-sm"><a href="#match">Compatibility</a></li>
+        <li><a href="/tara/privacypolicy">Privacy</a></li>
+        <li><a href="/tara/terms">Terms</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Western &middot; Vedic &middot; Chinese</p>
+        <h1>Your whole chart,<br>not your sun sign.</h1>
+        <p class="lede">
+          Give Tara the date, the time and the place. It computes your tropical,
+          sidereal and Bazi charts from that one moment, then reads all three
+          together — every morning, and whenever you ask it something.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://cleo-9893f.web.app">Open Tara</a>
+          <a class="btn btn-ghost" href="#engine">See what it computes</a>
+        </div>
+        <p class="hero-note">
+          The daily reading is free. A seven-day trial opens the rest.
+        </p>
+      </div>
+
+      <div class="hero-visual">
+        <!-- Chat screen, built from the app's own bubble and glass styles -->
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="ph-status">
+              <span>9:41</span>
+              <span class="sig" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+            <div class="ph-bar">
+              <span class="t">Tara</span>
+              <span class="tier">Pro</span>
+            </div>
+            <div class="ph-body">
+              <div class="ph-msg me">Should I sign the lease this week?</div>
+              <div class="ph-msg tara">
+                Wait until Thursday if you can. Mercury is retrograde at
+                <b>14&deg; Sagittarius</b> and sits within a degree of your natal
+                Mercury until Wednesday night — contracts signed under that tend
+                to need a second reading.
+              </div>
+              <div class="ph-msg tara">
+                Thursday afternoon your Vedic <b>Jupiter mahadasha</b> gets a
+                transiting trine from Venus, and your Day Master is
+                <i>Yang Water</i>, which is well fed by that. That is the window.
+              </div>
+              <div class="ph-msg me">What about the money side?</div>
+              <div class="ph-think">
+                <span class="orbit-mark" aria-hidden="true">
+                  <span class="orbit-ring"></span>
+                  <span class="orbit-ring two"></span>
+                  <span class="orbit-core"></span>
+                </span>
+                Reading your chart&hellip;
+              </div>
+              <div class="ph-input">
+                <span>Ask Tara anything&hellip;</span>
+                <span class="send" aria-hidden="true">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Three charts ─────────────────────────────────────── -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">One birth moment, three charts</p>
+        <h2>Three traditions that disagree, held side by side.</h2>
+        <p>
+          Western, Vedic and Chinese astrology measure different things from the
+          same instant, and they do not always say the same thing about it. Tara
+          keeps all three and names the disagreement instead of averaging it away.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>Western</h3>
+          <p class="card-sub">Tropical</p>
+          <p>Measured from the equinox. The chart most people have seen.</p>
+          <ul>
+            <li>Sun, Moon and <b>Ascendant</b> to the degree</li>
+            <li>Mercury through Pluto, each with sign and degree</li>
+            <li>All <b>45 aspect pairs</b>, each with its exact orb</li>
+            <li>Element and modality weight across every placement</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Vedic</h3>
+          <p class="card-sub">Sidereal &middot; Jyotisha</p>
+          <p>Measured from the fixed stars, which puts most planets a sign back.</p>
+          <ul>
+            <li><b>Lagna</b> and <b>Rashi</b> from your own ayanamsa</li>
+            <li><b>Nakshatra</b> with pada and ruling planet</li>
+            <li>Vimshottari <b>mahadasha</b>, and the years left in it</li>
+            <li>Every body converted, not just the Moon</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Chinese</h3>
+          <p class="card-sub">Bazi &middot; Four Pillars</p>
+          <p>Measured in stems and branches from the solar calendar.</p>
+          <ul>
+            <li>Year, month, day and hour pillars</li>
+            <li>Your <b>Day Master</b> — the stem the reading turns on</li>
+            <li>Five-element weight across all four pillars</li>
+            <li>Month set by solar term, year by <b>Li Chun</b></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── The engine ───────────────────────────────────────── -->
+  <section class="section" id="engine">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">The engine</p>
+        <h2>What comes out of your birth moment.</h2>
+        <p>
+          Every line below is computed on our servers from your date, time and
+          coordinates. Nothing here is a lookup table keyed to your sun sign,
+          and the reading you get is written from these numbers.
+        </p>
+      </div>
+
+      <div class="spec">
+        <div class="spec-row">
+          <div class="spec-k">Ten bodies<span class="unit">Sun &rarr; Pluto</span></div>
+          <div class="spec-v">
+            Geocentric ecliptic longitude for the exact minute you were born,
+            resolved to the arcsecond and carried at <b>four decimal places of a
+            degree</b> through everything downstream.
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-k">The Ascendant<span class="unit">Rising sign</span></div>
+          <div class="spec-v">
+            Derived from local sidereal time and the obliquity of the ecliptic at
+            your coordinates. It advances <b>one degree every four minutes</b>,
+            which is why Tara asks for the minute and not the morning.
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-k">45 aspect pairs<span class="unit">Natal geometry</span></div>
+          <div class="spec-v">
+            Every pair of bodies tested for conjunction, opposition, trine, square
+            and sextile — 6&deg; orb, 4&deg; on the sextile — and each hit is kept
+            <b>with its measured orb</b> rather than a label.
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-k">Element weight<span class="unit">Against the mean</span></div>
+          <div class="spec-v">
+            Fire, Earth, Air and Water counted across all ten placements, then
+            compared against the mean. A chart with no real dominance comes back
+            <b>balanced</b> instead of being handed a winner it did not earn.
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-k">Lahiri ayanamsa<span class="unit">Chitrapaksha</span></div>
+          <div class="spec-v">
+            Precession and the principal nutation term, evaluated for
+            <b>your birth date</b> rather than taken as a constant. Every tropical
+            position is then carried into the sidereal chart with it.
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-k">27 nakshatras<span class="unit">With pada and lord</span></div>
+          <div class="spec-v">
+            The Moon's exact place inside a <b>13&deg;20&prime;</b> lunar mansion, down to
+            which quarter of it — one of four padas — and the planet that rules
+            the mansion.
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-k">Vimshottari dasha<span class="unit">120-year cycle</span></div>
+          <div class="spec-v">
+            The cycle is started from how far the Moon had already travelled into
+            its nakshatra at birth, then run forward to today: your current
+            <b>mahadasha</b> and the years remaining in it.
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-k">Four Pillars<span class="unit">Bazi</span></div>
+          <div class="spec-v">
+            The month boundary is the true solar term, found by searching the
+            Sun's longitude to a billionth of a radian, and the year turns at
+            <b>Li Chun</b> — so a February birthday lands in the right animal
+            instead of the calendar's.
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-k">Historical timezone<span class="unit">At your birthplace</span></div>
+          <div class="spec-v">
+            Your coordinates resolve to the zone that place kept
+            <b>on that date</b>, with the offset in force at the time applied
+            before any of the above runs. Wartime clocks and repealed daylight
+            rules come out right.
+          </div>
+        </div>
+
+        <div class="spec-row">
+          <div class="spec-k">Live transits<span class="unit">Every reading</span></div>
+          <div class="spec-v">
+            The current sky is recomputed for each reading, and its aspects to
+            your natal chart are measured and <b>ranked by exactness</b> before
+            anything is written — so the tightest contact leads, not the
+            best-known planet.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contrast ─────────────────────────────────────────── -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Where the depth shows up</p>
+        <h2>A sun-sign column has one input. Your chart has forty.</h2>
+        <p>
+          A horoscope written per sign is written for a twelfth of everyone alive
+          that day. The difference is not the writing — it is how much of you the
+          writer was given.
+        </p>
+      </div>
+
+      <div class="scroll-x">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th scope="col">Input</th>
+              <th scope="col">A sun-sign reading</th>
+              <th scope="col">Tara</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What you hand it</td>
+              <td class="them">Your birth date</td>
+              <td class="us">Date, <b>exact time</b>, and place</td>
+            </tr>
+            <tr>
+              <td>The Moon</td>
+              <td class="them">Not used</td>
+              <td class="us">Sign, degree, <b>nakshatra, pada and lord</b></td>
+            </tr>
+            <tr>
+              <td>The Ascendant</td>
+              <td class="them">Not used</td>
+              <td class="us">Computed from sidereal time at your coordinates</td>
+            </tr>
+            <tr>
+              <td>Aspects</td>
+              <td class="them">None — there is only one body</td>
+              <td class="us">All <b>45 pairs</b>, each with its orb</td>
+            </tr>
+            <tr>
+              <td>Vedic</td>
+              <td class="them">Absent</td>
+              <td class="us">Own ayanamsa, own rashi, own <b>dasha clock</b></td>
+            </tr>
+            <tr>
+              <td>Chinese</td>
+              <td class="them">Year animal, if any</td>
+              <td class="us">Four pillars, month by solar term, year by Li Chun</td>
+            </tr>
+            <tr>
+              <td>Compatibility</td>
+              <td class="them">A sign-pair verdict</td>
+              <td class="us"><b>36-point Ashtakoot</b>, full synastry, Bazi</td>
+            </tr>
+            <tr>
+              <td>Today's reading</td>
+              <td class="them">One written per sign</td>
+              <td class="us">One written per chart</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Numbers ──────────────────────────────────────────── -->
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="figures">
+        <div class="figure"><div class="n">10</div><div class="l">bodies tracked</div></div>
+        <div class="figure"><div class="n">45</div><div class="l">aspect pairs</div></div>
+        <div class="figure"><div class="n">27</div><div class="l">nakshatras</div></div>
+        <div class="figure"><div class="n">36</div><div class="l">match points</div></div>
+        <div class="figure"><div class="n">11</div><div class="l">languages</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Readings ─────────────────────────────────────────── -->
+  <section class="section" id="readings">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Readings</p>
+        <h2>Five ways the same chart gets used.</h2>
+        <p>
+          The profile is built once, at sign-up. Everything after that is written
+          against it and against the sky at the moment you asked.
+        </p>
+      </div>
+
+      <div class="grid-2">
+        <article class="card">
+          <h3>The daily reading</h3>
+          <p class="card-sub">Every morning &middot; free</p>
+          <p>
+            Seven sections — the day's headline, love, work, body, the soul note,
+            the timing window, and numbers and colours drawn from that day's sky.
+            Built from the transits at local noon where you are, so it turns over
+            with the Moon rather than with the calendar.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Chat</h3>
+          <p class="card-sub">Ask anything</p>
+          <p>
+            Your full profile and the live transits sit in context for every
+            message, along with the twelve tightest transit-to-natal contacts and
+            their orbs. Ask about a job offer and the answer cites the placements
+            it came from.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Compatibility</h3>
+          <p class="card-sub">Nine relationship types</p>
+          <p>
+            Partner, love interest, friend, colleague, mother, father, brother,
+            sister, or family. The same charts are read for a work partnership
+            differently than for a marriage, because the question is different.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>The weekly deep dive</h3>
+          <p class="card-sub">Six areas</p>
+          <p>
+            Love, career, health, spiritual growth, money, or family — around
+            1,200 words on one of them, walking the week day by day and naming
+            which days carry the transit that matters.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Chart analysis</h3>
+          <p class="card-sub">Written once, kept</p>
+          <p>
+            Eight sections and roughly 2,500 words on the natal chart alone:
+            strengths, growth edges, constitution and diet, vocation, love,
+            spiritual path, cycles, and your colours, numbers, days, directions
+            and stones — each with the placement it was drawn from.
+          </p>
+        </article>
+
+        <article class="card">
+          <h3>Eleven languages</h3>
+          <p class="card-sub">Arabic to Vietnamese</p>
+          <p>
+            English, Arabic, Chinese, French, German, Hindi, Japanese, Korean,
+            Portuguese, Spanish and Vietnamese. Set it once and every reading
+            after that arrives in it.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Compatibility ────────────────────────────────────── -->
+  <section class="section" id="match">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Compatibility</p>
+        <h2>Two charts, three traditions, five passes.</h2>
+        <p class="lede">
+          Give Tara their birth details and it builds their full profile from
+          scratch — the same ten bodies, the same ayanamsa, the same pillars —
+          before it compares anything.
+        </p>
+
+        <div class="spec" style="margin-top:2.25rem">
+          <div class="spec-row">
+            <div class="spec-k">Both charts<span class="unit">Pass one</span></div>
+            <div class="spec-v">Their tropical, sidereal and Bazi charts, computed from their own birth time and place.</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-k">Synastry<span class="unit">Pass two</span></div>
+            <div class="spec-v">Every one of the <b>100 cross-chart pairings</b> tested, sorted into harmonious, challenging and conjunct, plus composite midpoints for Sun, Moon, Venus and Mars.</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-k">Ashtakoot<span class="unit">Pass three</span></div>
+            <div class="spec-v">The eight kutas scored on their weighted scale — Varna 1, Vashya 2, Tara 3, Yoni 4, Graha Maitri 5, Gana 6, Bhakoot 7, Nadi 8 — to a total out of 36, with <b>Nadi dosha flagged</b> when it lands.</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-k">Bazi<span class="unit">Pass four</span></div>
+            <div class="spec-v">Year animals read for San He, Liu He, clash and harm; Day Masters read through the productive and controlling cycles; five elements counted across all eight pillars, with the missing ones named.</div>
+          </div>
+          <div class="spec-row">
+            <div class="spec-k">Today's sky<span class="unit">Pass five</span></div>
+            <div class="spec-v">Live transits laid over both charts, with the <b>shared activations</b> — one transiting planet touching both of you — pulled out separately.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="ph-status">
+              <span>9:41</span>
+              <span class="sig" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+            <div class="ph-bar"><span class="t">Compatibility</span></div>
+            <div class="ph-body">
+              <div class="ph-step"><span class="ph-dot done">&#10003;</span><span class="lbl done">Charts built</span></div>
+              <div class="ph-step"><span class="ph-dot done">&#10003;</span><span class="lbl done">Western synastry</span></div>
+              <div class="ph-step"><span class="ph-dot done">&#10003;</span><span class="lbl done">Vedic Ashtakoot</span></div>
+              <div class="ph-step"><span class="ph-dot live">&#9679;</span><span class="lbl live">Chinese Bazi</span></div>
+              <div class="ph-step"><span class="ph-dot wait">5</span><span class="lbl wait">Transit overlay</span></div>
+
+              <div class="ph-score">
+                <div class="n">28<span>/36</span></div>
+                <div class="k">Ashtakoot &middot; Good</div>
+              </div>
+
+              <div class="ph-rule"></div>
+
+              <div class="ph-h1">Maya &amp; Devan</div>
+              <div class="ph-h2">First impression</div>
+              <p class="ph-p">
+                Her Venus sits within <b>1.2&deg;</b> of his Mars — the tightest
+                contact between these two charts, and the one doing most of the
+                pulling.
+              </p>
+              <div class="ph-h2">The growth edge</div>
+              <p class="ph-p">
+                Gana scores <b>0 of 6</b>. Deva and Rakshasa temperaments read
+                conflict at different speeds, and the Bazi agrees: her Rooster and
+                his Rabbit are a <i>six clash</i>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Honesty ──────────────────────────────────────────── -->
+  <section class="section">
+    <div class="read">
+      <div class="section-head center" style="max-width:none">
+        <p class="eyebrow">How it writes</p>
+        <h2>It tells you when the systems disagree.</h2>
+        <p>
+          Where the three traditions point the same way, Tara says so and leans
+          in. Where they contradict each other, it names the contradiction rather
+          than splitting the difference. A reading with no difficulty in it is not
+          an honest reading, and health, legal and money questions stay at the
+          level of tendency and timing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Disclaimer ───────────────────────────────────────── -->
+  <section class="disclaimer">
+    <div class="wrap">
+      <h2>Before you start</h2>
+      <p>
+        <strong>Every reading in Tara is written by AI and is for entertainment.</strong>
+        The astronomy underneath it is computed, but the interpretation on top is
+        generated, and it can be wrong, incomplete, or contradict itself between
+        readings.
+      </p>
+      <p>
+        Nothing in the app is medical, legal, financial or psychological advice.
+        Do not use it to decide whether to take a medicine, sign a contract, move
+        money, or leave a relationship — talk to someone qualified in that field.
+        Tara will not diagnose, and it does not predict illness, death, pregnancy
+        or legal outcomes.
+      </p>
+      <p>
+        Readings need an accurate birth time to be worth anything. A guessed hour
+        moves your Ascendant by fifteen degrees and can change your Vedic Lagna,
+        your Moon's pada and your Bazi hour pillar with it. Full terms are in the
+        <a href="/tara/terms">Terms of Service</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── CTA ──────────────────────────────────────────────── -->
+  <section class="cta">
+    <div class="wrap">
+      <h2>Start with the minute you were born.</h2>
+      <p class="lede">Onboarding asks for four things and takes about a minute.</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://cleo-9893f.web.app">Open Tara</a>
+        <!-- Store buttons are inert until the listings are live.
+             Swap the <span> for an <a href="…"> and drop .btn-store for .btn-ghost. -->
+        <span class="btn btn-store">App Store <span class="soon">Soon</span></span>
+        <span class="btn btn-store">Google Play <span class="soon">Soon</span></span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Alpha Intel Labs</p>
+    <ul class="footer-links">
+      <li><a href="/tara/privacypolicy">Privacy Policy</a></li>
+      <li><a href="/tara/terms">Terms of Service</a></li>
+      <li><a href="mailto:alphaintellabs@gmail.com">Contact</a></li>
+      <li><a href="/">All apps</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+// Starfield — ported from the app's StarField.tsx. Same 40 stars, same
+// ~15fps cap, same radii and drift. Stops entirely on prefers-reduced-motion
+// and while the tab is hidden.
+(function () {
+  var canvas = document.getElementById('stars');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var stars = [];
+  var resizeTimer;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function seed() {
+    stars = [];
+    for (var i = 0; i < 40; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 0.8 + 0.2,
+        speed: Math.random() * 0.1 + 0.02,
+        opacity: Math.random() * 0.8 + 0.2
+      });
+    }
+  }
+
+  function paint(flickering) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var t = Date.now() * 0.001;
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      var flicker = flickering ? Math.sin(t * s.speed * 2 + s.x) * 0.1 + 0.9 : 1;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, ' + (s.opacity * flicker) + ')';
+      ctx.fill();
+    }
+  }
+
+  resize();
+  seed();
+
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { resize(); seed(); paint(!motion.matches); }, 150);
+  });
+
+  if (motion.matches) { paint(false); return; }
+
+  var last = 0;
+  var paused = false;
+  var INTERVAL = 1000 / 15;
+
+  document.addEventListener('visibilitychange', function () { paused = document.hidden; });
+
+  (function frame(ts) {
+    requestAnimationFrame(frame);
+    if (paused) return;
+    if (ts - last < INTERVAL) return;
+    last = ts;
+    paint(true);
+  })(0);
+})();
+</script>
+
+</body>
+</html>
