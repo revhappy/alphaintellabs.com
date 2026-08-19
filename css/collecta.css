@@ -1,0 +1,505 @@
+/* ============================================================
+   Collecta — alphaintellabs.com/collecta
+   ------------------------------------------------------------
+   Collecta's own design system, transplanted onto the Alpha Intel
+   Labs page furniture. Tokens, type scale, radii and the accent
+   rules are lifted verbatim from the app's DESIGN.md so the
+   marketing page and the product cannot drift apart:
+
+     ground     near-black #0B0B0D, very slightly cool
+     accent     clay #E58872 — INFORMATION, never decoration.
+                It means "bucket". Nothing else may wear it.
+     selection  --wash (a translucent white), never the accent
+     type       Instrument Sans display / Geist UI / Geist Mono data
+     radius     8 / 10 / 14. Never 0, never above 14.
+
+   Deliberately absent, per DESIGN.md's anti-slop list: gradients,
+   glassmorphism, orbs, drop shadows on ordinary surfaces, icons in
+   coloured circles, italics.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:   #0B0B0D;
+  --surface: #151518;
+  --ink:     #F2F2F5;
+  --quill:   #96969F;
+  --edge:    #26262B;
+  --wash:    rgba(255, 255, 255, .065);
+  --accent:  #E58872;
+  --success: #4CB98B;
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --wrap: 1180px;
+  --read: 760px;
+  --gut:  clamp(1.5rem, 5vw, 4rem);
+
+  --display: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --sans:    "Geist", "Segoe UI", system-ui, sans-serif;
+  --mono:    "Geist Mono", ui-monospace, Menlo, Consolas, monospace;
+
+  /* DESIGN.md motion: enter / exit / move. No bounce, no springs. */
+  --enter: cubic-bezier(0, 0, .2, 1);
+  --move:  cubic-bezier(.4, 0, .2, 1);
+}
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -.005em;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+strong { font-weight: 500; color: var(--ink); }
+:focus-visible { outline: 1px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { width: 100%; max-width: var(--wrap); margin-inline: auto; padding-inline: var(--gut); }
+.read { width: 100%; max-width: var(--read); margin-inline: auto; padding-inline: var(--gut); }
+
+.skip {
+  position: absolute; left: 0; top: -100px; z-index: 30;
+  background: var(--ink); color: var(--paper);
+  padding: .7rem 1.1rem; font-size: .8rem; border-radius: 0 0 var(--radius-sm) 0;
+}
+.skip:focus { top: 0; }
+
+/* Mono chrome: eyebrows, labels, counts, badges. 10–11px, tracked. */
+.eyebrow, .kicker, .spec-k, .type-badge, .pill {
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  color: var(--quill);
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--paper);
+  border-bottom: 1px solid var(--edge);
+}
+.site-header .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; padding-block: 1.1rem;
+}
+
+.brand {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: -.03em;
+  line-height: 1;
+  display: inline-flex; align-items: baseline; gap: .6rem;
+}
+/* The wordmark is ONE flex item. Left as a bare text node it becomes an
+   anonymous flex item of its own, and the .6rem gap lands between the
+   "Collect" and the "a" — splitting the name in half. */
+.brand .mark { white-space: nowrap; }
+/* The single accent glyph in the wordmark. Not italic — DESIGN.md
+   removed every italic in the system. */
+.brand .a { color: var(--accent); }
+.brand .sub {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--quill); font-weight: 400;
+}
+
+.site-nav ul { display: flex; align-items: center; gap: .25rem; list-style: none; }
+.site-nav a {
+  display: block;
+  white-space: nowrap;
+  font-size: .875rem;
+  color: var(--quill);
+  padding: .35rem .7rem;
+  border-radius: var(--radius-sm);
+  transition: color 100ms var(--move), background-color 100ms var(--move);
+}
+/* Hover is --wash. Never the accent — that is what keeps clay meaningful. */
+.site-nav a:hover { color: var(--ink); background: var(--wash); }
+.site-nav a[aria-current="page"] { color: var(--ink); background: var(--wash); font-weight: 500; }
+
+/* ── Buttons ─────────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 20px;
+  font-family: var(--sans); font-size: .9375rem; font-weight: 500;
+  letter-spacing: -.005em;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background-color 120ms var(--move), color 120ms var(--move), border-color 120ms var(--move);
+  cursor: pointer;
+}
+/* Primary is INK, hovering to accent — never accent at rest. */
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-primary:hover { background: var(--accent); color: var(--paper); }
+.btn-secondary { color: var(--ink); border-color: var(--edge); }
+.btn-secondary:hover { background: var(--wash); border-color: var(--quill); }
+
+/* ── Hero ────────────────────────────────────────────────── */
+
+.hero { padding-block: clamp(3.5rem, 10vw, 7rem) clamp(2.5rem, 6vw, 4.5rem); }
+
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2.75rem, 8vw, 5.25rem);
+  line-height: .95;
+  letter-spacing: -.04em;
+  max-width: 14ch;
+  text-wrap: balance;
+}
+.hero h1 .a { color: var(--accent); }
+
+.hero .lede {
+  margin-top: 1.5rem;
+  max-width: 56ch;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--quill);
+  text-wrap: pretty;
+}
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+.hero-note { margin-top: 1.25rem; font-size: .875rem; color: var(--quill); }
+
+/* ── Sections ────────────────────────────────────────────── */
+
+.section { padding-block: clamp(3rem, 8vw, 5.5rem); border-top: 1px solid var(--edge); }
+.section-head { max-width: 60ch; margin-bottom: clamp(2rem, 4vw, 3rem); }
+.section-head .eyebrow { display: block; margin-bottom: 1rem; }
+.section-head h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.1;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+.section-head h2 .a { color: var(--accent); }
+.section-head p { margin-top: 1rem; font-size: 1.0625rem; line-height: 1.65; color: var(--quill); text-wrap: pretty; }
+
+.prose { max-width: 62ch; }
+.prose p { color: var(--quill); font-size: 1.0625rem; line-height: 1.7; }
+.prose p + p { margin-top: 1rem; }
+.prose strong { color: var(--ink); font-weight: 500; }
+
+/* Quoted user speech. A quote, never an italic — DESIGN.md removed
+   italics from the system, and in a sans they read as plain emphasis. */
+.said { color: var(--ink); }
+
+/* Body links outside the legal documents. */
+.prose a, .spec-v a, .board-cap a, .col p a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--edge);
+  transition: text-decoration-color 100ms var(--move);
+}
+.prose a:hover, .spec-v a:hover, .board-cap a:hover, .col p a:hover { text-decoration-color: var(--accent); }
+
+/* ── The board mock ──────────────────────────────────────────
+   The signature layout from DESIGN.md — 140px bucket label,
+   the note, then type + time. Not a screenshot: the real grid,
+   the real bucket-label treatment, rendered in HTML. */
+
+.board {
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  overflow: hidden;
+}
+.board-bar {
+  display: flex; align-items: center; gap: .75rem;
+  padding: .85rem 1.25rem;
+  border-bottom: 1px solid var(--edge);
+}
+.board-bar .dot { width: 7px; height: 7px; border-radius: 9999px; background: var(--edge); flex: none; }
+.board-bar .cap { font-family: var(--sans); font-size: .9375rem; color: var(--quill); }
+.board-row {
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr) 110px;
+  gap: 1.25rem;
+  padding: 1.15rem 1.25rem;
+  border-top: 1px solid var(--edge);
+  transition: background-color 100ms var(--move);
+}
+.board-row:first-of-type { border-top: none; }
+.board-row:hover { background: var(--wash); }
+
+/* Buckets are the ONLY accent-coloured text on the page. */
+.bucket-label {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: .9375rem;
+  color: var(--accent);
+  text-transform: lowercase;
+  letter-spacing: -.01em;
+  align-self: start;
+}
+.board-row .t {
+  font-family: var(--display);
+  font-weight: 550;
+  font-size: 1.125rem;
+  line-height: 1.32;
+  letter-spacing: -.02em;
+  color: var(--ink);
+}
+.board-row .d { margin-top: .3rem; font-size: .875rem; line-height: 1.55; color: var(--quill); }
+.board-meta { text-align: right; align-self: start; }
+.board-meta .type-badge { display: block; }
+.board-meta .when {
+  display: block; margin-top: .35rem;
+  font-family: var(--mono); font-size: 11px; color: var(--quill);
+  font-variant-numeric: tabular-nums;
+}
+.board-cap { margin-top: 1rem; font-size: .875rem; color: var(--quill); max-width: 62ch; }
+
+@media (max-width: 720px) {
+  .board-row { grid-template-columns: 1fr; gap: .5rem; }
+  .board-meta { text-align: left; }
+  .board-meta .type-badge, .board-meta .when { display: inline; margin: 0; }
+  .board-meta .when::before { content: "·"; margin: 0 .5rem; }
+}
+
+/* ── Feature columns ─────────────────────────────────────── */
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
+  gap: clamp(1.75rem, 4vw, 3rem);
+}
+.cols.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.col h3 {
+  font-family: var(--display);
+  font-weight: 550;
+  font-size: 1.1875rem;
+  line-height: 1.3;
+  letter-spacing: -.02em;
+  margin-bottom: .65rem;
+}
+.col p { font-size: .9375rem; line-height: 1.65; color: var(--quill); text-wrap: pretty; }
+.col p + p { margin-top: .75rem; }
+.col .eyebrow { display: block; margin-bottom: .85rem; }
+
+/* ── Cards ───────────────────────────────────────────────── */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-md);
+  padding: clamp(1.5rem, 3vw, 2rem);
+}
+.card h3 {
+  font-family: var(--display); font-weight: 550; font-size: 1.1875rem;
+  letter-spacing: -.02em; margin-bottom: .65rem;
+}
+.card p { font-size: .9375rem; line-height: 1.65; color: var(--quill); }
+.card p + p { margin-top: .75rem; }
+
+/* A composer line, quoted from the product verbatim. */
+.composer {
+  display: flex; align-items: center; gap: .9rem;
+  background: var(--surface);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  max-width: 620px;
+}
+.composer .ph {
+  font-family: var(--display); font-size: 1rem; color: var(--quill);
+  flex: 1; min-width: 0;
+}
+.composer .send {
+  flex: none; width: 28px; height: 28px; border-radius: 9999px;
+  background: var(--wash); color: var(--quill);
+  display: grid; place-items: center; font-size: .8rem;
+}
+
+/* Accepted-source list — plain rules, no icons in circles. */
+.takes { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; list-style: none; }
+.takes li {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--quill);
+  border: 1px solid var(--edge);
+  border-radius: 9999px;
+  padding: 5px 12px;
+}
+
+/* Spec rows — a key/value register for limits and facts. */
+.spec { border-top: 1px solid var(--edge); }
+.spec-row {
+  display: grid; grid-template-columns: minmax(140px, 200px) 1fr;
+  gap: 1.25rem; padding: 1rem 0; border-bottom: 1px solid var(--edge);
+  align-items: baseline;
+}
+.spec-k { padding-top: .2rem; }
+.spec-v { font-size: .9375rem; line-height: 1.6; color: var(--quill); }
+.spec-v strong { color: var(--ink); }
+@media (max-width: 620px) { .spec-row { grid-template-columns: 1fr; gap: .35rem; } }
+
+/* Status pill — DESIGN.md's pill spec. */
+.pill {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  letter-spacing: .1em;
+}
+.pill.live { background: rgba(76, 185, 139, .13); color: var(--success); }
+.pill.soon { border: 1px solid var(--edge); color: var(--quill); }
+
+/* ── CTA ─────────────────────────────────────────────────── */
+
+.cta { padding-block: clamp(3.5rem, 8vw, 6rem); border-top: 1px solid var(--edge); }
+.cta h2 {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(1.875rem, 5vw, 3rem); line-height: 1.05; letter-spacing: -.04em;
+  max-width: 18ch; text-wrap: balance;
+}
+.cta h2 .a { color: var(--accent); }
+.cta p { margin-top: 1rem; max-width: 52ch; color: var(--quill); font-size: 1.0625rem; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+
+/* ── Footer ──────────────────────────────────────────────── */
+
+.site-footer { border-top: 1px solid var(--edge); padding-block: 2rem 3rem; }
+.site-footer .wrap {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem;
+}
+.site-footer .rights {
+  font-family: var(--mono); font-size: 10px; text-transform: uppercase;
+  letter-spacing: .14em; color: var(--quill);
+}
+.footer-links { display: flex; flex-wrap: wrap; gap: 1.5rem; list-style: none; }
+.footer-links a { font-size: .875rem; color: var(--quill); transition: color 100ms var(--move); }
+.footer-links a:hover { color: var(--ink); }
+
+/* ── Legal documents ─────────────────────────────────────── */
+
+.legal { padding-block: clamp(2.5rem, 6vw, 4rem) clamp(4rem, 9vw, 6rem); }
+
+.legal-head { margin-bottom: 2.75rem; }
+.legal-head .kicker { display: block; margin-bottom: 1rem; }
+.legal h1 {
+  font-family: var(--display); font-weight: 600;
+  font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.05; letter-spacing: -.035em;
+  margin-bottom: .85rem;
+}
+.legal .dates {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .06em; color: var(--quill);
+}
+
+.legal .intro {
+  margin-bottom: 2.5rem; padding: 1.25rem 1.5rem;
+  background: var(--surface); border: 1px solid var(--edge); border-radius: var(--radius-md);
+  font-size: 1rem; line-height: 1.7; color: var(--quill);
+}
+.legal .intro strong { color: var(--ink); }
+
+.legal .toc {
+  margin-bottom: 3rem; padding: 1.5rem;
+  border: 1px solid var(--edge); border-radius: var(--radius-md);
+}
+.legal .toc > p {
+  font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .14em;
+  color: var(--quill); margin-bottom: .9rem;
+}
+.legal .toc ol { columns: 2; column-gap: 2.5rem; padding-left: 1.15rem; }
+.legal .toc li { font-size: .875rem; margin-bottom: .4rem; break-inside: avoid; color: var(--quill); }
+.legal .toc li::marker { color: var(--quill); font-family: var(--mono); font-size: .75rem; }
+.legal .toc a { color: var(--quill); transition: color 100ms var(--move); }
+.legal .toc a:hover { color: var(--accent); }
+@media (max-width: 620px) { .legal .toc ol { columns: 1; } }
+
+.legal h2 {
+  font-family: var(--display); font-weight: 600;
+  font-size: 1.375rem; line-height: 1.25; letter-spacing: -.02em;
+  margin: 2.75rem 0 .9rem;
+  scroll-margin-top: 5rem;
+}
+.legal h3 {
+  font-family: var(--display); font-weight: 550;
+  font-size: 1.0625rem; letter-spacing: -.015em;
+  margin: 1.75rem 0 .6rem;
+}
+.legal p { color: var(--quill); line-height: 1.75; margin-bottom: 1rem; }
+.legal ul, .legal ol { margin: 0 0 1.25rem; padding-left: 1.35rem; }
+.legal li { color: var(--quill); line-height: 1.7; margin-bottom: .5rem; }
+.legal li::marker { color: var(--edge); }
+.legal a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--edge); }
+.legal a:hover { text-decoration-color: var(--accent); }
+
+.legal .table-wrap { overflow-x: auto; margin-bottom: 1.5rem; border: 1px solid var(--edge); border-radius: var(--radius-md); }
+/* The sub-processor and retention tables are the most useful things in
+   these documents, and three columns inside a 760px reading measure
+   squeezes them to a stack of two-word lines. Where there is room, let a
+   table break out of the measure and centre itself on the page. */
+@media (min-width: 1024px) {
+  .legal .table-wrap {
+    width: min(960px, calc(100vw - 4rem));
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.legal table { width: 100%; border-collapse: collapse; min-width: 520px; }
+.legal th, .legal td {
+  text-align: left; padding: .8rem 1rem; font-size: .875rem; line-height: 1.55;
+  border-bottom: 1px solid var(--edge); color: var(--quill); vertical-align: top;
+}
+.legal th {
+  font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--quill); background: var(--surface);
+}
+.legal tr:last-child td { border-bottom: none; }
+.legal td strong { color: var(--ink); }
+
+.legal .note {
+  margin: 1.5rem 0; padding: 1.1rem 1.35rem;
+  border-left: 2px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background: var(--surface);
+}
+.legal .note p { margin-bottom: 0; font-size: .9375rem; }
+
+.legal .contact {
+  margin-top: 2rem; padding: 1.5rem;
+  background: var(--surface); border: 1px solid var(--edge); border-radius: var(--radius-md);
+}
+.legal .contact p { margin-bottom: .3rem; }
+.legal .contact p:last-child { margin-bottom: 0; }
+
+/* ── Narrow ──────────────────────────────────────────────── */
+
+@media (max-width: 560px) {
+  /* Four nav items plus the wordmark have to clear 375px. The sub-brand
+     goes first, then the padding — never the wrap, because a nav that
+     breaks to two lines doubles the sticky header's height. */
+  .site-header .wrap { padding-block: .9rem; gap: .5rem; }
+  .brand { font-size: 1.25rem; }
+  .brand .sub { display: none; }
+  .site-nav ul { gap: 0; }
+  .site-nav a { padding: .3rem .4rem; font-size: .8125rem; }
+  .hero .lede { font-size: 1.0625rem; }
+  .hero-actions .btn, .cta-actions .btn { flex: 1 1 100%; }
+}
+@media (max-width: 400px) {
+  .site-nav a { padding: .3rem .3rem; font-size: .75rem; }
+}
+
+/* ── Motion off ──────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

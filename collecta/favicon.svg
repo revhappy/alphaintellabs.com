@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!--
+    The app's wordmark cut down to its first and last letter: "Collect" + the
+    clay "a". Same two colours as the product chrome — ink #F2F2F5 on the
+    near-black ground, and the accent used exactly once, because in Collecta
+    clay means "bucket" and nothing else is allowed to wear it.
+
+    Text rather than paths, matching the app's own public/icon.svg. Instrument
+    Sans won't resolve inside a favicon on most platforms; the fallback stack
+    lands on the system grotesque, which at 16px is indistinguishable.
+  -->
+  <rect width="64" height="64" rx="14" fill="#0B0B0D"/>
+  <text x="32" y="45"
+        font-family="Instrument Sans, Segoe UI, Helvetica Neue, system-ui, sans-serif"
+        font-size="40" font-weight="600" letter-spacing="-2.5"
+        text-anchor="middle" fill="#F2F2F5">C<tspan fill="#E58872">a</tspan></text>
+</svg>

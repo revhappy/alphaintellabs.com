@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collecta — share anything, it files itself</title>
+<meta name="description" content="Share a tweet, a PDF, a YouTube video or a two-hour meeting into Collecta. It reads the thing, writes it up the way you asked to be told, and files it in the bucket where it belongs.">
+<meta name="theme-color" content="#0B0B0D">
+<link rel="canonical" href="https://alphaintellabs.com/collecta/">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Collecta — share anything, it files itself">
+<meta property="og:description" content="A second brain you feed by sharing. It reads what you send it, writes it in your format, and files it in your bucket.">
+<meta property="og:url" content="https://alphaintellabs.com/collecta/">
+<link rel="icon" href="/collecta/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400..500&family=Geist+Mono:wght@400..500&family=Instrument+Sans:wght@400..700&display=swap">
+<link rel="stylesheet" href="/css/collecta.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/collecta/">
+      <span class="mark">Collect<span class="a">a</span></span>
+      <span class="sub">Alpha Intel Labs</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="/collecta/" aria-current="page">Overview</a></li>
+        <li><a href="/collecta/privacypolicy">Privacy</a></li>
+        <li><a href="/collecta/terms">Terms</a></li>
+        <li><a href="/">All apps</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ── Hero ──────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>Share anything. It files <span class="a">itself</span>.</h1>
+      <p class="lede">
+        A tweet, a PDF, a forty-minute YouTube video, a photo of a page, a
+        two-hour meeting. Collecta reads the actual thing, writes it up in the
+        format and tone you asked for, and drops it in the bucket where it
+        belongs. You never file anything. You never name anything.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://collecta-ai.vercel.app">Open Collecta</a>
+        <a class="btn btn-secondary" href="https://collecta-ai.vercel.app/pricing">See pricing</a>
+      </div>
+      <p class="hero-note">Free to start — ten captures, no card. Runs in any browser today.</p>
+    </div>
+  </section>
+
+  <!-- ── The gesture ───────────────────────────────────────── -->
+  <section class="section" id="capture">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The whole interface</span>
+        <h2>One line. Everything goes in it.</h2>
+        <p>
+          There is no "new note" button, no folder picker, no tag field, no
+          template to choose. There is one box, and whatever you put in it gets
+          understood.
+        </p>
+      </div>
+
+      <div class="composer" aria-hidden="true">
+        <span class="ph">paste a link, drop a file, or just type a thought…</span>
+        <span class="send">↑</span>
+      </div>
+
+      <ul class="takes">
+        <li>Links</li>
+        <li>Articles</li>
+        <li>Tweets &amp; X posts</li>
+        <li>YouTube</li>
+        <li>PDFs</li>
+        <li>Screenshots</li>
+        <li>Photos</li>
+        <li>Voice notes</li>
+        <li>Meeting audio</li>
+        <li>LLM chat exports</li>
+        <li>Plain thoughts</li>
+      </ul>
+
+      <div class="prose" style="margin-top:2rem">
+        <p>
+          Each type is handled properly rather than generically. A YouTube link
+          is watched — frames and audio, with the transcript pulled separately so
+          nothing rests on the title. A tweet's images and video are downloaded
+          and shown to the model, so a screenshot-only post is still read. A PDF
+          is read as a document. A photo of a label, a whiteboard or a page is
+          read as what it <strong>is</strong>, not transcribed string by string.
+        </p>
+        <p>
+          On Android, Collecta sits in the system share sheet — you share from
+          any app straight into it and carry on with your day. On iOS and
+          desktop it installs to the home screen or dock as an app.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── The board ─────────────────────────────────────────── -->
+  <section class="section" id="board">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Where it lands</span>
+        <h2>It comes back filed, in a bucket you wrote in a sentence.</h2>
+        <p>
+          Minutes later the thing you shared is on your board — titled, broken
+          down, tagged, and sitting under the interest it belongs to.
+        </p>
+      </div>
+
+      <div class="board" role="img"
+           aria-label="A board with four filed captures: a tweet under the pregnancy bucket about phthalate exposure and preterm birth; a PDF under llm research explaining mixture-of-experts routing; a recording under meetings about pricing tiers; and a YouTube video under business breaking down an agency teardown.">
+        <div class="board-bar">
+          <span class="dot"></span>
+          <span class="cap">Board</span>
+        </div>
+
+        <div class="board-row">
+          <span class="bucket-label">pregnancy</span>
+          <div>
+            <p class="t">Phthalate exposure and preterm birth risk</p>
+            <p class="d">What the study actually measured, what it found, and the two caveats the thread skips over.</p>
+          </div>
+          <div class="board-meta"><span class="type-badge">Tweet</span><span class="when">2h ago</span></div>
+        </div>
+
+        <div class="board-row">
+          <span class="bucket-label">llm research</span>
+          <div>
+            <p class="t">Mixture-of-Experts routing, in plain terms</p>
+            <p class="d">The paper's core claim, the mechanism behind it, and where it disagrees with the two papers already in this bucket.</p>
+          </div>
+          <div class="board-meta"><span class="type-badge">PDF</span><span class="when">5h ago</span></div>
+        </div>
+
+        <div class="board-row">
+          <span class="bucket-label">meetings</span>
+          <div>
+            <p class="t">Pricing tiers, and whether Pro is underpriced</p>
+            <p class="d">Two speakers, four topics, one decision, three action items — and a note that the pushback on timing never got answered.</p>
+          </div>
+          <div class="board-meta"><span class="type-badge">Recording</span><span class="when">Tue</span></div>
+        </div>
+
+        <div class="board-row">
+          <span class="bucket-label">business</span>
+          <div>
+            <p class="t">The teardown of a $2M agency, minus the padding</p>
+            <p class="d">Forty-three minutes reduced to the six moves that mattered, with timestamps for the two worth rewatching.</p>
+          </div>
+          <div class="board-meta"><span class="type-badge">YouTube</span><span class="when">Mon</span></div>
+        </div>
+      </div>
+
+      <p class="board-cap">
+        Bucket names are the only coloured text in the whole product. That is
+        deliberate — colour here is information, not decoration, and clay means
+        exactly one thing.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Preferences ───────────────────────────────────────── -->
+  <section class="section" id="voice">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Your format, not ours</span>
+        <h2>It writes things the way you asked to be told.</h2>
+        <p>
+          Most tools summarise in one house style. Collecta asks you once, at
+          setup, and then every note it ever writes obeys.
+        </p>
+      </div>
+
+      <div class="cols">
+        <div class="col">
+          <span class="eyebrow">Shape</span>
+          <h3>Bullets, paragraphs, outline, or Q&amp;A</h3>
+          <p>Pick how a breakdown is laid out. It holds across a tweet, a research paper and a meeting alike.</p>
+        </div>
+        <div class="col">
+          <span class="eyebrow">Depth</span>
+          <h3>Summary-first, key points, deep dive, narrative</h3>
+          <p>How far in it goes. Deep dive on a paper you're studying; key points on things you're only tracking.</p>
+        </div>
+        <div class="col">
+          <span class="eyebrow">Tone</span>
+          <h3>Neutral, casual, professional, concise, enthusiastic</h3>
+          <p>Set once. There is no chirpy assistant voice underneath waiting to leak through — it writes in the third person about the source, never as you.</p>
+        </div>
+        <div class="col">
+          <span class="eyebrow">Language</span>
+          <h3>Read it in your language</h3>
+          <p>The analysis comes back in the language you chose. Verbatim quotes stay in the language they were spoken or written in — they are evidence, and translating evidence loses it.</p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem">
+        <p>
+          There's also a free-text instruction box, and it is honoured literally.
+          "Always flag anything that contradicts something I've already saved."
+          "Explain it like I have a biology degree but no maths." "Never use the
+          word 'delve'."
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Buckets ───────────────────────────────────────────── -->
+  <section class="section" id="buckets">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Buckets</span>
+        <h2>Made out of sentences, not folder names.</h2>
+      </div>
+      <div class="prose">
+        <p>
+          You make a bucket by saying what you care about and why — <span class="said">"I'm
+          interested in pregnancy because my wife is pregnant"</span> — and
+          Collecta writes the bucket from that. The <strong>reason</strong> is
+          the part that matters: filing is matched against a bucket's
+          description, not its name, which is why an article about design
+          tooling doesn't get shoved into "ai" just because both touch
+          technology.
+        </p>
+        <p>
+          When something arrives that fits nowhere, it does one of three honest
+          things: files it where it truly belongs, proposes a new bucket if
+          you've clearly started collecting a new interest, or leaves it
+          uncategorised for you. It is deliberately conservative about
+          proposing — a new bucket has to look like somewhere you'll file five
+          more things, not a home for this one item.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Meetings ──────────────────────────────────────────── -->
+  <section class="section" id="meetings">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Meetings</span>
+        <h2>Record the room. Get back what was actually said.</h2>
+        <p>
+          Hit record in the browser — no bot joining your call, no calendar
+          integration, no invite to explain to anyone. Up to two hours in a
+          single sitting.
+        </p>
+      </div>
+
+      <div class="cols two">
+        <div class="col">
+          <h3>Transcribed first, understood second</h3>
+          <p>
+            The audio is transcribed on its own pass, with speakers separated,
+            in the language actually spoken. Only then does a second pass read
+            that transcript and write the synthesis — and that pass never gets
+            the audio.
+          </p>
+          <p>
+            This split exists because of a real failure: given audio and a
+            summarising job at once, a model forms a hunch about what kind of
+            thing it's hearing and bends the transcript to fit. A casual
+            conversation in Sindhi came back as a "Sikh prayer ritual." Split in
+            two, the transcript is fixed before anything is allowed to interpret
+            it.
+          </p>
+        </div>
+        <div class="col">
+          <h3>What you get back</h3>
+          <p>
+            An overview, then every topic in the order it came up — each
+            speaker's point kept as their own, with counterarguments preserved
+            rather than merged into "the team discussed X". Then decisions,
+            action items with owners, and open questions nobody answered.
+          </p>
+          <p>
+            Then the part no meeting-notes tool writes: <strong>sentiment and
+            dynamics</strong>. Each person's register, cited to the moments that
+            show it. Where the pushback came from and whether it ever resolved.
+            Where the energy in the room turned. Followed by a handful of sharp
+            questions the conversation should leave you with.
+          </p>
+        </div>
+      </div>
+
+      <div class="prose" style="margin-top:2.5rem">
+        <p>
+          The recording itself is deleted after 30 days. The transcript and the
+          write-up are permanent — the expensive part to store is the audio, and
+          the valuable part is the words.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Ask ───────────────────────────────────────────────── -->
+  <section class="section" id="ask">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Ask</span>
+        <h2>Ask your own library a question and get a cited answer.</h2>
+      </div>
+      <div class="prose">
+        <p>
+          "What did I save about sleep and cortisol?" runs a keyword search and
+          a meaning-based search at the same time, fuses the two result lists,
+          then has a model score every candidate for whether it genuinely
+          answers the question — not merely whether it mentions the words.
+          Anything that only glances off the topic is dropped before the answer
+          is written.
+        </p>
+        <p>
+          The answer arrives with the notes it drew on, so you can go straight
+          to the source. And when nothing in your library actually answers you,
+          it says so and offers the three closest things instead of
+          manufacturing a confident paragraph out of near-misses.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Everything else ───────────────────────────────────── -->
+  <section class="section" id="more">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Once it's in</span>
+        <h2>The collection is the point, not the storage.</h2>
+      </div>
+
+      <div class="cols">
+        <div class="col">
+          <h3>Insights</h3>
+          <p>
+            A briefing on what you've been filing — the thread you kept pulling
+            on, the bucket that carried the week, a tension between two things
+            you saved. Scannable in thirty seconds, citing your actual notes, no
+            praise and no motivational filler. It runs when you ask for it, not
+            on a schedule.
+          </p>
+        </div>
+        <div class="col">
+          <h3>Research this</h3>
+          <p>
+            Take any note's claims out to the live web and come back with a
+            grounded report attached to it. Or point it at a whole bucket —
+            "what's the current thinking on this?", "what's changed since I
+            started collecting?" — with your existing notes as context.
+          </p>
+        </div>
+        <div class="col">
+          <h3>Talk to a note or a bucket</h3>
+          <p>
+            Argue with a paper. Ask a bucket what it thinks it knows. The
+            conversation is kept with the note, so picking it up in three weeks
+            resumes rather than restarts.
+          </p>
+        </div>
+        <div class="col">
+          <h3>Your own annotations</h3>
+          <p>
+            Add your own thinking on top of any note, with images or files
+            attached. Your words stay visibly yours — never blended into the
+            machine's write-up.
+          </p>
+        </div>
+        <div class="col">
+          <h3>Things it notices connect</h3>
+          <p>
+            Collecta pulls the specific people, papers, companies, places,
+            events and claims out of each note and links notes that share them.
+            Every one has to be backed by a real quote from the source, so
+            connections are evidence, not vibes. Dated things resolve against
+            when you captured them — "next Friday" in a note from June stays in
+            June.
+          </p>
+        </div>
+        <div class="col">
+          <h3>Share a bucket</h3>
+          <p>
+            Publish a note or a whole bucket at a link anyone can read without
+            an account. Or open a bucket for contributions — anything a
+            collaborator shares in lands in your bucket <strong>and</strong>
+            stays in their own library. Revoke a link and it's dead.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Honesty ───────────────────────────────────────────── -->
+  <section class="section" id="honesty">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The part we're most proud of</span>
+        <h2>It would rather tell you it couldn't read something.</h2>
+        <p>
+          A second brain that quietly invents things is worse than no second
+          brain, because you'll trust it later and won't remember which part was
+          real.
+        </p>
+      </div>
+
+      <div class="cols two">
+        <div class="col">
+          <h3>A URL is not content</h3>
+          <p>
+            If a page is paywalled, login-walled, bot-blocked or rendered
+            entirely in JavaScript, Collecta will not write a summary from the
+            headline and the address bar. You get an honest saved reference with
+            a clean title and a one-line hint: paste the text in and re-run it.
+            Most tools will happily hallucinate a confident three-paragraph
+            summary of a page they never loaded.
+          </p>
+        </div>
+        <div class="col">
+          <h3>Thin is reported as thin</h3>
+          <p>
+            A vague voice memo comes back as a short honest note, not inflated
+            into an insight. Inaudible stretches of a recording are marked as
+            inaudible rather than smoothed over. A rambling call with no agenda
+            is written up as exactly that — "nothing was decided" is a correct
+            result, and one most summarisers are incapable of producing.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Ownership ─────────────────────────────────────────── -->
+  <section class="section" id="yours">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Terms of the arrangement</span>
+        <h2>Everything in here is yours, and leaves with you.</h2>
+      </div>
+
+      <div class="spec">
+        <div class="spec-row">
+          <span class="spec-k">Export</span>
+          <span class="spec-v">A full archive — every note, bucket, transcript, research report and attachment, as Markdown and as JSON. <strong>On every plan, including the free one.</strong> An export tool you only get once you're paying isn't an export tool, it's a hostage negotiation.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-k">Failed captures</span>
+          <span class="spec-v">Don't count against your allowance. You are not billed for our errors.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-k">At the limit</span>
+          <span class="spec-v">New captures pause until the period rolls over. Nothing is deleted, nothing is downgraded, and everything you already have stays readable, searchable and exportable.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-k">Every limit</span>
+          <span class="spec-v">Published up front, on a <a href="https://collecta-ai.vercel.app/pricing">public page</a>, generated from the same numbers the server enforces. They cannot drift apart.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-k">Your content</span>
+          <span class="spec-v">Not used to train models — not ours, not anyone's. Your library isn't sold, rented, or mined for advertising.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-k">Links you share in</span>
+          <span class="spec-v">Fetched through a guard that refuses internal and private addresses and re-checks every redirect, so a hostile link can't be used to make our servers reach somewhere they shouldn't.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Where it runs ─────────────────────────────────────── -->
+  <section class="section" id="platforms">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Where it runs</span>
+        <h2>Any browser today. Native apps in build.</h2>
+      </div>
+
+      <div class="spec">
+        <div class="spec-row">
+          <span class="spec-k">Web</span>
+          <span class="spec-v"><span class="pill live">Shipping</span> &nbsp; Full product in any modern browser, phone or desktop. Dark by default, light if you prefer it.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-k">Android</span>
+          <span class="spec-v"><span class="pill live">Shipping</span> &nbsp; Installs to the home screen and registers in the system share sheet, so anything on the phone can be shared into it.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-k">iPhone &amp; iPad</span>
+          <span class="spec-v"><span class="pill live">Shipping</span> &nbsp; Installs to the home screen from Safari. iOS doesn't let a web app into the share sheet, which is the one thing worth having a native build for.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-k">Play Store &amp; App Store</span>
+          <span class="spec-v"><span class="pill soon">In development</span> &nbsp; Native Android and iOS builds, so Collecta appears wherever you tap "Share" — and so you can install it the ordinary way.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Plans ─────────────────────────────────────────────── -->
+  <section class="section" id="plans">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Plans</span>
+        <h2>Priced against the two tools it replaces.</h2>
+        <p>
+          A read-later brain and a meeting recorder, in one place, for less than
+          either pair costs. Cancel any time; you keep the plan until the period
+          you paid for ends.
+        </p>
+      </div>
+
+      <div class="spec">
+        <div class="spec-row">
+          <span class="spec-k">Free</span>
+          <span class="spec-v"><strong>$0</strong> — ten captures to find out whether it files things where you'd have filed them. Includes one Insights briefing and one Research report, because those are the parts nobody else has.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-k">Starter</span>
+          <span class="spec-v"><strong>$9.99/mo</strong> — for one person building the habit of saving everything. Includes a couple of hours of meeting recording.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-k">Plus</span>
+          <span class="spec-v"><strong>$19.99/mo</strong> — heavy readers who also sit in a few meetings a week.</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-k">Pro</span>
+          <span class="spec-v"><strong>$29.99/mo</strong> — twenty hours of recording a month, two-hour sessions, and the highest allowances across the board.</span>
+        </div>
+      </div>
+
+      <p class="board-cap">
+        Annual pricing and the exact number behind every line above are on the
+        <a href="https://collecta-ai.vercel.app/pricing">pricing page</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────── -->
+  <section class="cta">
+    <div class="wrap">
+      <h2>Stop filing things. Start <span class="a">sharing</span> them.</h2>
+      <p>
+        Ten captures free. Long enough to see whether it puts things where you
+        would have put them yourself.
+      </p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://collecta-ai.vercel.app">Open Collecta</a>
+        <a class="btn btn-secondary" href="mailto:alphaintellabs@gmail.com">Ask us something</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p class="rights">© 2026 Alpha Intel Labs</p>
+    <ul class="footer-links">
+      <li><a href="https://collecta-ai.vercel.app">Open Collecta</a></li>
+      <li><a href="https://collecta-ai.vercel.app/pricing">Pricing</a></li>
+      <li><a href="/collecta/privacypolicy">Privacy Policy</a></li>
+      <li><a href="/collecta/terms">Terms</a></li>
+      <li><a href="mailto:alphaintellabs@gmail.com">Contact</a></li>
+      <li><a href="/">All apps</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
