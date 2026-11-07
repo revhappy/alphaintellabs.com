@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Aum</title>
-  <meta name="description" content="Privacy Policy for Aum by Alpha Intel Labs. Aum has no server and no account. Nothing you do in the app is collected or transmitted.">
+  <meta name="description" content="Privacy Policy for Aum by Alpha Intel Labs. Aum has no account. Practice data stays on your device; purchase checks use RevenueCat.">
   <meta name="theme-color" content="#0b0d0c">
   <link rel="canonical" href="https://alphaintellabs.com/aum/privacy">
   <link rel="icon" href="/aum/favicon.svg" type="image/svg+xml">
@@ -49,7 +49,7 @@
 
   <p class="app-name">Aum</p>
   <h1>Privacy Policy</h1>
-  <p class="effective-date">Effective Date: August 7, 2026 &nbsp;·&nbsp; Last updated: August 17, 2026</p>
+  <p class="effective-date">Effective Date: August 7, 2026 &nbsp;·&nbsp; Last updated: November 6, 2026</p>
 
   <p>
     This policy explains what Aum (&ldquo;the app&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) does
@@ -59,20 +59,20 @@
   <div class="callout">
     <h2>Summary</h2>
     <ul>
-      <li><strong>We have no server and no account.</strong> There is nothing to sign into, and we hold no record of you.</li>
-      <li><strong>Nothing you do in the app is transmitted anywhere.</strong> Your sessions, settings and history are written to your own device and stay there.</li>
-      <li><strong>One third party, and only for purchases.</strong> RevenueCat checks whether you have bought the full version. It receives an anonymous, randomly generated installation identifier and your store receipt — never your name, your email, or anything about how you use the app.</li>
+      <li><strong>We have no server and no account.</strong> There is nothing to sign into, and we hold no record that identifies you.</li>
+      <li><strong>The app does not send what you do in it anywhere.</strong> Your sessions, settings and history are written to your own device.</li>
+      <li><strong>One third party, and only for purchases.</strong> RevenueCat checks whether you have bought the full version. It receives an anonymous, randomly generated installation identifier, your store receipt if you buy, and the basic technical details that every internet connection carries. It never receives your name, your email, or anything about how you use the app.</li>
       <li>All audio is <strong>synthesised on your phone</strong>. There is no streaming, so there is no listening record to keep — yours or ours.</li>
       <li>The app works fully <strong>in airplane mode</strong>, apart from buying or restoring the full version.</li>
-      <li>There are <strong>no ads, no trackers, and no analytics, attribution or advertising SDKs</strong>, and nothing is ever sold or shared.</li>
-      <li>Deleting the app deletes everything it stored.</li>
+      <li>There are <strong>no ads, no trackers, and no analytics, attribution or advertising SDKs</strong>, and we do not sell your data.</li>
+      <li>Deleting the app deletes what it stored on your device. Your phone's own backup can keep a copy (see section 7).</li>
     </ul>
   </div>
 
   <h2>1. Information We Collect</h2>
 
   <p>
-    <strong>None.</strong> Aum does not ask for your name, email address, phone
+    <strong>We do not ask for personal details.</strong> Aum does not ask for your name, email address, phone
     number, date of birth, location, contacts, photos, or any other personal
     information, and it has no facility to receive them. There is no account to
     create and no profile to fill in.
@@ -81,22 +81,31 @@
   <p>
     We do not operate a server, and the app never sends anything to us. We do not
     run analytics, crash reporting, attribution, advertising or A/B testing SDKs
-    of any kind. We hold no record that you have ever installed or opened Aum.
+    of any kind.
   </p>
 
   <p>
-    The one exception to &ldquo;nothing leaves the device&rdquo; is the purchase
-    check described in section 4, which is handled for us by RevenueCat. It knows
-    an anonymous installation identifier and whether a purchase exists. It does
-    not know who you are, and neither do we.
+    The exception is the purchase
+    check in sections 3 and 4. RevenueCat does this check for us. The first time
+    the app connects, RevenueCat makes an anonymous record for this installation.
+    That record contains a random identifier and, if you buy, your store receipt.
+    It does not include your name or email address.
   </p>
 
   <h2>2. What Is Stored on Your Device</h2>
 
   <p>
     Aum saves a small amount of data locally, in your device's app storage, so
-    that it can work the way you left it. This data never leaves your device, is
-    not readable by us, and is not backed up to any service we control.
+    that it can work the way you left it. The app does not send this data to us
+    or to RevenueCat, and we cannot read it.
+  </p>
+
+  <p>
+    Your phone's own backup can include this data. On Android, this is the
+    backup to your Google account. On iPhone, it is an iCloud backup or a backup
+    to a computer. That backup belongs to your account, not to us. When you
+    restore a phone from a backup, or install Aum again on a phone with backup
+    on, the backup can put this data back.
   </p>
 
   <h3>Session history</h3>
@@ -105,7 +114,8 @@
     type, how long you actually listened, the breathing pattern in use, whether
     it ran to completion, and the time it happened. This is what draws the
     &ldquo;Your practice&rdquo; screen. It is capped at the most recent 500
-    entries and you can erase all of it from within the app.
+    entries. To erase all of it, tap &ldquo;Clear history&rdquo; on the
+    &ldquo;Your practice&rdquo; screen, then tap it again to confirm.
   </p>
 
   <h3>Your settings</h3>
@@ -143,17 +153,27 @@
   <p>
     Aum contains no streamed or downloaded content. Every tone, pulse, bell and
     soundscape is generated by the app itself while it plays, and the entire
-    catalogue is compiled into the app binary. Nothing is fetched at runtime.
+    catalogue is compiled into the app binary. No audio content is downloaded.
   </p>
 
   <p>
     The Android build declares the standard <code>INTERNET</code> permission,
-    which the purchase flow requires. The app's only network requests are that
-    purchase check: it asks RevenueCat whether this installation holds the full
-    version when it starts, and again when you buy or restore. Nothing else in
-    Aum uses the network, <strong>nothing is ever sent to us</strong>, and the
-    app functions fully with your device offline — the only things that need a
-    connection are buying and restoring.
+    which the purchase flow requires. All network use in Aum is for purchases,
+    and it goes through RevenueCat's software:
+  </p>
+
+  <ul>
+    <li>When the app starts, it asks RevenueCat whether this installation has the
+      full version, and it gets the current price from the store.</li>
+    <li>Each time you return to the app, RevenueCat's software can check again.</li>
+    <li>When you buy or restore, the app sends the purchase to RevenueCat to
+      verify it.</li>
+  </ul>
+
+  <p>
+    Nothing else in Aum uses the network, and the app does not send data to our own servers. When your device is offline, these checks fail without a
+    message and the app continues to work. Only buying and restoring need a
+    connection.
   </p>
 
   <h2>4. Purchases</h2>
@@ -176,11 +196,18 @@
     establish whether this installation has paid, including when you restore a
     purchase on a new device. To do that, RevenueCat receives an
     <strong>anonymous, randomly generated installation identifier</strong> that it
-    creates itself, together with the receipt the app store issues. It does not
-    receive your name, your email address, your device's advertising identifier,
-    or anything about which sessions you play or when. We do not send it anything
-    else, and we cannot use it to identify you. Its handling of that data is
-    covered by
+    creates itself, together with the receipt the app store issues. Like any
+    internet service, RevenueCat also sees the IP address that each request comes
+    from. Its software sends basic technical details: the platform, the system
+    and app versions, and your locale and currency. It does not receive your
+    name, your email address, your device's advertising identifier, or anything
+    about which sessions you play or when. We do not send it anything else.
+  </p>
+
+  <p>
+    RevenueCat keeps this record on its servers for us. Deleting the app does not
+    delete it. See section 7 to ask us to delete it. RevenueCat's handling of
+    this data is covered by
     <a href="https://www.revenuecat.com/privacy" rel="noopener">RevenueCat's own
     privacy policy</a>.
   </p>
@@ -206,8 +233,7 @@
 
   <p>
     Aum is not directed at children under 13 and we do not knowingly collect
-    information from anyone — of any age — because the app collects nothing at
-    all. Parents should be aware of the health and safety warnings in our
+    personal information from anyone — of any age — because the app does not ask for it. Parents should be aware of the health and safety warnings in our
     <a href="/aum/terms">Terms of Service</a>, particularly the one concerning
     seizure disorders, before allowing a child to use rhythmic audio stimulation.
   </p>
@@ -215,29 +241,40 @@
   <h2>7. Your Rights and Choices</h2>
 
   <p>
-    Because we hold no data about you, there is nothing for us to disclose,
-    correct, export or delete on request, and no profile to opt out of. Everything
-    Aum stores is under your direct control on your own device:
+    We do not keep a profile of you, so there is no profile to opt out of. The
+    data that Aum stores on your device is under your control:
   </p>
 
   <ul>
-    <li>Clear your practice history from the app at any time.</li>
-    <li>Clearing the app's storage in your device settings erases what Aum has
-      written to your device. If you have bought the full version,
-      &ldquo;Restore&rdquo; on the unlock screen brings your purchase back.</li>
-    <li>Uninstalling the app removes everything it has stored.</li>
+    <li>To erase your practice history, tap &ldquo;Clear history&rdquo; on the
+      &ldquo;Your practice&rdquo; screen.</li>
+    <li>On Android, clear the app's storage in your device settings to erase all
+      the data Aum has written to your device. On iPhone, delete the app to do
+      this. If you have bought the full version, &ldquo;Restore&rdquo; on the
+      unlock screen gets your purchase back.</li>
+    <li>Uninstalling the app removes the data it stored on your device. A copy
+      can stay in your phone's own backup (see section 2) until that backup is
+      replaced or deleted. To remove that copy, delete it in your Google account
+      or iCloud backup settings.</li>
   </ul>
 
   <p>
-    A record of your purchase is held by the app store, not by us. Requests
-    relating to that record — including refunds — go to the store.
+    RevenueCat keeps the anonymous record in section 4. It contains no name or
+    email, so we cannot find it from your name or email. To ask us to delete it,
+    email us the order number from your store receipt. We will find the record
+    with that number and ask RevenueCat to delete it.
+  </p>
+
+  <p>
+    The app store also keeps a record of your purchase. Requests about that
+    record, including refunds, go to the store.
   </p>
 
   <h2>8. Data Security</h2>
 
   <p>
-    The strongest security property Aum has is that there is nothing to breach:
-    no server, no database, no account and no transmission. Data written on your
+    Aum has no account and we do not run our own server for the app. The only data off
+    your device is the anonymous purchase record in section 4. Data written on your
     device is protected by your device's own operating-system sandbox and
     whatever screen lock and encryption you have enabled on it.
   </p>
@@ -246,9 +283,7 @@
 
   <p>
     If this policy changes we will update the date at the top of this page and
-    publish the revised version here. If a future version of Aum ever collects or
-    transmits anything, we will say so plainly and in advance rather than
-    quietly widening this document.
+    publish the revised version here. If Aum’s data practices change, we will update this policy.
   </p>
 
   <h2>10. Contact Us</h2>
