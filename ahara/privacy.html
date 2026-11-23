@@ -70,7 +70,7 @@
     Ahara
   </p>
   <h1>Privacy Policy</h1>
-  <p class="effective-date">Effective Date: August 2, 2026 &nbsp;·&nbsp; Last updated: August 2, 2026</p>
+  <p class="effective-date">Effective Date: November 22, 2026 &nbsp;·&nbsp; Last updated: November 22, 2026</p>
 
   <p>Alpha Intel Labs ("we", "us", or "our") operates the Ahara mobile application and website (the "Service"). Ahara is an AI-powered product label analyzer: it uses large language models to read the labels of food, beverages, supplements, skincare and cosmetics, toothpaste, medicine and other consumer products, and returns informational analysis of their ingredients — including, if you choose to set them, an assessment of how well a product fits your own health and dietary goals. This Privacy Policy explains how we collect, use, and protect your information when you use our Service.</p>
 
@@ -78,8 +78,9 @@
     <h2>Summary</h2>
     <p>The detail is below, but in short:</p>
     <ul>
-      <li>Your scans and photos stay <strong>on your device</strong> by default.</li>
-      <li>Three optional things upload data: <strong>setting health goals</strong>, <strong>favoriting a scan</strong> (both only while signed in), and <strong>sharing an analysis</strong>.</li>
+      <li>Each photo, and any goals you set, is sent to our servers and to <strong>OpenAI</strong> to produce your analysis, <strong>only after you agree</strong>.</li>
+      <li>Your scan history stays <strong>on your device</strong> by default.</li>
+      <li>Three optional things store data on our servers: <strong>setting health goals</strong>, <strong>favoriting a scan</strong> (both only while signed in), and <strong>sharing an analysis</strong>.</li>
       <li>Your <strong>health goals are never shown to anyone you share with</strong>.</li>
       <li>A <strong>share link is public to anyone who has it</strong> and expires after 90 days.</li>
       <li>We don't sell your data, don't use it for ads, and don't train AI models on it.</li>
@@ -96,23 +97,27 @@
   <p>The goals you can select include dietary patterns (for example ketogenic, vegan, halal, low-FODMAP), allergies and intolerances, ingredients you wish to avoid, and <strong>health conditions and circumstances</strong> — for example PCOS, type 2 diabetes, thyroid conditions, gout, kidney conditions, migraine, ADHD, coeliac disease, pregnancy and breastfeeding, and fertility. There is also a free-text field in which you may describe your situation in your own words.</p>
   <p><strong>We treat this as health information.</strong> If you choose to provide it:</p>
   <ul>
+    <li>We ask for your <strong>explicit consent</strong> before you first select a health goal, and you can withdraw it in Settings.</li>
     <li>It is <strong>stored on your device</strong>.</li>
-    <li>It is <strong>sent to our AI service provider with each scan</strong>, as part of the analysis request, so the model can judge whether a product fits your goals.</li>
+    <li>It is <strong>sent to OpenAI, our AI provider, with each scan</strong>, as part of the analysis request, so the model can judge whether a product fits your goals.</li>
     <li>If you are <strong>signed in to an account</strong>, it is also <strong>stored in our database</strong> so that your goals follow you if you reinstall the app or use another device. Database security rules restrict this record to your account only.</li>
-    <li>If you are <strong>not</strong> signed in, or are using the app anonymously, your goals are <strong>never uploaded</strong> and remain on your device.</li>
+    <li>If you are <strong>not</strong> signed in, or are using the app anonymously, your goals are <strong>not stored in our database</strong>. They stay on your device and are sent only with each scan, as described above.</li>
     <li>It is <strong>never included in a shared link</strong> (see “Shared Analyses” below). Sharing a product analysis does not reveal your goals or health conditions to the recipient.</li>
-    <li>You can delete it at any time with “Clear all goals” on the Goals screen, or by deleting your account.</li>
+    <li>You can delete it at any time with “Clear all goals” on the Goals screen, “Withdraw health-data consent” in Settings, or by deleting your account.</li>
   </ul>
 
   <h3>Product Images</h3>
   <p>When you scan a product label, Ahara captures a photo using your device camera. These images are:</p>
   <ul>
     <li><strong>Sent to our servers</strong> for AI-powered text extraction and ingredient analysis.</li>
-    <li><strong>Processed by a third-party AI service provider</strong> to read the label and analyze the ingredients.</li>
+    <li><strong>Processed by OpenAI, our AI provider</strong>, to read the label and analyze the ingredients, once you have agreed to this in the app. OpenAI does not use this data to train its models and is told not to store it. It may keep request logs for up to 30 days to monitor for abuse.</li>
     <li><strong>Not stored on our servers</strong> after analysis is complete. Full-resolution images are processed in real time and discarded, and are never uploaded to your account.</li>
     <li><strong>Stored locally on your device</strong> as part of your scan history, which you control and can delete at any time.</li>
     <li>A small <strong>thumbnail</strong> (approximately 200 pixels) is stored in our database in two cases only: if you save a scan to your Favorites while signed in, and if you create a share link. See the two sections below.</li>
   </ul>
+
+  <h3>Barcode Lookups</h3>
+  <p>If your camera sees a product barcode, our servers may look up that number in <strong>Open Food Facts</strong> or <strong>Open Beauty Facts</strong>, open product databases. Only the barcode number is sent, never your identity. We keep the product record for up to 7 days to avoid repeat lookups. Product data is available under the <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License</a>.</p>
 
   <h3>Scan Results &amp; Chat History</h3>
   <p>Analysis results (ingredient lists, scores, and AI-generated commentary) are generated server-side and returned to your device. By default they are <strong>stored only on your device</strong>, along with any chat conversation you have about a scanned product.</p>
@@ -136,7 +141,7 @@
   <p>We collect basic usage information such as scan counts, subscription tier, and account creation date to manage service limits and improve the app.</p>
 
   <h3>Device Information</h3>
-  <p>We collect a <strong>device identifier</strong> (native device ID on mobile, or a generated browser fingerprint on web) to enforce free trial limits and link trial scans to user accounts. This identifier is stored in our database alongside your scan count.</p>
+  <p>We collect a <strong>device identifier</strong> (native device ID on mobile, or a generated browser fingerprint on web) to enforce free trial limits and link trial scans to user accounts. This identifier is stored in our database alongside your scan count. If you buy a subscription or scan pack without an account, your purchase is tied to this identifier.</p>
 
   <h2>2. How We Use Your Information</h2>
   <ul>
@@ -152,12 +157,13 @@
   <p><strong>We do not sell your data. We do not use it for advertising. We do not use your data to train AI models. We do not use your health and dietary goals for any purpose other than personalizing your own analysis results.</strong></p>
 
   <h2>3. Service Providers</h2>
-  <p>We rely on a small number of third-party service providers to operate the Service. We name them by the function they perform rather than by brand, because providers may be changed over time as the Service evolves. In every case, providers act on our instructions, may use the data only to deliver their service to us, and are bound by their agreements with us and by applicable data protection law.</p>
+  <p>We rely on a small number of third-party service providers to operate the Service. Our AI provider is named below because you are asked to agree to sharing data with it. We describe the others by the function they perform, because they may change as the Service evolves. In every case, providers act on our instructions, may use the data only to deliver their service to us, and are bound by their agreements with us and by applicable data protection law.</p>
   <ul>
-    <li><strong>AI analysis providers</strong> — Product label images, and your health and dietary goals if you have set any, are sent to a third-party provider of large language models for text extraction and ingredient analysis. Data is processed in real time to generate your result. <strong>Our agreements with these providers prohibit the use of your data to train their models.</strong></li>
+    <li><strong>AI analysis: OpenAI</strong> — Product label images, chat messages, and your health and dietary goals if you have set any, are sent to OpenAI for text extraction and analysis. Data is processed in real time to generate your result. OpenAI does not use this data to train its models and is told not to store it. It may keep request logs for up to 30 days to monitor for abuse. If we change AI provider, we will update this policy and ask for your agreement again.</li>
+    <li><strong>Open product databases</strong> — Barcode numbers are looked up in Open Food Facts and Open Beauty Facts, as described above.</li>
     <li><strong>Authentication and database providers</strong> — Account sign-in, the storage of your account record, goals, favorites and shared analyses, and the server functions that run the app.</li>
     <li><strong>Cloud infrastructure providers</strong> — The backend computing and hosting on which the Service runs.</li>
-    <li><strong>App store billing</strong> — If you purchase a subscription or a scan pack, your payment is processed by the app store you purchased through (Apple App Store or Google Play). We do not receive or have access to your payment card details.</li>
+    <li><strong>App store billing and purchase management</strong> — If you purchase a subscription or a scan pack, your payment is processed by the app store you purchased through (Apple App Store or Google Play), and a purchase-management provider records it against your account or device identifier. We do not receive or have access to your payment card details.</li>
   </ul>
   <p>Some of these providers process data outside your country of residence, including in the United States. Where required, transfers are made under appropriate safeguards such as the European Commission's Standard Contractual Clauses. We do not share your personal information with any third party for that party's own marketing or advertising purposes.</p>
   <p>You may request the current list of service provider categories and their locations by emailing us.</p>
@@ -169,12 +175,16 @@
     <li><strong>Scan results and chat history</strong> are stored on your device. Copies are retained in our database only for scans you favorite while signed in, and are deleted when you remove the favorite or delete your account.</li>
     <li><strong>Health and dietary goals</strong> are retained in our database, if you are signed in, until you clear them in the app or delete your account.</li>
     <li><strong>Shared analyses</strong> are automatically deleted <strong>90 days</strong> after the share link is created, or sooner on request.</li>
-    <li><strong>Device trial records</strong> (device ID, scan count) are retained to prevent trial abuse and are deleted when you delete your account.</li>
+    <li><strong>Device records</strong> (device identifier, scan counts, and any purchases made without an account) are <strong>kept after you delete your account</strong>, so that deleting and reinstalling cannot reset the free trial. The link between the device and your account is removed.</li>
+    <li><strong>Rate-limit counters</strong> (request timestamps and a daily count) are stored under your internal account ID and remain after you delete your account. They contain no email, goals or scan content.</li>
+    <li><strong>A one-way hash of your email address</strong>, with the number of free scans used, is <strong>kept after you delete your account</strong> to prevent free-trial abuse. It cannot be reversed to reveal your email.</li>
+    <li><strong>Barcode lookup results</strong> contain product data only and are kept for up to 7 days.</li>
   </ul>
 
   <h2>5. Your Rights</h2>
   <ul>
-    <li><strong>Delete your account:</strong> You can permanently delete your account from the Settings screen in the app. This removes your account record, your stored goals, and your saved favorites, and is irreversible.</li>
+    <li><strong>Delete your account:</strong> You can permanently delete your account from the Settings screen in the app. This removes your account record, your stored goals, and your saved favorites, and is irreversible. You can also <a href="/ahara/delete">request deletion on the web</a>. Deleting your account does not cancel a subscription, which you manage in your app store. The limited records listed under Data Retention are kept.</li>
+    <li><strong>Withdraw consent:</strong> Under Privacy choices in Settings, you can withdraw consent to AI processing or to the use of your health data. Ahara cannot analyze new scans without AI processing.</li>
     <li><strong>Delete your goals:</strong> “Clear all goals” on the Goals screen removes them from your device and from your account.</li>
     <li><strong>Remove a favorite:</strong> Un-favoriting a scan deletes the copy stored against your account.</li>
     <li><strong>Delete local data:</strong> You can clear your scan history, saved images, and chat history from within the app at any time.</li>
