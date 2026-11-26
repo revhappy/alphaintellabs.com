@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delete Your Account — Tara</title>
+<meta name="description" content="How to delete your Tara account and data.">
+<meta name="theme-color" content="#0d0d0f">
+<link rel="canonical" href="https://alphaintellabs.com/tara/delete">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/tara/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="/css/tara.css">
+</head>
+<body>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/tara/">
+      <span class="star" aria-hidden="true">&#10025;</span>
+      Tara
+      <span class="sub">Alpha Intel Labs</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        <li><a href="/tara/">Overview</a></li>
+        <li><a href="/tara/privacy">Privacy</a></li>
+        <li><a href="/tara/terms">Terms</a></li>
+        <li><a href="/tara/support">Support</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="legal">
+  <div class="read">
+
+    <div class="legal-head">
+      <p class="kicker">Tara</p>
+      <h1>Delete Your Account</h1>
+    </div>
+
+    <h2 id="in-app">In the app</h2>
+    <p>
+      Open Tara, go to <strong>Settings → Danger Zone</strong> and tap <strong>Delete Account</strong>.
+      If you signed in with Apple, you will be asked to confirm with Apple once more so we can revoke
+      Tara's access to your Apple ID. Deletion happens immediately and cannot be undone.
+    </p>
+
+    <h2 id="email">Without the app</h2>
+    <p>
+      Email <a href="mailto:alphaintellabs@gmail.com?subject=Delete%20my%20Tara%20account">alphaintellabs@gmail.com</a>
+      from the address on your account, with the subject “Delete my Tara account”. We will confirm once it is done.
+    </p>
+
+    <h2 id="deleted">What is deleted</h2>
+    <ul>
+      <li>Your sign-in account and account record</li>
+      <li>Your birth details, name and generated astrology profile</li>
+      <li>Your readings: daily readings, compatibility reports (including the other person's birth details), Deep Dives and chart analysis</li>
+      <li>Your conversations with Tara</li>
+      <li>Any share links you created, which stop working</li>
+      <li>Reports you filed about AI replies</li>
+    </ul>
+
+    <h2 id="kept">What is kept</h2>
+    <ul>
+      <li><strong>Purchase records</strong> held by Apple or Google, and by our purchase-management provider, as billing and tax rules require.</li>
+      <li>A guest account that was never signed in exists only on your device. Deleting it in Settings, or deleting the app, removes access to it.</li>
+    </ul>
+
+    <h2 id="subscriptions">Subscriptions</h2>
+    <p>
+      <strong>Deleting your account does not cancel a subscription.</strong> Cancel it in your Apple or Google Play
+      subscription settings to stop future charges. See <a href="/tara/support#cancel">how to cancel</a>.
+    </p>
+    <p>More detail is in our <a href="/tara/privacy">Privacy Policy</a>.</p>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>&copy; 2026 Alpha Intel Labs</p>
+    <ul class="footer-links">
+      <li><a href="/tara/">Tara</a></li>
+      <li><a href="/tara/privacy">Privacy Policy</a></li>
+      <li><a href="/tara/terms">Terms of Service</a></li>
+      <li><a href="/tara/support">Support</a></li>
+      <li><a href="mailto:alphaintellabs@gmail.com">Contact</a></li>
+      <li><a href="/">All apps</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+// Starfield — same 40 stars and ~15fps cap as the app's StarField.tsx.
+(function () {
+  var canvas = document.getElementById('stars');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var stars = [];
+  var resizeTimer;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+
+  function seed() {
+    stars = [];
+    for (var i = 0; i < 40; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 0.8 + 0.2,
+        speed: Math.random() * 0.1 + 0.02,
+        opacity: Math.random() * 0.8 + 0.2
+      });
+    }
+  }
+
+  function paint(flickering) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var t = Date.now() * 0.001;
+    for (var i = 0; i < stars.length; i++) {
+      var s = stars[i];
+      var flicker = flickering ? Math.sin(t * s.speed * 2 + s.x) * 0.1 + 0.9 : 1;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, ' + (s.opacity * flicker) + ')';
+      ctx.fill();
+    }
+  }
+
+  resize();
+  seed();
+
+  window.addEventListener('resize', function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () { resize(); seed(); paint(!motion.matches); }, 150);
+  });
+
+  if (motion.matches) { paint(false); return; }
+
+  var last = 0;
+  var paused = false;
+  var INTERVAL = 1000 / 15;
+
+  document.addEventListener('visibilitychange', function () { paused = document.hidden; });
+
+  (function frame(ts) {
+    requestAnimationFrame(frame);
+    if (paused) return;
+    if (ts - last < INTERVAL) return;
+    last = ts;
+    paint(true);
+  })(0);
+})();
+</script>
+
+</body>
+</html>

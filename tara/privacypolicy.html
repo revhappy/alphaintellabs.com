@@ -30,8 +30,9 @@
     <nav class="site-nav" aria-label="Primary">
       <ul>
         <li><a href="/tara/">Overview</a></li>
+        <li><a href="/tara/privacy">Privacy</a></li>
         <li><a href="/tara/terms">Terms</a></li>
-        <li><a href="mailto:alphaintellabs@gmail.com">Contact</a></li>
+        <li><a href="/tara/support">Support</a></li>
       </ul>
     </nav>
   </div>
@@ -44,7 +45,7 @@
       <p class="kicker">Tara</p>
       <h1>Privacy Policy</h1>
       <p class="dates">
-        Effective 16 August 2026 &nbsp;·&nbsp; Supersedes the version of 7 April 2026
+        Effective 25 November 2026 &nbsp;·&nbsp; Supersedes the version of 16 August 2026
       </p>
     </div>
 
@@ -88,10 +89,12 @@
     <h3>Account information</h3>
     <p>
       Your <strong>email address</strong>, and a password you never send us in
-      readable form — sign-in is handled by our authentication provider, which
-      stores the credential. If you sign in with Google, we receive the email
-      address and basic profile information Google returns; we do not receive your
-      Google password.
+      readable form. Sign-in is handled by Firebase Authentication (Google). You
+      can sign in with <strong>Sign in with Apple</strong>, <strong>Google</strong>,
+      or email. If you sign in with Google, we receive the email address and basic
+      profile information Google returns; we do not receive your Google password.
+      If you use Sign in with Apple and choose to hide your email, we receive an
+      Apple private relay address instead of your real one.
     </p>
 
     <h3>Birth details</h3>
@@ -123,6 +126,20 @@
     <p>
       Messages you send and the replies Tara returns, grouped into named sessions,
       so a conversation survives closing the app.
+    </p>
+
+    <h3>AI consent</h3>
+    <p>
+      Whether you have agreed to the current AI disclosure, and when. Readings and
+      chat replies are not generated until you agree. You can withdraw consent in
+      Settings &rarr; AI Readings.
+    </p>
+
+    <h3>Reports about AI replies</h3>
+    <p>
+      If you tap <strong>Report</strong> on a reading or a chat reply, we store the
+      reason, an optional note, and the text you reported, against your account, so
+      we can review it.
     </p>
 
     <h3>Usage and account state</h3>
@@ -185,16 +202,22 @@
 
     <h2 id="ai">5. AI processing</h2>
     <p>
-      Readings are written by a large language model operated by a third-party AI
-      provider. To produce a reading, we send that provider your generated astrology
-      profile, the computed sky data for the reading, and — for chat — the messages
-      in the current conversation. Your email address and account identifier are not
-      sent.
+      Readings and chat replies are written by <strong>OpenAI</strong>. Before
+      anything is sent, the app shows a disclosure naming OpenAI and listing what
+      is shared, and asks for your explicit consent. You can withdraw that consent
+      in Settings &rarr; AI Readings; the AI features then stay locked until you
+      agree again.
     </p>
     <p>
-      <strong>Our agreement with the provider prohibits the use of your data to
-      train their models.</strong> The provider may retain the request briefly for
-      abuse monitoring under its own terms.
+      To produce a reading, we send OpenAI your generated astrology profile, the
+      computed sky data for the reading, and — for chat — the messages in the
+      current conversation. Your email address and account identifier are not sent.
+    </p>
+    <p>
+      <strong>We use OpenAI's API under terms that do not allow your data to be
+      used to train their models.</strong> We also ask OpenAI not to store the
+      request body after the reply is generated. OpenAI may retain a request
+      briefly for abuse monitoring under its own terms.
     </p>
     <p>
       To keep responses fast and costs down, we send a short non-reversible hash
@@ -204,22 +227,24 @@
 
     <h2 id="providers">6. Service providers</h2>
     <p>
-      We name providers by the function they perform, because a provider may be
-      replaced as the Service changes. In every case the provider acts on our
-      instructions, may use the data only to deliver its service to us, and is bound
-      by its agreement with us and by applicable data protection law.
+      These are the providers we use today. A provider may be replaced as the
+      Service changes. In every case they act on our instructions, may use the data
+      only to deliver their service to us, and are bound by their agreement with us
+      and by applicable data protection law.
     </p>
     <ul>
-      <li><strong>Authentication</strong> — verifying sign-in and holding credentials.</li>
-      <li><strong>Database and file storage</strong> — your account record, profile, conversations and reports.</li>
-      <li><strong>Cloud compute and hosting</strong> — the servers the Service runs on.</li>
-      <li><strong>AI model provider</strong> — generating readings, as described above.</li>
-      <li><strong>Geocoding</strong> — turning a birth place name into coordinates.</li>
+      <li><strong>Authentication</strong> — Firebase Authentication (Google), for Sign in with Apple, Google sign-in, and email sign-in, and for holding credentials.</li>
+      <li><strong>Database</strong> — Cloud Firestore (Google), which holds your account record, profile, conversations and reports.</li>
+      <li><strong>Cloud compute and hosting</strong> — Google Cloud Run and Firebase Hosting, which run the Service.</li>
+      <li><strong>AI</strong> — OpenAI, which writes readings and chat replies, as described in section 5.</li>
+      <li><strong>Geocoding</strong> — OpenStreetMap Nominatim, which turns a birth place name into coordinates, as described in section 4.</li>
       <li><strong>App store billing</strong> — if you subscribe through the App Store or Google Play, Apple or Google processes the payment. We never receive your card details.</li>
+      <li><strong>Subscription status</strong> — RevenueCat, which tells us whether Tara Pro is active. It receives your account identifier (not your birth details or messages) so a purchase can be matched to your Tara account. Purchase records may be kept by Apple, Google and RevenueCat as billing and tax rules require.</li>
     </ul>
     <p>
-      You can ask us for the current list of provider categories and their locations
-      by email.
+      A provider may be replaced as the Service changes. In every case they act on
+      our instructions and may use the data only to deliver their service to us.
+      You can ask us for the current list and their locations by email.
     </p>
 
     <h2 id="transfers">7. International transfers</h2>
@@ -240,15 +265,32 @@
       <li><strong>Server logs</strong> — kept for a short operational period by our hosting provider and then rotated out.</li>
     </ul>
     <p>
-      Deleting your account removes your profile, your conversations, your reports,
-      your horoscopes and your account record. It is irreversible, and we cannot
-      restore any of it afterwards.
+      <strong>To delete your account in the app:</strong> go to Settings &rarr;
+      Danger Zone &rarr; Delete Account. Deletion is immediate and cannot be undone.
+      If you signed in with Apple, the app asks you to confirm with Apple again,
+      and our servers revoke Tara's Apple tokens so the app can no longer use your
+      Apple ID. You can also email
+      <a href="mailto:alphaintellabs@gmail.com?subject=Delete%20my%20Tara%20account">alphaintellabs@gmail.com</a>
+      from the address on the account, or follow the steps on the
+      <a href="/tara/delete">account deletion</a> page.
+    </p>
+    <p>
+      Deletion removes your sign-in account, birth details and profile, readings
+      (including compatibility reports and the other person's birth details you
+      entered), conversations, share links, reports you filed about AI replies, and
+      your account record. It is irreversible, and we cannot restore any of it
+      afterwards.
+    </p>
+    <p>
+      <strong>Deleting your account does not cancel a Tara Pro subscription.</strong>
+      Cancel it in your Apple or Google Play subscription settings to stop future
+      charges. See <a href="/tara/support#cancel">how to cancel</a>.
     </p>
 
     <h2 id="rights">9. Your rights</h2>
     <p>Wherever you live, you can:</p>
     <ul>
-      <li><strong>Delete everything</strong> — Settings inside the app removes your account and all data attached to it.</li>
+      <li><strong>Delete everything</strong> — Settings &rarr; Danger Zone &rarr; Delete Account removes your account and all data attached to it, and revokes Tara's Sign in with Apple tokens when you signed in that way. Detail is in section 8 and on the <a href="/tara/delete">account deletion</a> page.</li>
       <li><strong>Correct your details</strong> — the profile editor updates your birth data and regenerates your charts.</li>
       <li><strong>Get a copy</strong> — email us and we will send you the data held against your account.</li>
       <li><strong>Stop</strong> — close the app and delete the account.</li>
@@ -310,7 +352,7 @@
     <div class="contact">
       <p><strong>Alpha Intel Labs</strong></p>
       <p><a href="mailto:alphaintellabs@gmail.com">alphaintellabs@gmail.com</a></p>
-      <p style="margin-top:.75rem"><a href="/tara/terms">Terms of Service</a> &nbsp;·&nbsp; <a href="/tara/">About Tara</a></p>
+      <p style="margin-top:.75rem"><a href="/tara/terms">Terms of Service</a> &nbsp;·&nbsp; <a href="/tara/support">Support</a> &nbsp;·&nbsp; <a href="/tara/delete">Delete your account</a> &nbsp;·&nbsp; <a href="/tara/">About Tara</a></p>
     </div>
 
   </div>
@@ -321,7 +363,9 @@
     <p>&copy; 2026 Alpha Intel Labs</p>
     <ul class="footer-links">
       <li><a href="/tara/">Tara</a></li>
+      <li><a href="/tara/privacy">Privacy Policy</a></li>
       <li><a href="/tara/terms">Terms of Service</a></li>
+      <li><a href="/tara/support">Support</a></li>
       <li><a href="mailto:alphaintellabs@gmail.com">Contact</a></li>
       <li><a href="/">All apps</a></li>
     </ul>
